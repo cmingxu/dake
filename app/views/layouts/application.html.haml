@@ -1,20 +1,28 @@
 !!! 5
 %html
   %head
-    %title Boilerplate
+    %title= Setting.site_name
     = stylesheet_link_tag "application", :media => "all" 
     = javascript_include_tag "application"
     = csrf_meta_tags
 
   %body
     .container#header
-      %h1 Rails Boilerplate
+      %h1= Setting.site_name
       %ul.nav.pull-right
-        %li= link_to "Home", "/"
-        %li= link_to "Products"
         %li= link_to "About", "/about"
 
-    .container#body
-      = yield
+    .container-fluid#body
+      .row-fluid
+        .span3
+          = render :partial => "layouts/sidebar"
+        .span9
+          = yield
     
-    #footer
+    #footer.footer
+      %p
+        = Setting.site_name
+        @2013
+      %p 
+        由cming.xu@gmail.com制作
+

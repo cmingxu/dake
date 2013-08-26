@@ -1,0 +1,24 @@
+%h1 Listing locations
+
+%table
+  %tr
+    %th Name
+    %th Fuzeren
+    %th Fuzeren mobile
+    %th Fuzeren address
+    %th
+    %th
+    %th
+
+  - @locations.each do |location|
+    %tr
+      %td= location.name
+      %td= location.fuzeren
+      %td= location.fuzeren_mobile
+      %td= location.fuzeren_address
+      %td= link_to 'Show', location
+      %td= link_to 'Edit', edit_location_path(location)
+      %td= link_to 'Destroy', location, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+

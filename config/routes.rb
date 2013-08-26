@@ -1,9 +1,12 @@
 # -*- encoding : utf-8 -*-
 Dake::Application.routes.draw do
 
+
+
   namespace :admin do
     resources :users
     resources :pages
+    resources :locations
   end
 
   devise_for :users

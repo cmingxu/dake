@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @location.name
+%p
+  %b Fuzeren:
+  = @location.fuzeren
+%p
+  %b Fuzeren mobile:
+  = @location.fuzeren_mobile
+%p
+  %b Fuzeren address:
+  = @location.fuzeren_address
+
+= link_to 'Edit', edit_location_path(@location)
+\|
+= link_to 'Back', locations_path
