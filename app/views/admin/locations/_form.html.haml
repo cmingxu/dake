@@ -1,25 +1,17 @@
 = form_for [:admin, @location], :class => "form form-horizontal" do |f|
-  - if @location.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@location.errors.count, "error")} prohibited this location from being saved:"
-      %ul
-        - @location.errors.full_messages.each do |msg|
-          %li= msg
 
-  .control-group
-    .control-lable
-      = f.label "地点"
-    .controls
-      = f.text_field :name
-  .field
-    = f.label :fuzeren
-    = f.text_field :fuzeren
-  .field
-    = f.label :fuzeren_mobile
-    = f.text_field :fuzeren_mobile
-  .field
-    = f.label :fuzeren_address
-    = f.text_field :fuzeren_address
+  = control_group_helper "地点", "例如： 呼市，北京，敖汉", f.object.errors[:name].first do
+    = f.text_field :name, :class => "input-xxlarge"
+
+
+  = control_group_helper "负责人", "当地负责人姓名", f.object.errors[:fuzeren].first do
+    = f.text_field :fuzeren, :class => "input-xxlarge"
+
+  = control_group_helper "负责人联系电话", "负责人联系电话, 例如: 13912345678", f.object.errors[:fuzeren_mobile].first do
+    = f.text_field :fuzeren_mobile, :class => "input-xxlarge"
+
+  = control_group_helper "负责人地址", "负责人联系地址， 例如: 北京六里桥某某酒店", f.object.errors[:fuzeren_address].first do
+    = f.text_field :fuzeren_address, :class => "input-xxlarge"
   .actions
     = f.submit '保存', :class => "btn btn-primary"
     = link_to "返回", admin_locations_path, :class => "btn"

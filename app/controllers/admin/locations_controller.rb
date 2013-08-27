@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Admin::LocationsController < Admin::BaseController
   # GET /locations
   # GET /locations.json
