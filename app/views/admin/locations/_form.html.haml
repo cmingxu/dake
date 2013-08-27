@@ -1,4 +1,4 @@
-= form_for @location do |f|
+= form_for [:admin, @location], :class => "form form-horizontal" do |f|
   - if @location.errors.any?
     #error_explanation
       %h2= "#{pluralize(@location.errors.count, "error")} prohibited this location from being saved:"
@@ -6,9 +6,11 @@
         - @location.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :name
-    = f.text_field :name
+  .control-group
+    .control-lable
+      = f.label "地点"
+    .controls
+      = f.text_field :name
   .field
     = f.label :fuzeren
     = f.text_field :fuzeren
@@ -19,4 +21,5 @@
     = f.label :fuzeren_address
     = f.text_field :fuzeren_address
   .actions
-    = f.submit 'Save'
+    = f.submit '保存', :class => "btn btn-primary"
+    = link_to "返回", admin_locations_path, :class => "btn"

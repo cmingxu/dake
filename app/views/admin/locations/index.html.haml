@@ -1,13 +1,14 @@
-%h1 Listing locations
+%legend 
+  地点列表
+  %span.pull-right
+    = link_to icon_link(:plus) + "  新地点", new_admin_location_path
 
-%table
-  %tr
-    %th Name
-    %th Fuzeren
-    %th Fuzeren mobile
-    %th Fuzeren address
-    %th
-    %th
+%table.table.table-colored
+  %thead
+    %th 名称
+    %th 负责人
+    %th 联系电话
+    %th 联系地址
     %th
 
   - @locations.each do |location|
@@ -16,9 +17,10 @@
       %td= location.fuzeren
       %td= location.fuzeren_mobile
       %td= location.fuzeren_address
-      %td= link_to 'Show', location
-      %td= link_to 'Edit', edit_location_path(location)
-      %td= link_to 'Destroy', location, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td
+        = link_to icon_link(:search), edit_admin_location_path(location)
+        = link_to icon_link(:trash), admin_location_path(location), :confirm => "此操作会删除地点， 确认继续？", :method => :delete
+        
 
-%br
 
+= paginate @locations

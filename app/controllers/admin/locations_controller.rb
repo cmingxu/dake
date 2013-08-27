@@ -2,7 +2,7 @@ class Admin::LocationsController < Admin::BaseController
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.all
+    @locations = Location.page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,7 +44,7 @@ class Admin::LocationsController < Admin::BaseController
 
     respond_to do |format|
       if @location.save
-        format.html { redirect_to @location, notice: 'Location was successfully created.' }
+        format.html { redirect_to admin_locations_path, notice: 'Location was successfully created.' }
         format.json { render json: @location, status: :created, location: @location }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class Admin::LocationsController < Admin::BaseController
 
     respond_to do |format|
       if @location.update_attributes(params[:location])
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
+        format.html { redirect_to admin_locations_path, notice: 'Location was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +76,7 @@ class Admin::LocationsController < Admin::BaseController
     @location.destroy
 
     respond_to do |format|
-      format.html { redirect_to locations_url }
+      format.html { redirect_to admin_locations_path }
       format.json { head :no_content }
     end
   end

@@ -7,6 +7,8 @@ Dake::Application.routes.draw do
     resources :users
     resources :pages
     resources :locations
+
+    get "dashboard" => "base#dashboard"
   end
 
   devise_for :users
