@@ -1,0 +1,31 @@
+%legend 
+  线路管理
+  %span.pull-right
+    = link_to icon_link(:plus) + "  新线路", new_admin_route_path
+
+%table.table.table-stripped
+  %thead
+    %th 出发站
+    %th 终到站
+    %th 车牌号
+    %th 客车型号
+    %th 司机
+    %th 随车电话
+    %th 发车时间
+    %th 到站时间
+    %th
+
+  - @routes.each do |route|
+    %tr
+      %td= route.start_location.name
+      %td= route.end_location.name
+      %td= route.paizhao
+      %td= route.xinghao
+      %td= route.driver_names
+      %td= route.mobile
+      %td= route.start_when
+      %td= route.end_when
+      %td
+        = link_to icon_link(:search), edit_admin_route_path(route)
+        = link_to icon_link(:trash), admin_route_path(route), :confirm => "此操作会删除路线信息,， 确认继续？", :method => :delete
+

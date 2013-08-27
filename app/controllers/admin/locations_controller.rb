@@ -3,7 +3,7 @@ class Admin::LocationsController < Admin::BaseController
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.page params[:page]
+    @locations = Location.order("updated_at DESC").page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,0 +1,32 @@
+= form_for [:admin, @route], :class => "form fomr-horizontal" do |f|
+  = control_group_helper "始发站", "例如： 呼市，北京，敖汉", f.object.errors[:start_location_id].first, :left do
+    = f.select :start_location_id, options_from_collection_for_select(Location.all, "id", "name", @route.start_location_id)
+
+  = control_group_helper "终点站", "不能与始发站重复", f.object.errors[:end_location_id].first, :right do
+    = f.select :end_location_id, options_from_collection_for_select(Location.all, "id", "name", @route.end_location_id)
+
+  .clearfix
+  = control_group_helper "车牌照", "例如：京A203212", f.object.errors[:paizhao].first do
+    = f.text_field :paizhao, :class => "input-xxlarge"
+
+  = control_group_helper "客车型号", "例如：金龙II型", f.object.errors[:xinghao].first do
+    = f.text_field :xinghao, :class => "input-xxlarge"
+
+  = control_group_helper "司机姓名", "例如：张三，王强", f.object.errors[:driver_names].first do
+    = f.text_field :driver_names, :class => "input-xxlarge"
+
+  = control_group_helper "随车电话", "例如：13512344321, 13812344321", f.object.errors[:mobile].first do
+    = f.text_field :mobile, :class => "input-xxlarge"
+
+  = control_group_helper "发车时间", "例如：6:30", f.object.errors[:start_when].first do
+    = f.text_field :start_when, :class => "input-xxlarge"
+
+  = control_group_helper "到站时间", "例如：16:30", f.object.errors[:end_when].first do
+    = f.text_field :end_when, :class => "input-xxlarge"
+
+  = control_group_helper "途经站", "例如：锦山，平泉，承德，密云", f.object.errors[:paths].first do
+    = f.text_field :paths, :class => "input-xxlarge"
+
+  .actions
+    = f.submit '保存', :class => "btn btn-primary"
+    = link_to "返回", admin_routes_path, :class => "btn"

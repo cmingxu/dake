@@ -3,10 +3,13 @@ Dake::Application.routes.draw do
 
 
 
+
+
   namespace :admin do
     resources :users
     resources :pages
     resources :locations
+    resources :routes
 
     get "dashboard" => "base#dashboard"
   end

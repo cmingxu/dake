@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Start location:
+  = @route.start_location_id
+%p
+  %b End location:
+  = @route.end_location_id
+%p
+  %b Paizhao:
+  = @route.paizhao
+%p
+  %b Xinghao:
+  = @route.xinghao
+%p
+  %b Driver names:
+  = @route.driver_names
+%p
+  %b Mobile:
+  = @route.mobile
+%p
+  %b Start when:
+  = @route.start_when
+%p
+  %b End when:
+  = @route.end_when
+%p
+  %b Paths:
+  = @route.paths
+
+= link_to 'Edit', edit_route_path(@route)
+\|
+= link_to 'Back', routes_path
