@@ -29,3 +29,5 @@
         = link_to icon_link(:search), edit_admin_route_path(route)
         = link_to icon_link(:trash), admin_route_path(route), :confirm => "此操作会删除路线信息,， 确认继续？", :method => :delete
 
+
+= paginate @routes

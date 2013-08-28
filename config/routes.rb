@@ -1,10 +1,6 @@
 # -*- encoding : utf-8 -*-
 Dake::Application.routes.draw do
 
-
-
-
-
   namespace :admin do
     resources :users
     resources :pages
@@ -15,6 +11,7 @@ Dake::Application.routes.draw do
   end
 
   devise_for :users
+  
 
   get "welcome/index"
   get "welcome/dashboard"

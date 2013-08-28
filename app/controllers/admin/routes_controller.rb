@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Admin::RoutesController < Admin::BaseController
   # GET /routes
   # GET /routes.json

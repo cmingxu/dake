@@ -1,8 +1,8 @@
 = form_for [:admin, @route], :class => "form fomr-horizontal" do |f|
-  = control_group_helper "始发站", "例如： 呼市，北京，敖汉", f.object.errors[:start_location_id].first, :left do
+  = control_group_helper "始发站", "例如： 呼市，北京，敖汉", f.object.errors[:start_location_id].first do
     = f.select :start_location_id, options_from_collection_for_select(Location.all, "id", "name", @route.start_location_id)
 
-  = control_group_helper "终点站", "不能与始发站重复", f.object.errors[:end_location_id].first, :right do
+  = control_group_helper "终点站", "不能与始发站重复", f.object.errors[:end_location_id].first do
     = f.select :end_location_id, options_from_collection_for_select(Location.all, "id", "name", @route.end_location_id)
 
   .clearfix

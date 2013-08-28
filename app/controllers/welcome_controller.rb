@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 class WelcomeController < ApplicationController
+  layout "public"
+
   def index
   end
 
