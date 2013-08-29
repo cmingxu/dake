@@ -1,0 +1,25 @@
+= form_for [:admin, @balance] do |f|
+
+  .field
+    = f.label :amount
+    = f.text_field :amount
+  .field
+    = f.label :user_id
+    = f.number_field :user_id
+  .field
+    = f.label :paizhao
+    = f.text_field :paizhao
+  .field
+    = f.label :location_id
+    = f.text_field :location_id
+  .field
+    = f.label :reason
+    = f.text_field :reason
+  .field
+    = f.label :detail_reason
+    = f.text_field :detail_reason
+  .field
+    = f.label :desc
+    = f.text_area :desc
+  .actions
+    = f.submit 'Save'

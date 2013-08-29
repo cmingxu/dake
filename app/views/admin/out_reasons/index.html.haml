@@ -1,0 +1,19 @@
+%legend 
+  支出类型
+  %span.pull-right
+    = link_to icon_link(:plus) + "  新类型", new_admin_out_reason_path
+
+%table.table.table-stripped
+  %thead
+    %th 类型
+    %th 详细类型
+    %th
+
+  - @reasons.each do |reason|
+    %tr
+      %td= reason.reason
+      %td= reason.details
+      %td
+        = link_to icon_link(:search), edit_admin_out_reason_path(reason)
+        = link_to icon_link(:trash), admin_out_reason_path(reason), :confirm => "此操作会删除支出类型， 确认继续？", :method => :delete
+

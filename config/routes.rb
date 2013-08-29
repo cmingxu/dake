@@ -1,11 +1,16 @@
 # -*- encoding : utf-8 -*-
 Dake::Application.routes.draw do
 
+
+
   namespace :admin do
     resources :users
     resources :pages
     resources :locations
     resources :routes
+    resources :reasons
+    resources :out_reasons
+    resources :balances
 
     get "dashboard" => "base#dashboard"
   end

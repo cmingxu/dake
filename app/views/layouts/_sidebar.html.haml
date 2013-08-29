@@ -1,7 +1,10 @@
 %ul.nav.nav-tabs.nav-stacked
   %li
-    = link_to "首页", admin_dashboard_path
-    = link_to "地点管理", admin_locations_path
-    = link_to "用户管理", admin_users_path
-    = link_to "线路管理", admin_routes_path
-    = link_to "报表管理", admin_locations_path
+    = link_to icon_link(:heart) + " 首页", admin_dashboard_path
+    = link_to icon_link(:heart) + " 财务管理", admin_balances_path
+    = link_to icon_link(:heart) + " 报表管理", admin_locations_path
+    = link_to icon_link(:heart) + " 用户管理", admin_users_path
+    = link_to icon_link(:heart) + " 地点管理", admin_locations_path
+    = link_to icon_link(:heart) + " 线路管理", admin_routes_path
+    = link_to icon_link(:heart) + " 支出类型", admin_out_reasons_path
+    = link_to icon_link(:heart) + " 收入类型", admin_reasons_path

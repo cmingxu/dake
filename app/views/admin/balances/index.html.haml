@@ -1,0 +1,27 @@
+%legend 
+  支出列表
+  %span.pull-right
+    = link_to icon_link(:plus) + "  新用户", new_admin_balance_path
+
+
+%table.table.table-stripped
+  %thead
+    %th 车牌
+    %th 原因
+    %th 具体
+    %th 金额
+    %th 经手人
+    %th 地点
+    %th
+
+  - @balances.each do |balance|
+    %tr
+      %td= balance.paizhao
+      %td= balance.reason
+      %td= balance.detail_reason
+      %td= balance.amount
+      %td= balance.user.name
+      %td= balance.location.name
+      %td
+        = link_to icon_link(:search), edit_admin_balance_path(balance)
+

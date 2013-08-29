@@ -1,0 +1,10 @@
+= form_for @reason, :url => admin_out_reasons_path, :class => "form form-horizontal" do |f|
+  = hidden_field_tag "reason[cate]", "out"
+  = control_group_helper "原因", "例如: 修车或者备品", f.object.errors[:reason].first do
+    = f.text_field :reason, :class => "input-xxlarge"
+
+  = control_group_helper "详细原因", "英文字母的逗号分隔 例如: 轮胎,轮网,曲轴", f.object.errors[:reason].first do
+    = f.text_area :details, :class => "input-xxlarge"
+  .actions
+    = f.submit '保存', :class => "btn btn-primary"
+    = link_to "返回", admin_out_reasons_path, :class => "btn"
