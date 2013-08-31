@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Amount:
+  = @balance.amount
+%p
+  %b User:
+  = @balance.user_id
+%p
+  %b Paizhao:
+  = @balance.paizhao
+%p
+  %b Location:
+  = @balance.location_id
+%p
+  %b Reason:
+  = @balance.reason
+%p
+  %b Detail reason:
+  = @balance.detail_reason
+%p
+  %b Desc:
+  = @balance.desc
+
+= link_to 'Edit', edit_balance_path(@balance)
+\|
+= link_to 'Back', balances_path

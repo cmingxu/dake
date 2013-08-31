@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130830230207) do
+ActiveRecord::Schema.define(:version => 20130831140906) do
 
   create_table "balances", :force => true do |t|
     t.decimal  "amount",        :precision => 10, :scale => 0
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20130830230207) do
     t.datetime "created_at",                                   :null => false
     t.datetime "updated_at",                                   :null => false
     t.integer  "route_id"
+    t.string   "cate"
   end
 
   create_table "bugs", :force => true do |t|

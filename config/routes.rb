@@ -14,6 +14,7 @@ Dake::Application.routes.draw do
     resources :reasons
     resources :out_reasons
     resources :balances
+    resources :in_balances
 
     get "dashboard" => "base#dashboard"
   end

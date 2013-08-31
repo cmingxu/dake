@@ -1,9 +1,9 @@
 # -*- encoding : utf-8 -*-
-class Admin::BalancesController < Admin::BaseController
+class Admin::InBalancesController < Admin::BaseController
   # GET /balances
   # GET /balances.json
   def index
-    @balances = Balance.out.page params[:page]
+    @balances = Balance.in.page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -48,7 +48,7 @@ class Admin::BalancesController < Admin::BaseController
 
     respond_to do |format|
       if @balance.save
-        format.html { redirect_to admin_balances_path, notice: 'Balance was successfully created.' }
+        format.html { redirect_to admin_in_balances_path, notice: 'Balance was successfully created.' }
         format.json { render json: @balance, status: :created, location: @balance }
       else
         format.html { render action: "new" }
@@ -65,7 +65,7 @@ class Admin::BalancesController < Admin::BaseController
 
     respond_to do |format|
       if @balance.update_attributes(params[:balance])
-        format.html { redirect_to admin_balances_path, notice: 'Balance was successfully updated.' }
+        format.html { redirect_to admin_in_balances_path, notice: 'Balance was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -81,7 +81,7 @@ class Admin::BalancesController < Admin::BaseController
     @balance.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_balances_path }
+      format.html { redirect_to admin_in_balances_path }
       format.json { head :no_content }
     end
   end
