@@ -5,10 +5,7 @@
 
 
   = control_group_helper "负责人", "当地负责人姓名", f.object.errors[:fuzeren].first do
-    = f.text_field :fuzeren, :class => "input-xxlarge"
-
-  = control_group_helper "负责人联系电话", "负责人联系电话, 例如: 13912345678", f.object.errors[:fuzeren_mobile].first do
-    = f.text_field :fuzeren_mobile, :class => "input-xxlarge"
+    = f.select(:fuzeren, options_from_collection_for_select(User.agents, "id", "name", @location.user_id), :class => "input-xxlarge")
 
   = control_group_helper "负责人地址", "负责人联系地址， 例如: 北京六里桥某某酒店", f.object.errors[:fuzeren_address].first do
     = f.text_field :fuzeren_address, :class => "input-xxlarge"

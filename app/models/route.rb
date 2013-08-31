@@ -21,4 +21,8 @@ class Route < ActiveRecord::Base
       self.errors.add(:end_location_id, "不能与始发站相同")
     end
   end
+
+  def friendly_name
+    "#{self.start_location.name}-#{self.end_location.name}" 
+  end
 end

@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   ROLES = { :boss => "经理", :agent => "一般工作人员" }
   devise :database_authenticatable
 
+  scope :agents, lambda { scoped.select { |u| u.roles.include? "agent" } } 
+
   serialize :roles, Array
 
   # Setup accessible (or protected) attributes for your model
@@ -13,6 +15,8 @@ class User < ActiveRecord::Base
   validates :password, :presence => { :message => "密码不能为空" }, :on => :create
   validates :password_confirmation, :presence => { :message => "密码确认不能为空" }, :on => :create
   validates :roles, :presence => { :message => "用户角色不能为空" }
+
+  has_one :location
 
   def boss?
     roles.include? "boss"
@@ -26,5 +30,9 @@ class User < ActiveRecord::Base
     self.roles.map do |role|
       ROLES[role.to_sym]
     end.join(", ")
+  end
+
+  def location
+    Location.first 
   end
 end

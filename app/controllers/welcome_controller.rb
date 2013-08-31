@@ -14,4 +14,12 @@ class WelcomeController < ApplicationController
 
   def team
   end
+
+  def sign_as
+     if Rails.env.development?
+        sign_in(User.find_by_login  params[:login])
+     end
+
+     redirect_to admin_dashboard_path
+  end
 end

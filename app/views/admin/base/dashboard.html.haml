@@ -1,1 +1,9 @@
-%h1 welcome
+%h2
+  您当前负责
+  = link_to current_user.location.name, edit_admin_location_path(current_user.location)
+  地区, 本地区客车有
+  - current_user.location.routes.each do |r|
+    = link_to r.friendly_name, edit_admin_route_path(r)
+%br
+= link_to " 支出 ", new_admin_balance_path, :class => "btn btn-large btn-primary"
+= link_to " 收入 ", new_admin_balance_path, :class => "btn btn-large btn-primary"

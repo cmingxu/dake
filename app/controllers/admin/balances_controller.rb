@@ -26,6 +26,7 @@ class Admin::BalancesController < Admin::BaseController
   # GET /balances/new.json
   def new
     @balance = Balance.new
+    @routes = current_user.location.routes
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +36,7 @@ class Admin::BalancesController < Admin::BaseController
 
   # GET /balances/1/edit
   def edit
+    @routes = current_user.location.routes
     @balance = Balance.find(params[:id])
   end
 
@@ -42,6 +44,7 @@ class Admin::BalancesController < Admin::BaseController
   # POST /balances.json
   def create
     @balance = Balance.new(params[:balance])
+    @routes = current_user.location.routes
 
     respond_to do |format|
       if @balance.save
@@ -58,6 +61,7 @@ class Admin::BalancesController < Admin::BaseController
   # PUT /balances/1.json
   def update
     @balance = Balance.find(params[:id])
+    @routes = current_user.location.routes
 
     respond_to do |format|
       if @balance.update_attributes(params[:balance])

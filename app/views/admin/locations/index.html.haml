@@ -15,7 +15,7 @@
     %tr
       %td= location.name
       %td= location.fuzeren
-      %td= location.fuzeren_mobile
+      %td= location.user.try(:mobile)
       %td= location.fuzeren_address
       %td
         = link_to icon_link(:search), edit_admin_location_path(location)

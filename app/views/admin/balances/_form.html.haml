@@ -1,25 +1,19 @@
-= form_for [:admin, @balance] do |f|
+= form_for [:admin, @balance], :class => "form form-horizontal" do |f|
+  = hidden_field_tag "balance[user_id]", current_user.id
+  - if current_user.location
+    = hidden_field_tag "balance[location_id]", current_user.location.id
+  = control_group_helper "客车牌照", "支出用于车辆，例如： 京A000123", f.object.errors[:paizhao].first do
+    = f.select :paizhao, options_from_collection_for_select(@routes, "paizhao", "paizhao", @balance.paizhao)
 
-  .field
-    = f.label :amount
-    = f.text_field :amount
-  .field
-    = f.label :user_id
-    = f.number_field :user_id
-  .field
-    = f.label :paizhao
-    = f.text_field :paizhao
-  .field
-    = f.label :location_id
-    = f.text_field :location_id
-  .field
-    = f.label :reason
-    = f.text_field :reason
-  .field
-    = f.label :detail_reason
-    = f.text_field :detail_reason
-  .field
-    = f.label :desc
-    = f.text_area :desc
+  = control_group_helper "支出原因", "支出的原因，例如： 维修", f.object.errors[:reason].first do
+    = f.select :reason, options_from_collection_for_select(Reason.out.all, "reason", "reason", @balance.reason)
+
+  = control_group_helper "金额", "必须是数字，例如： 100, 888", f.object.errors[:amount].first do
+    = f.text_field :amount, :class => "input-xxlarge"
+
+  = control_group_helper "补充说明", "支出的补充说明，例如： 维修费用打折后1000", f.object.errors[:desc].first do
+    = f.text_field :desc, :class => "input-xxlarge"
+
   .actions
-    = f.submit 'Save'
+    = f.submit '保存', :class => "btn btn-primary"
+    = link_to "返回", admin_balances_path, :class => "btn"

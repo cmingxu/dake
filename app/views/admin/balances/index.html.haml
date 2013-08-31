@@ -1,7 +1,7 @@
 %legend 
   支出列表
   %span.pull-right
-    = link_to icon_link(:plus) + "  新用户", new_admin_balance_path
+    = link_to icon_link(:plus) + "  新支出", new_admin_balance_path
 
 
 %table.table.table-stripped
@@ -12,6 +12,7 @@
     %th 金额
     %th 经手人
     %th 地点
+    %th 时间
     %th
 
   - @balances.each do |balance|
@@ -22,6 +23,7 @@
       %td= balance.amount
       %td= balance.user.name
       %td= balance.location.name
+      %td= balance.created_at.to_s(:human_zh)
       %td
         = link_to icon_link(:search), edit_admin_balance_path(balance)
 

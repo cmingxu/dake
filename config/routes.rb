@@ -3,6 +3,9 @@ Dake::Application.routes.draw do
 
 
 
+  resources :bugs
+
+
   namespace :admin do
     resources :users
     resources :pages
@@ -24,6 +27,7 @@ Dake::Application.routes.draw do
   resources :foos
 
   match "about" => "welcome#about"
+  match "sign_as" => "welcome#sign_as"
   match "team" => "welcome#team"
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130829002202) do
+ActiveRecord::Schema.define(:version => 20130830230207) do
 
   create_table "balances", :force => true do |t|
     t.decimal  "amount",        :precision => 10, :scale => 0
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(:version => 20130829002202) do
     t.datetime "created_at",                                   :null => false
     t.datetime "updated_at",                                   :null => false
     t.integer  "route_id"
+  end
+
+  create_table "bugs", :force => true do |t|
+    t.text     "desc"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "foos", :force => true do |t|
@@ -40,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20130829002202) do
     t.string   "fuzeren_address"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "user_id"
   end
 
   create_table "pages", :force => true do |t|
@@ -88,6 +95,7 @@ ActiveRecord::Schema.define(:version => 20130829002202) do
     t.string   "mobile"
     t.string   "login"
     t.string   "roles"
+    t.integer  "location_id"
   end
 
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true

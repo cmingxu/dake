@@ -28,5 +28,9 @@
         = Setting.site_name
         @2013
       %p 
-        由cming.xu@gmail.com制作
-l
+        由cming.xu@gmail.com制作, 有问题请点击
+
+        = link_to "这里", new_bug_path
+    
+    - if Rails.env.development?
+      = render :partial => "layouts/user_list"

@@ -39,3 +39,7 @@
   padding: 7px 9px;
   width: 90%;
 }
+
+#body {
+  min-height: 600px;
+}
