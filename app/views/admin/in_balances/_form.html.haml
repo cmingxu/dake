@@ -9,6 +9,7 @@
   = control_group_helper "来源", "例如： 结算单，货物运输，散客", f.object.errors[:reason].first do
     = f.select :reason, options_from_collection_for_select(Reason.in.all, "reason", "reason", @balance.reason)
 
+
   = control_group_helper "金额", "必须是数字，例如： 100, 888", f.object.errors[:amount].first do
     = f.text_field :amount, :class => "input-xxlarge"
 

@@ -1,0 +1,2 @@
+- if @reason.detail_reason
+  = select_tag "balance[detail_reason", options_for_select(@reason.detail_reason.split(",")), default_detail_reason

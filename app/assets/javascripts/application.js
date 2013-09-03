@@ -14,7 +14,10 @@
 //= require jquery_ujs
 //= require kindeditor
 //= require bootstrap-select 
+//= require balances
 //= require_self
 //
 
 $('select').selectpicker();
+
+

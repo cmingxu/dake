@@ -81,4 +81,13 @@ class Admin::ReasonsController < Admin::BaseController
       format.json { head :no_content }
     end
   end
+
+  def detail_reason
+    @reason = Reason.find(params[:id])
+
+    respond_to do |format|
+      format.html  render :partial => "detail_reason", :locals => { :default_detail_reason => "" }
+    end
+  end
+
 end

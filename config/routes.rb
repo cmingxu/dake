@@ -11,7 +11,11 @@ Dake::Application.routes.draw do
     resources :pages
     resources :locations
     resources :routes
-    resources :reasons
+    resources :reasons do
+      member do
+        get :detail_reason
+      end
+    end
     resources :out_reasons
     resources :balances
     resources :in_balances
