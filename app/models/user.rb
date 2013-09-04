@@ -32,7 +32,4 @@ class User < ActiveRecord::Base
     end.join(", ")
   end
 
-  def location
-    Location.first 
-  end
 end

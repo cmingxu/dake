@@ -4,13 +4,13 @@ class Admin::BalancesController < Admin::BaseController
   # GET /balances.json
   def index
     params[:search] ||= {}
-    balance_scope = Balance.scoped
+    balance_scope = scope
     balance_scope = balance_scope.with_location Location.find_by_name(params[:search].fetch('location')) if params[:search].fetch("location", "").present?
     balance_scope = balance_scope.with_paizhao params[:search].fetch('route', "") if params[:search].fetch("route", "").present?
     balance_scope = balance_scope.with_reason params[:search].fetch('reason', "") if params[:search].fetch("reason", "").present?
     balance_scope = balance_scope.with_amount_between(params[:search].fetch('amount_start').to_i, params[:search].fetch('amount_end').to_i ) if params[:search].fetch("start_at", "").present? and params[:search].fetch('end_at', "").present?
     balance_scope = balance_scope.with_issued_between(Date.parse(params[:search].fetch('start_at')), Date.parse(params[:search].fetch('end_at')) )  if params[:search].fetch("start_at", "").present? and params[:search].fetch('end_at',"").present?
-    @balances = balance_scope.in.page params[:page]
+    @balances = balance_scope.out.page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
