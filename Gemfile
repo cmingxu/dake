@@ -19,6 +19,7 @@ end
 
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'capistrano'
 gem 'devise'
 gem 'carrierwave'

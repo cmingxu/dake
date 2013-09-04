@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.datepicker
 //= require kindeditor
 //= require bootstrap-select 
 //= require balances
@@ -21,3 +22,18 @@
 $('select').selectpicker();
 
 
+function slideup() {
+  $("#search_form").slideUp();
+  $("#up").show();
+  $("#down").hide();
+}
+
+function slidedown() {
+  $("#search_form").slideDown();
+  $("#up").hide();
+  $("#down").show();
+}
+
+$(document).ready(function () {
+  $(".date").datepicker();
+});

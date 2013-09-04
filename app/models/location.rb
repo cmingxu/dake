@@ -12,6 +12,8 @@ class Location < ActiveRecord::Base
   has_many :departure_routes, :class_name => "Route", :foreign_key => "start_location_id"
   has_many :destination_routes, :class_name => "Route", :foreign_key => "end_location_id"
 
+  has_many :balances
+
   def routes
     departure_routes + destination_routes 
   end

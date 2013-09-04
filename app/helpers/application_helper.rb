@@ -4,6 +4,13 @@ module ApplicationHelper
     raw "<i class = 'icon-#{what.to_s}'></i>"
   end
 
+  def search_control_group_helper(label_name,  &block)
+    label_html = content_tag(:span, label_name, :class => "control-label")
+    field = content_tag(:div, capture(&block), :class => "controls")
+    content_tag(:div, label_html + field, :class => "control-group ")
+  end
+
+
   def control_group_helper(label_name,  description = "", error_message = "", float = "both",  &block)
     error_class = error_message.blank? ? "" : "error"
     error_div = content_tag(:span, error_message, :class => "help-inline")
