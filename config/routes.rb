@@ -3,10 +3,13 @@ Dake::Application.routes.draw do
 
 
 
+  get "reports/index"
+
   resources :bugs
 
 
   namespace :admin do
+    resources :reports
     resources :users
     resources :pages
     resources :locations

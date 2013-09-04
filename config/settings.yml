@@ -1,5 +1,5 @@
 default: &default
-  site_name: "东鹏汽贸"
+  site_name: "XX汽贸"
 
 
 development: 

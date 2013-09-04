@@ -102,7 +102,7 @@ def rand_balance
    b.reason = reason.reason
    b.detail_reason = reason.details.split(",").sample if reason.details
    b.cate = "out"
-
+   b.created_at = Time.now - 3600 * 24 * 365 * rand()
    b.save!
 end
 
