@@ -7,11 +7,11 @@
     = f.select :paizhao, options_from_collection_for_select(@routes, "paizhao", "paizhao", @balance.paizhao)
 
   = control_group_helper "支出原因", "支出的原因，例如： 维修", f.object.errors[:reason].first do
-    = f.select :reason, options_from_collection_for_select(Reason.out.all, "reason", "reason", @balance.reason), :id => "reason"
+    = f.select :reason, options_from_collection_for_select(Reason.out.all, "reason", "reason", @balance.reason)
 
   #detail_reason
     - if @balance.detail_reason
-      = render :partial => "admin/reasons/detail_reason", :locals => { :default_detail_reason => @balance.detail_reason }
+      = render :partial => "admin/reasons/detail_reason", :locals => { :default_detail_reason => @balance.detail_reason, :reason => @balance.reason  }
 
   = control_group_helper "金额", "必须是数字，例如： 100, 888", f.object.errors[:amount].first do
     = f.text_field :amount, :class => "input-xxlarge"

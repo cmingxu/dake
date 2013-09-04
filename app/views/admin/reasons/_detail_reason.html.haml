@@ -1,2 +1,3 @@
-- if @reason.detail_reason
-  = select_tag "balance[detail_reason", options_for_select(@reason.detail_reason.split(",")), default_detail_reason
+- reason = Reason.find_by_reason reason
+- if not reason.details.blank?
+  = select_tag "balance[detail_reason]", options_for_select(reason.details.split(","))

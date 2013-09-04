@@ -4,3 +4,12 @@
 #
 
 
+
+
+$(document).on 'change', $("#balance_reason"), () ->
+  $("#detail_reason").load "/admin/reasons/" + $("#balance_reason").val() + "/detail_reason"
+  
+
+
+$(document).on 'ready', () ->
+  $("#balance_reason").trigger 'change'
