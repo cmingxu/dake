@@ -44,3 +44,4 @@ gem 'thin'
 gem 'disqus'
 
 gem 'heroku'
+gem 'unicorn'
