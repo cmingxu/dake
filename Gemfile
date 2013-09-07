@@ -5,7 +5,6 @@ gem 'rails', '3.2.13'
 
 #gem 'mysql2'
 gem 'pg'
-gem 'activerecord-postgresql-adapter'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
