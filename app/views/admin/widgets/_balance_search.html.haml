@@ -19,8 +19,8 @@
 
 
     = search_control_group_helper("时间") do
-      = text_field_tag "search[start_at]", (params["search"].fetch("start_at", "01/01/2012")), :class => "input-small date"
-      = text_field_tag "search[end_at]", (params["search"].fetch("end_at", "01/01/2020")), :class => "input-small date"
+      = text_field_tag "search[start_at]", (params["search"].fetch("start_at", "2012-01-01")), :class => "input-small date"
+      = text_field_tag "search[end_at]", (params["search"].fetch("end_at", "2020-01-01")), :class => "input-small date"
 
   %hr
   .actions{:style => "text-align:center"}

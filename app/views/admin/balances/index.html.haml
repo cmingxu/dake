@@ -1,8 +1,9 @@
 = render :partial => "admin/widgets/balance_search", :locals => { :path => admin_balances_path, :reasons => Reason.out }
 %legend 
   支出列表
-  %span.pull-right
-    = link_to icon_link(:plus) + "  新支出", new_admin_balance_path
+  - if current_user.agent?
+    %span.pull-right
+      = link_to icon_link(:plus) + "  新支出", new_admin_balance_path
 
 
 %table.table.table-stripped

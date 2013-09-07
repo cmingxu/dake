@@ -9,8 +9,8 @@ class Admin::BalancesController < Admin::BaseController
     balance_scope = balance_scope.with_paizhao params[:search].fetch('route', "") if params[:search].fetch("route", "").present?
     balance_scope = balance_scope.with_reason params[:search].fetch('reason', "") if params[:search].fetch("reason", "").present?
     balance_scope = balance_scope.with_amount_between(params[:search].fetch('amount_start').to_i, params[:search].fetch('amount_end').to_i ) if params[:search].fetch("start_at", "").present? and params[:search].fetch('end_at', "").present?
-    balance_scope = balance_scope.with_issued_between(Date.parse(params[:search].fetch('start_at')), Date.parse(params[:search].fetch('end_at')) )  if params[:search].fetch("start_at", "").present? and params[:search].fetch('end_at',"").present?
-    @balances = balance_scope.out.page params[:page]
+    balance_scope = balance_scope.with_issued_between(Date.strptime(params[:search].fetch('start_at'), "%Y-%m-%d"), Date.strptime(params[:search].fetch('end_at'), "%Y-%m-%d") )  if params[:search].fetch("start_at", "").present? and params[:search].fetch('end_at',"").present?
+    @balances = balance_scope.out.page(params[:page]).order("created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb

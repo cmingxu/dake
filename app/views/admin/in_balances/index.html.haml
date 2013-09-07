@@ -2,8 +2,9 @@
 
 %legend 
   收入列表
-  %span.pull-right
-    = link_to icon_link(:plus) + "  新收入", new_admin_in_balance_path
+  - if current_user.agent?
+    %span.pull-right
+      = link_to icon_link(:plus) + "  新收入", new_admin_in_balance_path
 
 
 %table.table.table-stripped
