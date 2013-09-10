@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '3.2.13'
 
@@ -39,8 +39,6 @@ group :development, :test do
   gem 'magic_encoding'
 end
 
-gem 'thin'
 gem 'disqus'
 
-gem 'heroku'
 gem 'unicorn'
