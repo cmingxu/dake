@@ -1,7 +1,7 @@
 require "rvm/capistrano"
 require "bundler/capistrano"
-require "capistrano-nginx-unicorn"
 
+set :application, "dake"
 
 #path to customized templates (see below for details)
 # default value: "config/deploy/templates"
@@ -33,7 +33,6 @@ set :unicorn_user, "deploy"
 set :unicorn_workers, 4
 
 
-set :application, "dake"
 set :repository,  "git@github.com:cmingxu/dake.git"
 
 set :scm, :git
@@ -64,14 +63,11 @@ set :deploy_to, "/home/deploy/code/#{application}"
 # end
 #
 default_run_options[:pty] = true
-set :rvm_ruby_string,  "ruby-1.9.3-p392"
-#set :rvm_type, :user
+set :rvm_ruby_string,  "ruby-1.9.3-p448"
 set :rvm_bin_path, "/home/deploy/.rvm/bin"
 
-#after 'deploy:setup', 'rvm:install_rvm'
-#after 'deploy:setup', 'rvm:install_ruby'
 
-
+require "capistrano-nginx-unicorn"
 namespace :deploy do
   desc "cause Passenger to initiate a restart"
   task :update_bundle do
