@@ -2,7 +2,7 @@ require "rvm/capistrano"
 require "bundler/capistrano"
 
 set :application, "cardsys"
-set :repository,  "git@github.com:cmingxu/cardsys.git"
+set :repository,  "git@github.com:cmingxu/dake.git"
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
