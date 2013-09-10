@@ -42,4 +42,4 @@ end
 gem 'disqus'
 
 gem 'unicorn'
-gem 'capistrano-nginx-unicorn'
+gem 'capistrano-nginx-unicorn', require: false
