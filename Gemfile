@@ -3,8 +3,8 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.13'
 
 
-#gem 'mysql2'
-gem 'pg'
+gem 'mysql2'
+#gem 'pg'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -40,8 +40,6 @@ group :development, :test do
   gem 'magic_encoding'
 end
 
-gem 'thin'
 gem 'disqus'
 
-gem 'heroku'
 gem 'unicorn'
