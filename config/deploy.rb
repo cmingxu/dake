@@ -13,7 +13,7 @@ role :db,  "112.124.57.67", :primary => true # This is where Rails migrations wi
 role :db,  "112.124.57.67"
 
 set :user, "deploy"
-set :password, "xuchunming123"
+set :password, "Xuchunming123"
 
 set :use_sudo, false
 
@@ -72,4 +72,5 @@ after "deploy:update_code", "db:db_config", "deploy:update_bundle", "deploy:migr
 
 before 'deploy:setup', 'rvm:install_rvm'
 before 'deploy:setup', 'rvm:install_ruby'
+load "deploy/assets"
 
