@@ -25,6 +25,8 @@
       %p 
         由cming.xu@gmail.com制作
 
+    - if true || Rails.env.development?
+      = render :partial => "layouts/user_list"
 :javascript
   $(document).ready(function(){
     if(!navigator.userAgent.match(/Chrome/)){
