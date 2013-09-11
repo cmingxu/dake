@@ -11,7 +11,6 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery_ujs
 //= require highcharts
 //= require highcharts/highcharts-more
 //= require highcharts/modules/canvas-tools
@@ -20,8 +19,6 @@
 //= require highcharts/themes/dark-blue
 //= require highcharts/modules/funnel
 //= require jquery.ui.datepicker
-//= require kindeditor
-//= require bootstrap-select 
 //= require balances
 //= require_self
 //
