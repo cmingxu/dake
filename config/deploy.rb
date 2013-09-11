@@ -7,13 +7,13 @@ set :repository,  "git@github.com:cmingxu/dake.git"
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-role :web, "112.124.57.67"                          # Your HTTP server, Apache/etc
 role :app, "112.124.57.67"                          # This may be the same as your `Web` server
+role :web, "112.124.57.67"                          # Your HTTP server, Apache/etc
 role :db,  "112.124.57.67", :primary => true # This is where Rails migrations will run
 role :db,  "112.124.57.67"
 
 set :user, "deploy"
-set :password, "Xuchunming123"
+set :password, "xuchunming123"
 
 set :use_sudo, false
 
@@ -36,10 +36,25 @@ set :rvm_ruby_string,  "ruby-1.9.3-p392"
 #set :rvm_type, :user
 set :rvm_bin_path, "/home/deploy/.rvm/bin"
 
+#after 'deploy:setup', 'rvm:install_rvm'
+#after 'deploy:setup', 'rvm:install_ruby'
 
-require 'capistrano-nginx-unicorn'
 
 namespace :deploy do
+  desc "cause Passenger to initiate a restart"
+  task :restart do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+
+
+  task :start do
+    sudo "/opt/nginx/sbin/nginx"
+  end
+
+  task :stop do
+    sudo "/opt/nginx/sbin/nginx -s stop"
+  end
+
   task :update_bundle do
     run "cd #{release_path} && bundle install"
   end
@@ -48,7 +63,7 @@ end
 
 namespace :db do
   task :db_config, :except => { :no_release => true }, :role => :app do
-    run "cp -f #{release_path}/config/database.yml.template #{release_path}/config/database.yml"
+    run "cp -f #{release_path}/config/database.template #{release_path}/config/database.yml"
   end
 end
 
