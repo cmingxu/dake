@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery_ujs
 //= require highcharts
 //= require highcharts/highcharts-more
 //= require highcharts/modules/canvas-tools

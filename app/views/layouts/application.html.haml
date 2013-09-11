@@ -32,5 +32,5 @@
 
         = link_to "这里", new_bug_path
     
-    - if true || Rails.env.development?
+    - if Setting.easy_login_enable
       = render :partial => "layouts/user_list"

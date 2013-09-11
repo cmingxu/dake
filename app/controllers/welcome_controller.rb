@@ -20,8 +20,9 @@ class WelcomeController < ApplicationController
   end
 
   def sign_as
-     sign_in(User.find_by_login  params[:login])
-
-     redirect_to admin_dashboard_path
+    if Setting.easy_login_enable
+      sign_in(User.find_by_login  params[:login])
+    end
+    redirect_to admin_dashboard_path
   end
 end

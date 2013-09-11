@@ -25,7 +25,7 @@
       %p 
         由cming.xu@gmail.com制作
 
-    - if true || Rails.env.development?
+    - if Setting.easy_login_enable
       = render :partial => "layouts/user_list"
 :javascript
   $(document).ready(function(){
