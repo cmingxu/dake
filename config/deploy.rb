@@ -72,4 +72,5 @@ after "deploy:update_code", "db:db_config", "deploy:update_bundle", "deploy:migr
 
 before 'deploy:setup', 'rvm:install_rvm'
 before 'deploy:setup', 'rvm:install_ruby'
+load "deploy/assets"
 
