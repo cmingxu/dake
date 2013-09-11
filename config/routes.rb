@@ -3,6 +3,12 @@ Dake::Application.routes.draw do
 
 
 
+  resources :shippings
+
+
+  resources :huozhans
+
+
   get "reports/index"
 
   resources :bugs

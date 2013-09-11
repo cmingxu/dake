@@ -1,0 +1,57 @@
+%p#notice= notice
+
+%p
+  %b Sender name:
+  = @shipping.sender_name
+%p
+  %b Sender tel:
+  = @shipping.sender_tel
+%p
+  %b Receiver name:
+  = @shipping.receiver_name
+%p
+  %b Receiver tel:
+  = @shipping.receiver_tel
+%p
+  %b Receiver address:
+  = @shipping.receiver_address
+%p
+  %b Fee:
+  = @shipping.fee
+%p
+  %b Huowu name:
+  = @shipping.huowu_name
+%p
+  %b Huowu danwei:
+  = @shipping.huowu_danwei
+%p
+  %b Huowu amount:
+  = @shipping.huowu_amount
+%p
+  %b Huowu beizhu:
+  = @shipping.huowu_beizhu
+%p
+  %b Status:
+  = @shipping.status
+%p
+  %b Is paid:
+  = @shipping.is_paid
+%p
+  %b Is daishouhuokuan:
+  = @shipping.is_daishouhuokuan
+%p
+  %b Huowu cost:
+  = @shipping.huowu_cost
+%p
+  %b Huowu baozhi:
+  = @shipping.huowu_baozhi
+%p
+  %b Baozhi needed:
+  = @shipping.baozhi_needed
+%p
+  %b Daishouhuokuan fee:
+  = @shipping.daishouhuokuan_fee
+
+= link_to 'Edit', edit_shipping_path(@shipping)
+\|
+= link_to 'Back', shippings_path

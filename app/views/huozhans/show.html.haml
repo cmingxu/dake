@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Huozhan name:
+  = @huozhan.huozhan_name
+%p
+  %b Huozhan address:
+  = @huozhan.huozhan_address
+%p
+  %b Huozhan tel:
+  = @huozhan.huozhan_tel
+
+= link_to 'Edit', edit_huozhan_path(@huozhan)
+\|
+= link_to 'Back', huozhans_path

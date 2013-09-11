@@ -1,0 +1,23 @@
+%h1 Listing huozhans
+
+%table
+  %tr
+    %th Huozhan name
+    %th Huozhan address
+    %th Huozhan tel
+    %th
+    %th
+    %th
+
+  - @huozhans.each do |huozhan|
+    %tr
+      %td= huozhan.huozhan_name
+      %td= huozhan.huozhan_address
+      %td= huozhan.huozhan_tel
+      %td= link_to 'Show', huozhan
+      %td= link_to 'Edit', edit_huozhan_path(huozhan)
+      %td= link_to 'Destroy', huozhan, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Huozhan', new_huozhan_path
