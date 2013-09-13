@@ -1,0 +1,23 @@
+%legend 
+  货站列表
+  %span.pull-right
+    = link_to icon_link(:plus) + "  新货站", new_admin_huozhan_path
+
+%table.table.table-stripped
+  %thead
+    %th 地点
+    %th 负责人
+    %th 地址
+    %th 电话
+    %th
+
+  - @huozhans.each do |huozhan|
+    %tr
+      %td= huozhan.huozhan_name
+      %td= huozhan.user.try(:name)
+      %td= huozhan.huozhan_address
+      %td= huozhan.huozhan_tel
+      %td
+        = link_to icon_link(:search), edit_admin_huozhan_path(huozhan)
+        = link_to icon_link(:trash), admin_huozhan_path(huozhan), :confirm => "此操作会删除此货站， 确认继续？", :method => :delete
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130831140906) do
+ActiveRecord::Schema.define(:version => 20130913030406) do
 
   create_table "balances", :force => true do |t|
     t.decimal  "amount",        :precision => 10, :scale => 0
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(:version => 20130831140906) do
     t.string   "bar"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "huozhans", :force => true do |t|
+    t.string   "huozhan_name"
+    t.string   "huozhan_address"
+    t.string   "huozhan_tel"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "user_id"
   end
 
   create_table "locations", :force => true do |t|
@@ -77,6 +86,30 @@ ActiveRecord::Schema.define(:version => 20130831140906) do
     t.text     "paths"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+  end
+
+  create_table "shippings", :force => true do |t|
+    t.string   "sender_name"
+    t.string   "sender_tel"
+    t.string   "receiver_name"
+    t.string   "receiver_tel"
+    t.string   "receiver_address"
+    t.integer  "fee"
+    t.string   "huowu_name"
+    t.string   "huowu_danwei"
+    t.string   "huowu_amount"
+    t.string   "huowu_beizhu"
+    t.string   "status"
+    t.boolean  "is_paid"
+    t.boolean  "is_daishouhuokuan"
+    t.integer  "huowu_cost"
+    t.integer  "huowu_baozhi"
+    t.string   "baozhi_needed"
+    t.integer  "daishouhuokuan_fee"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "from_huozhan_id"
+    t.integer  "to_huozhan_id"
   end
 
   create_table "users", :force => true do |t|

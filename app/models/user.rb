@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   validates :roles, :presence => { :message => "用户角色不能为空" }
 
   has_one :location
+  has_one :huozhan
 
   def boss?
     roles.include? "boss"

@@ -1,0 +1,2 @@
+module Admin::ShipOutHelper
+end

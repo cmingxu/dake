@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateHuozhans < ActiveRecord::Migration
   def change
     create_table :huozhans do |t|

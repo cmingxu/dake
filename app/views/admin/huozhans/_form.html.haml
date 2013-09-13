@@ -1,0 +1,17 @@
+= form_for [:admin, @huozhan], :class => "form form-horizontal" do |f|
+  = control_group_helper "货站地点", "北京，敖汉，通辽", f.object.errors[:huozhan_name].first do
+    = f.text_field :huozhan_name, :class => "input-xxlarge"
+
+  = control_group_helper "货站地址", "例如： 北京六里桥桥南1000米", f.object.errors[:huozhan_address].first do
+    = f.text_field :huozhan_address, :class => "input-xxlarge"
+
+  = control_group_helper "货站电话", "如： 135123211， 010-8833212", f.object.errors[:huozhan_tel].first do
+    = f.text_field :huozhan_tel, :class => "input-xxlarge"
+
+  = control_group_helper "负责人", "请选择负责人", "" do
+    = f.select :user_id, options_from_collection_for_select(User.agents, "id", "name", @huozhan.user_id), :class => "input-xxlarge"
+
+
+  .actions
+    = f.submit '保存', :class => "btn btn-primary"
+    = link_to "返回", admin_huozhans_path, :class => "btn"

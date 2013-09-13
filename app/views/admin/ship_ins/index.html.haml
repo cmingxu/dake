@@ -1,6 +1,8 @@
-%h1 Listing shippings
+%legend 
+  货物列表
 
-%table
+
+%table.table.table-stripped
   %tr
     %th Sender name
     %th Sender tel
@@ -19,8 +21,6 @@
     %th Huowu baozhi
     %th Baozhi needed
     %th Daishouhuokuan fee
-    %th
-    %th
     %th
 
   - @shippings.each do |shipping|
@@ -42,10 +42,4 @@
       %td= shipping.huowu_baozhi
       %td= shipping.baozhi_needed
       %td= shipping.daishouhuokuan_fee
-      %td= link_to 'Show', shipping
-      %td= link_to 'Edit', edit_shipping_path(shipping)
-      %td= link_to 'Destroy', shipping, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
-
-= link_to 'New Shipping', new_shipping_path

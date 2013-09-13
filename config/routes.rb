@@ -3,11 +3,19 @@ Dake::Application.routes.draw do
 
 
 
-  resources :shippings
 
 
-  resources :huozhans
+  get "ship_out/index"
 
+  get "ship_out/new"
+
+  get "ship_out/edit"
+
+  get "ship_in/index"
+
+  get "ship_in/new"
+
+  get "ship_in/edit"
 
   get "reports/index"
 
@@ -20,6 +28,10 @@ Dake::Application.routes.draw do
     resources :pages
     resources :locations
     resources :routes
+    resources :huozhans
+    resources :shippings
+    resources :ship_ins
+    resources :ship_outs
     resources :reasons do
       member do
         get :detail_reason

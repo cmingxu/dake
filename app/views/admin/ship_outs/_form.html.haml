@@ -1,0 +1,61 @@
+= form_for @shipping do |f|
+  - if @shipping.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@shipping.errors.count, "error")} prohibited this shipping from being saved:"
+      %ul
+        - @shipping.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :sender_name
+    = f.text_field :sender_name
+  .field
+    = f.label :sender_tel
+    = f.text_field :sender_tel
+  .field
+    = f.label :receiver_name
+    = f.text_field :receiver_name
+  .field
+    = f.label :receiver_tel
+    = f.text_field :receiver_tel
+  .field
+    = f.label :receiver_address
+    = f.text_field :receiver_address
+  .field
+    = f.label :fee
+    = f.number_field :fee
+  .field
+    = f.label :huowu_name
+    = f.text_field :huowu_name
+  .field
+    = f.label :huowu_danwei
+    = f.text_field :huowu_danwei
+  .field
+    = f.label :huowu_amount
+    = f.text_field :huowu_amount
+  .field
+    = f.label :huowu_beizhu
+    = f.text_field :huowu_beizhu
+  .field
+    = f.label :status
+    = f.text_field :status
+  .field
+    = f.label :is_paid
+    = f.check_box :is_paid
+  .field
+    = f.label :is_daishouhuokuan
+    = f.check_box :is_daishouhuokuan
+  .field
+    = f.label :huowu_cost
+    = f.number_field :huowu_cost
+  .field
+    = f.label :huowu_baozhi
+    = f.number_field :huowu_baozhi
+  .field
+    = f.label :baozhi_needed
+    = f.text_field :baozhi_needed
+  .field
+    = f.label :daishouhuokuan_fee
+    = f.number_field :daishouhuokuan_fee
+  .actions
+    = f.submit 'Save'

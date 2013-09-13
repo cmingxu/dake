@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Admin::ReportsController < Admin::BaseController
   def index
     @balances = Balance.out.all || []

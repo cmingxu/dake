@@ -10,3 +10,9 @@
       = link_to icon_link(:heart) + " 线路管理", admin_routes_path
       = link_to icon_link(:heart) + " 支出类型", admin_out_reasons_path
       = link_to icon_link(:heart) + " 收入类型", admin_reasons_path
+      = link_to icon_link(:heart) + " 货站管理", admin_huozhans_path
+      = link_to icon_link(:heart) + " 物流管理", admin_shippings_path
+
+    - else
+      = link_to icon_link(:heart) + " 发货管理", admin_ship_outs_path
+      = link_to icon_link(:heart) + " 收货管理", admin_ship_ins_path

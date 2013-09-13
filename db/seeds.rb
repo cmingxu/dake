@@ -109,3 +109,11 @@ end
 1000.times do
   rand_balance
 end
+
+######################
+
+Huozhan.create :huozhan_name => "北京", :huozhan_address => "北京六里桥", :huozhan_tel => "13612344321"
+Huozhan.create :huozhan_name => "赤峰", :huozhan_address => "赤峰汽车站附近", :huozhan_tel => "13612344321"
+Huozhan.create :huozhan_name => "敖汉", :huozhan_address => "敖汉汽车站附近", :huozhan_tel => "13612344321"
+Huozhan.create :huozhan_name => "通辽", :huozhan_address => "通辽汽车站附近", :huozhan_tel => "13612344321"
+Huozhan.create :huozhan_name => "大阪", :huozhan_address => "大阪汽车站附近", :huozhan_tel => "13612344321"

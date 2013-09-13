@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class BugsController < ApplicationController
   layout "application"
   # GET /bugs

@@ -1,8 +1,8 @@
-class ShippingsController < ApplicationController
-  # GET /shippings
+# -*- encoding : utf-8 -*-
+class Admin::ShippingsController < Admin::BaseController
   # GET /shippings.json
   def index
-    @shippings = Shipping.all
+    @shippings = scope.page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class ShippingsController < ApplicationController
   # GET /shippings/1
   # GET /shippings/1.json
   def show
-    @shipping = Shipping.find(params[:id])
+    @shipping = scope.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class ShippingsController < ApplicationController
   # GET /shippings/new
   # GET /shippings/new.json
   def new
-    @shipping = Shipping.new
+    @shipping = scope.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,17 +34,17 @@ class ShippingsController < ApplicationController
 
   # GET /shippings/1/edit
   def edit
-    @shipping = Shipping.find(params[:id])
+    @shipping = scope.find(params[:id])
   end
 
   # POST /shippings
   # POST /shippings.json
   def create
-    @shipping = Shipping.new(params[:shipping])
+    @shipping = scope.new(params[:shipping])
 
     respond_to do |format|
       if @shipping.save
-        format.html { redirect_to @shipping, notice: 'Shipping was successfully created.' }
+        format.html { redirect_to @shipping, notice: 'scope was successfully created.' }
         format.json { render json: @shipping, status: :created, location: @shipping }
       else
         format.html { render action: "new" }
@@ -56,11 +56,11 @@ class ShippingsController < ApplicationController
   # PUT /shippings/1
   # PUT /shippings/1.json
   def update
-    @shipping = Shipping.find(params[:id])
+    @shipping = scope.find(params[:id])
 
     respond_to do |format|
       if @shipping.update_attributes(params[:shipping])
-        format.html { redirect_to @shipping, notice: 'Shipping was successfully updated.' }
+        format.html { redirect_to @shipping, notice: 'scope was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -72,12 +72,20 @@ class ShippingsController < ApplicationController
   # DELETE /shippings/1
   # DELETE /shippings/1.json
   def destroy
-    @shipping = Shipping.find(params[:id])
+    @shipping = scope.find(params[:id])
     @shipping.destroy
 
     respond_to do |format|
       format.html { redirect_to shippings_url }
       format.json { head :no_content }
+    end
+  end
+
+  def scope
+    if current_user.boss? 
+      Shipping
+    else
+      current_user.huozhan.shippings
     end
   end
 end

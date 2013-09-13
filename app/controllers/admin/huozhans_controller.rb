@@ -1,8 +1,9 @@
-class HuozhansController < ApplicationController
+# -*- encoding : utf-8 -*-
+class Admin::HuozhansController < Admin::BaseController
   # GET /huozhans
   # GET /huozhans.json
   def index
-    @huozhans = Huozhan.all
+    @huozhans = Huozhan.page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,7 +45,7 @@ class HuozhansController < ApplicationController
 
     respond_to do |format|
       if @huozhan.save
-        format.html { redirect_to @huozhan, notice: 'Huozhan was successfully created.' }
+        format.html { redirect_to admin_huozhans_path, notice: 'Huozhan was successfully created.' }
         format.json { render json: @huozhan, status: :created, location: @huozhan }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class HuozhansController < ApplicationController
 
     respond_to do |format|
       if @huozhan.update_attributes(params[:huozhan])
-        format.html { redirect_to @huozhan, notice: 'Huozhan was successfully updated.' }
+        format.html { redirect_to admin_huozhans_path, notice: 'Huozhan was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,8 +77,9 @@ class HuozhansController < ApplicationController
     @huozhan.destroy
 
     respond_to do |format|
-      format.html { redirect_to huozhans_url }
+      format.html { redirect_to admin_huozhans_url }
       format.json { head :no_content }
     end
   end
+
 end
