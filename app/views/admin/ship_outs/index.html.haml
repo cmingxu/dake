@@ -18,7 +18,7 @@
 
   - @shippings.each do |shipping|
     %tr
-      %td= shipping.to_huozhan.name
+      %td= shipping.to_huozhan.huozhan_name
       %td= "#{shipping.sender_name} #{shipping.sender_tel}"
       %td= "#{shipping.receiver_name} #{shipping.receiver_tel}"
       %td= shipping.huowu_name
@@ -26,8 +26,8 @@
       %td= shipping.status
       %td= shipping.is_paid
       %td= shipping.is_daishouhuokuan
-      %td= shipping.huowu_cost
+      %td= ""
       %td= shipping.huowu_baozhi
-      %td= shipping.baozhi_needed
+      %td= ""
       %td= shipping.daishouhuokuan_fee
 

@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
 
   has_one :location
   has_one :huozhan
+  has_many :shippings
 
   def boss?
     roles.include? "boss"

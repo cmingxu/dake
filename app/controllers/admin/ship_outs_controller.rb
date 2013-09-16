@@ -43,7 +43,7 @@ class Admin::ShipOutsController < Admin::BaseController
 
     respond_to do |format|
       if @shipping.save
-        format.html { redirect_to @shipping, notice: 'scope was successfully created.' }
+        format.html { redirect_to admin_ship_out_path(@shipping), notice: 'scope was successfully created.' }
         format.json { render json: @shipping, status: :created, location: @shipping }
       else
         format.html { render action: "new" }
