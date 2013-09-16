@@ -1,61 +1,55 @@
-= form_for @shipping do |f|
-  - if @shipping.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@shipping.errors.count, "error")} prohibited this shipping from being saved:"
-      %ul
-        - @shipping.errors.full_messages.each do |msg|
-          %li= msg
+= form_for @shipping, :url => admin_ship_outs_path, :class => "form form-horizontal" do |f|
 
-  .field
-    = f.label :sender_name
-    = f.text_field :sender_name
-  .field
-    = f.label :sender_tel
-    = f.text_field :sender_tel
-  .field
-    = f.label :receiver_name
-    = f.text_field :receiver_name
-  .field
-    = f.label :receiver_tel
-    = f.text_field :receiver_tel
-  .field
-    = f.label :receiver_address
-    = f.text_field :receiver_address
-  .field
-    = f.label :fee
-    = f.number_field :fee
-  .field
-    = f.label :huowu_name
-    = f.text_field :huowu_name
-  .field
-    = f.label :huowu_danwei
-    = f.text_field :huowu_danwei
-  .field
-    = f.label :huowu_amount
-    = f.text_field :huowu_amount
-  .field
-    = f.label :huowu_beizhu
-    = f.text_field :huowu_beizhu
-  .field
-    = f.label :status
-    = f.text_field :status
-  .field
-    = f.label :is_paid
+  = hidden_field_tag "shipping[from_huozhan_id]", current_user.huozhan.id
+
+  = control_group_helper "收货货站", "选择要收货的货站", f.object.errors[:to_huozhan_id].first do
+    = f.select :to_huozhan_id, options_from_collection_for_select(Huozhan.all, "id", "huozhan_name", @shipping.to_huozhan_id)
+
+  = control_group_helper "发货物品", "例如： 服装，汽车配件", f.object.errors[:huowu_name].first do
+    = f.text_field :huowu_name, :class => "input-xxlarge"
+
+  = control_group_helper "物品数量", "例如： 1，3", f.object.errors[:huowu_amount].first do
+    = f.text_field :huowu_amount, :class => "input-xxlarge"
+
+  = control_group_helper "物品单位", "例如：箱，件， 个", f.object.errors[:huowu_danwei].first do
+    = f.select :huowu_danwei, options_for_select(Shipping::DANWEI, @shipping.huowu_danwei)
+
+  = control_group_helper "收货人姓名", "例如： 张三", f.object.errors[:receiver_name].first do
+    = f.text_field :receiver_name, :class => "input-xxlarge"
+
+  = control_group_helper "收货人联系电话", "例如： 13612344321", f.object.errors[:receiver_tel].first do
+    = f.text_field :receiver_tel, :class => "input-xxlarge"
+
+  = control_group_helper "发货人姓名", "发货人姓名", f.object.errors[:sender_name].first do
+    = f.text_field :sender_name, :class => "input-xxlarge"
+
+  = control_group_helper "发货人联系方式", "发货人联系方式", f.object.errors[:sender_tel].first do
+    = f.text_field :sender_tel, :class => "input-xxlarge"
+
+  = control_group_helper "物流费用", "货物运输费用, 例如: 80", f.object.errors[:fee].first do
+    = f.text_field :fee, :class => "input-xxlarge"
+
+  = control_group_helper "运费已付", "是否支付了运输费用, 如果已付请勾选", f.object.errors[:is_paid].first do
     = f.check_box :is_paid
-  .field
-    = f.label :is_daishouhuokuan
+
+  = control_group_helper "货物保价", "如客户需要保价填写， 否则不需要填写", f.object.errors[:huowu_baozhi].first do
+    = f.text_field :huowu_baozhi, :class => "input-xxlarge"
+
+  = control_group_helper "货物保费", "如客户需要保价填写， 否则不需要填写", f.object.errors[:baozhi_fee].first do
+    = f.text_field :baozhi_fee, :class => "input-xxlarge"
+
+  = control_group_helper "代收货款", "是否代收货款", f.object.errors[:is_daishouhuokuan].first do
     = f.check_box :is_daishouhuokuan
-  .field
-    = f.label :huowu_cost
-    = f.number_field :huowu_cost
-  .field
-    = f.label :huowu_baozhi
-    = f.number_field :huowu_baozhi
-  .field
-    = f.label :baozhi_needed
-    = f.text_field :baozhi_needed
-  .field
-    = f.label :daishouhuokuan_fee
-    = f.number_field :daishouhuokuan_fee
+
+  = control_group_helper "代收金额", "代收货款金额", f.object.errors[:daishouhuokuan_amount].first do
+    = f.text_field :daishouhuokuan_amount, :class => "input-xxlarge"
+
+  = control_group_helper "代收金额服务费", "代收货款服务费", f.object.errors[:daishouhuokuan_fee].first do
+    = f.text_field :daishouhuokuan_fee, :class => "input-xxlarge"
+
+  = control_group_helper "备注", "特殊情况需要说明", f.object.errors[:huowu_beizhu].first do
+    = f.text_field :huowu_beizhu, :class => "input-xxlarge"
+
   .actions
-    = f.submit 'Save'
+    = f.submit '收货', :class => "btn btn-primary"
+    = link_to "返回", admin_ship_outs_path, :class => "btn"

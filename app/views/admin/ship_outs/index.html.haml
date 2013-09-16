@@ -1,40 +1,28 @@
 %legend 
   货物列表
+  %span.pull-right
+    = link_to icon_link(:plus) + "  发货", new_admin_ship_out_path
 
 
 %table.table.table-stripped
-  %tr
-    %th Sender name
-    %th Sender tel
-    %th Receiver name
-    %th Receiver tel
-    %th Receiver address
-    %th Fee
-    %th Huowu name
-    %th Huowu danwei
-    %th Huowu amount
-    %th Huowu beizhu
-    %th Status
-    %th Is paid
-    %th Is daishouhuokuan
-    %th Huowu cost
-    %th Huowu baozhi
-    %th Baozhi needed
-    %th Daishouhuokuan fee
+  %thead
+    %th 收货地址
+    %th 发货人
+    %th 收货人
+    %th 货物
+    %th 数量
+    %th 状态
+    %th 运费
+    %th 是否代收货款
     %th
 
   - @shippings.each do |shipping|
     %tr
-      %td= shipping.sender_name
-      %td= shipping.sender_tel
-      %td= shipping.receiver_name
-      %td= shipping.receiver_tel
-      %td= shipping.receiver_address
-      %td= shipping.fee
+      %td= shipping.to_huozhan.name
+      %td= "#{shipping.sender_name} #{shipping.sender_tel}"
+      %td= "#{shipping.receiver_name} #{shipping.receiver_tel}"
       %td= shipping.huowu_name
-      %td= shipping.huowu_danwei
-      %td= shipping.huowu_amount
-      %td= shipping.huowu_beizhu
+      %td= "#{shipping.huowu_amount}#{shipping.huowu_danwei}"
       %td= shipping.status
       %td= shipping.is_paid
       %td= shipping.is_daishouhuokuan

@@ -5,18 +5,6 @@ Dake::Application.routes.draw do
 
 
 
-  get "ship_out/index"
-
-  get "ship_out/new"
-
-  get "ship_out/edit"
-
-  get "ship_in/index"
-
-  get "ship_in/new"
-
-  get "ship_in/edit"
-
   get "reports/index"
 
   resources :bugs

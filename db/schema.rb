@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130913030406) do
+ActiveRecord::Schema.define(:version => 20130916015529) do
 
   create_table "balances", :force => true do |t|
     t.decimal  "amount",        :precision => 10, :scale => 0
@@ -93,7 +93,6 @@ ActiveRecord::Schema.define(:version => 20130913030406) do
     t.string   "sender_tel"
     t.string   "receiver_name"
     t.string   "receiver_tel"
-    t.string   "receiver_address"
     t.integer  "fee"
     t.string   "huowu_name"
     t.string   "huowu_danwei"
@@ -102,14 +101,14 @@ ActiveRecord::Schema.define(:version => 20130913030406) do
     t.string   "status"
     t.boolean  "is_paid"
     t.boolean  "is_daishouhuokuan"
-    t.integer  "huowu_cost"
-    t.integer  "huowu_baozhi"
-    t.string   "baozhi_needed"
+    t.integer  "daishouhuokuan_amount"
     t.integer  "daishouhuokuan_fee"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.integer  "huowu_baozhi"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.integer  "from_huozhan_id"
     t.integer  "to_huozhan_id"
+    t.integer  "baozhi_fee"
   end
 
   create_table "users", :force => true do |t|

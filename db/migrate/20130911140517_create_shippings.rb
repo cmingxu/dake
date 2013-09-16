@@ -6,7 +6,6 @@ class CreateShippings < ActiveRecord::Migration
       t.string :sender_tel
       t.string :receiver_name
       t.string :receiver_tel
-      t.string :receiver_address
       t.integer :fee
       t.string :huowu_name
       t.string :huowu_danwei
@@ -15,10 +14,9 @@ class CreateShippings < ActiveRecord::Migration
       t.string :status
       t.boolean :is_paid
       t.boolean :is_daishouhuokuan
-      t.integer :huowu_cost
-      t.integer :huowu_baozhi
-      t.string :baozhi_needed
+      t.integer :daishouhuokuan_amount
       t.integer :daishouhuokuan_fee
+      t.integer :huowu_baozhi
 
       t.timestamps
     end
