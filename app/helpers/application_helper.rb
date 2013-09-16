@@ -56,4 +56,8 @@ module ApplicationHelper
     end  
   end  
 
+  def boolean_helper true_or_false
+    true_or_false ? "是" : "否"  
+  end
+
 end

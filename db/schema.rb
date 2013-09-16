@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130916015529) do
+ActiveRecord::Schema.define(:version => 20130916060610) do
 
   create_table "balances", :force => true do |t|
     t.decimal  "amount",        :precision => 10, :scale => 0
@@ -109,7 +109,11 @@ ActiveRecord::Schema.define(:version => 20130916015529) do
     t.integer  "from_huozhan_id"
     t.integer  "to_huozhan_id"
     t.integer  "baozhi_fee"
+    t.integer  "user_id"
+    t.string   "serial_num"
   end
+
+  add_index "shippings", ["serial_num"], :name => "index_shippings_on_serial_num"
 
   create_table "users", :force => true do |t|
     t.string   "email"

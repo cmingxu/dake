@@ -25,6 +25,11 @@ class Shipping < ActiveRecord::Base
   validates :daishouhuokuan_fee, :presence => { :message => "代收货款费用不能为空" }
   validates :daishouhuokuan_fee, :numericality => { :message => "代收货款费用需要数字" }
 
+  before_create do
+    from_huozhan_shipping_count = self.from_huozhan.ship_outs.count
+    self.serial_num = sprintf "%03d%03d%08d" % [self.from_huozhan_id, self.to_huozhan_id, from_huozhan_shipping_count]
+  end
+
 
   after_initialize do |s|
     s.huowu_baozhi = 1

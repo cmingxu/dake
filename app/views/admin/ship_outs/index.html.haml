@@ -24,8 +24,8 @@
       %td= shipping.huowu_name
       %td= "#{shipping.huowu_amount}#{shipping.huowu_danwei}"
       %td= shipping.status
-      %td= shipping.is_paid
-      %td= shipping.is_daishouhuokuan
+      %td= boolean_helper shipping.is_paid
+      %td= boolean_helper shipping.is_daishouhuokuan
       %td= ""
       %td= shipping.huowu_baozhi
       %td= ""
