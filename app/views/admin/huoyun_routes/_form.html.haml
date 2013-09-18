@@ -1,0 +1,20 @@
+= form_for [:admin, @huoyun_route], :url => "form form-horizontal" do |f|
+
+  = control_group_helper "始发货站", "例如： 呼市，北京，敖汉", f.object.errors[:from_huozhan_id].first do
+    = f.select :from_huozhan_id, options_from_collection_for_select(Huozhan.all, "id", "huozhan_name", @huoyun_route.from_huozhan_id)
+
+  = control_group_helper "终点站", "不能与始发站重复", f.object.errors[:to_huozhan_id].first do
+    = f.select :to_huozhan_id, options_from_collection_for_select(Huozhan.all, "id", "huozhan_name", @huoyun_route.to_huozhan_id)
+
+  = control_group_helper "发货时间", "上午9点， 下午4点", f.object.errors[:fahuo_time].first do
+    = f.text_field :fahuo_time, :class => "input-xxlarge"
+
+  = control_group_helper "到货时间", "第二日4点", f.object.errors[:daohuo_time].first do
+    = f.text_field :daohuo_time, :class => "input-xxlarge"
+
+  = control_group_helper "备注", "", f.object.errors[:description].first do
+    = f.text_field :destription, :class => "input-xxlarge"
+
+  .actions
+    = f.submit '保存', :class => "btn btn-primary"
+    = link_to "返回", admin_huoyun_routes_path, :class => "btn"

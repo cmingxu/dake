@@ -1,7 +1,7 @@
 %legend 
-  货物列表
+  货件列表
   %span.pull-right
-    = link_to icon_link(:plus) + "  发货", new_admin_ship_out_path
+    = link_to icon_link(:plus) + "  收件", new_admin_ship_out_path
 
 
 %table.table.table-stripped
@@ -11,12 +11,12 @@
     %th 收货人
     %th 货物
     %th 数量
-    %th 状态
     %th 运费
     %th 保值
     %th 保值费
     %th 代收货款
     %th 代收货款费
+    %th 状态
     %th
 
   - @shippings.each do |shipping|
@@ -26,12 +26,12 @@
       %td= "#{shipping.receiver_name} #{shipping.receiver_tel}"
       %td= shipping.huowu_name
       %td= "#{shipping.huowu_amount}#{shipping.huowu_danwei}"
-      %td= shipping.status
       %td= "#{shipping.fee}(#{boolean_helper shipping.is_paid})"
       %td= shipping.huowu_baozhi
       %td= "#{shipping.baozhi_fee} (#{boolean_helper shipping.is_paid})"
       %td= shipping.daishouhuokuan_amount
       %td= "#{shipping.daishouhuokuan_fee} (#{boolean_helper shipping.is_daishouhuokuan})"
+      %td= shipping.status
       %td
         = link_to icon_link(:search), edit_admin_ship_out_path(shipping)
 

@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Form huozhan:
+  = @huoyun_route.form_huozhan_id
+%p
+  %b To huozhan:
+  = @huoyun_route.to_huozhan_id
+%p
+  %b Fahuo time:
+  = @huoyun_route.fahuo_time
+%p
+  %b Daohuo time:
+  = @huoyun_route.daohuo_time
+%p
+  %b Destription:
+  = @huoyun_route.destription
+
+= link_to 'Edit', edit_huoyun_route_path(@huoyun_route)
+\|
+= link_to 'Back', huoyun_routes_path

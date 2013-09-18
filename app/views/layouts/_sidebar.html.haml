@@ -5,14 +5,17 @@
     = link_to icon_link(:heart) + " 收入管理", admin_in_balances_path
     = link_to icon_link(:heart) + " 报表管理", admin_reports_path
     - if current_user.boss?
+      = link_to icon_link(:heart) + " 物流管理", admin_shippings_path
+      = link_to icon_link(:heart) + " 车辆管理", admin_routes_path
       = link_to icon_link(:heart) + " 用户管理", admin_users_path
       = link_to icon_link(:heart) + " 地点管理", admin_locations_path
-      = link_to icon_link(:heart) + " 线路管理", admin_routes_path
       = link_to icon_link(:heart) + " 支出类型", admin_out_reasons_path
       = link_to icon_link(:heart) + " 收入类型", admin_reasons_path
       = link_to icon_link(:heart) + " 货站管理", admin_huozhans_path
-      = link_to icon_link(:heart) + " 物流管理", admin_shippings_path
+      = link_to icon_link(:heart) + " 物流线路", admin_huoyun_routes_path
 
     - else
+      = link_to icon_link(:heart) + " 收件管理", admin_ship_outs_path
       = link_to icon_link(:heart) + " 发货管理", admin_ship_outs_path
-      = link_to icon_link(:heart) + " 收货管理", admin_ship_ins_path
+      = link_to icon_link(:heart) + " 收货管理", admin_ship_outs_path
+      = link_to icon_link(:heart) + " 放件管理", admin_ship_ins_path
