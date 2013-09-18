@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddSerialNumToShipping < ActiveRecord::Migration
   def change
     add_column :shippings, :serial_num, :string

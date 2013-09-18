@@ -57,7 +57,7 @@ module ApplicationHelper
   end  
 
   def boolean_helper true_or_false
-    true_or_false ? "是" : "否"  
+    true_or_false ? "已付" : "未付"  
   end
 
 end

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Admin::ShipInsController < Admin::BaseController
   def index
   end

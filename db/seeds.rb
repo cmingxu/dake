@@ -8,7 +8,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
 
-User.create! :name => "杨成金", :login => "admin", :password => "adminadmin",
+User.create! :name => "经理", :login => "admin", :password => "adminadmin",
   :password_confirmation => "adminadmin", :email => "adminadmin@admin.com", :roles => ["boss"], :mobile => '13811223212'
 hushi   = User.create! :name => "呼市管理员", :login => "hushi_admin", :password => "adminadmin", :password_confirmation => "adminadmin", :email => "hushia_dmin@admin.com", :roles => ["agent"], :mobile => "13812345678"
 chifeng = User.create! :name => "赤峰管理员", :login => "chifeng_admin", :password => "adminadmin", :password_confirmation => "adminadmin", :email => "hushia_dmin@admin.com", :roles => ["agent"], :mobile => "13812345678"
@@ -33,6 +33,7 @@ location7 = Location.create :name => "承德", :fuzeren => "负责人7", :fuzere
 location8 = Location.create :name => "大阪", :fuzeren => "负责人8", :fuzeren_mobile => "13111111111", :fuzeren_address => "赤峰汽车客运站东", :fuzeren => daban.id
 location9 = Location.create :name => "天山", :fuzeren => "负责人9", :fuzeren_mobile => "13111111111", :fuzeren_address => "赤峰汽车客运站东", :fuzeren => tianshan.id
 location10 = Location.create :name => "长胜", :fuzeren => "负责人10", :fuzeren_mobile => "13111111111", :fuzeren_address => "赤峰汽车客运站东", :fuzeren => changsheng.id
+location11 = Location.create :name => "通辽", :fuzeren => "负责人11", :fuzeren_mobile => "13111111111", :fuzeren_address => "赤峰汽车客运站东", :fuzeren => tongliao.id
 
 
 Route.create :start_location_id => location1.id, :end_location_id => location2.id, :paizhao => "京A00213", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
@@ -131,3 +132,33 @@ db.save
 
 ##########SHIPPING###########
 #
+
+require "faker"
+$huowu = %w(服装 书籍 汽车配件 动物 鞋 食品 手机 文件)
+
+def fake_shipping
+  s = Shipping.new 
+  s.sender_name = Faker.fake_name
+  s.sender_tel  = Faker.fake_phone
+  s.receiver_name = Faker.fake_name
+  s.receiver_tel = Faker.fake_phone
+  s.fee = rand(300)
+  s.huowu_name = $huowu.sample
+  s.huowu_danwei = Shipping::DANWEI.sample
+  s.huowu_amount = rand(10)
+  s.is_paid = rand(10).even?
+  s.is_daishouhuokuan = rand(10).even?
+  s.daishouhuokuan_amount = rand(1000)
+  s.daishouhuokuan_fee = s.daishouhuokuan_amount * 0.2
+  s.huowu_baozhi = rand(1000)
+  s.from_huozhan = Huozhan.all.sample
+  s.to_huozhan = Huozhan.all.sample
+  s.baozhi_fee  = s.huowu_baozhi * 0.2
+  s.user = User.all.sample
+  s.serial_num =  "xxxx" + rand(10000).to_s
+  s.save
+end
+
+1000.times do 
+  fake_shipping
+end

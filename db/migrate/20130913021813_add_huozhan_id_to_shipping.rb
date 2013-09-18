@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddHuozhanIdToShipping < ActiveRecord::Migration
   def change
     add_column :shippings, :from_huozhan_id, :integer

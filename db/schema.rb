@@ -132,7 +132,6 @@ ActiveRecord::Schema.define(:version => 20130916060610) do
     t.string   "mobile"
     t.string   "login"
     t.string   "roles"
-    t.integer  "location_id"
   end
 
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true

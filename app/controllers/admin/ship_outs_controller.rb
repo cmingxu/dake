@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Admin::ShipOutsController < Admin::BaseController
   # GET /shippings.json
   def index

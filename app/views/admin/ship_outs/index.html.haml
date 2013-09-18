@@ -13,7 +13,10 @@
     %th 数量
     %th 状态
     %th 运费
-    %th 是否代收货款
+    %th 保值
+    %th 保值费
+    %th 代收货款
+    %th 代收货款费
     %th
 
   - @shippings.each do |shipping|
@@ -24,10 +27,13 @@
       %td= shipping.huowu_name
       %td= "#{shipping.huowu_amount}#{shipping.huowu_danwei}"
       %td= shipping.status
-      %td= boolean_helper shipping.is_paid
-      %td= boolean_helper shipping.is_daishouhuokuan
-      %td= ""
+      %td= "#{shipping.fee}(#{boolean_helper shipping.is_paid})"
       %td= shipping.huowu_baozhi
-      %td= ""
-      %td= shipping.daishouhuokuan_fee
+      %td= "#{shipping.baozhi_fee} (#{boolean_helper shipping.is_paid})"
+      %td= shipping.daishouhuokuan_amount
+      %td= "#{shipping.daishouhuokuan_fee} (#{boolean_helper shipping.is_daishouhuokuan})"
+      %td
+        = link_to icon_link(:search), edit_admin_ship_out_path(shipping)
 
+
+= paginate @shippings
