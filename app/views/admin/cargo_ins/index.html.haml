@@ -1,0 +1,26 @@
+%h1 Listing cargos
+
+%table
+  %tr
+    %th Serial num
+    %th Form huozhan
+    %th To huozhan
+    %th From huozhan name
+    %th To huozhan name
+    %th Huoyun route
+    %th
+    %th
+    %th
+
+  - @cargos.each do |cargo|
+    %tr
+      %td= cargo.serial_num
+      %td= cargo.form_huozhan_id
+      %td= cargo.to_huozhan_id
+      %td= cargo.from_huozhan_name
+      %td= cargo.to_huozhan_name
+      %td= cargo.huoyun_route_id
+      %td= link_to 'Show', cargo
+      %td= link_to 'Edit', edit_cargo_path(cargo)
+      %td= link_to 'Destroy', cargo, :method => :delete, :data => { :confirm => 'Are you sure?' }
+

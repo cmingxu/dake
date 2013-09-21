@@ -5,7 +5,6 @@ Dake::Application.routes.draw do
 
 
 
-  resources :huoyun_routes
 
 
   get "reports/index"
@@ -24,6 +23,8 @@ Dake::Application.routes.draw do
     resources :ship_ins
     resources :ship_outs
     resources :huoyun_routes
+    resources :cargo_ins
+    resources :cargo_outs
     resources :reasons do
       member do
         get :detail_reason

@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Serial num:
+  = @cargo.serial_num
+%p
+  %b Form huozhan:
+  = @cargo.form_huozhan_id
+%p
+  %b To huozhan:
+  = @cargo.to_huozhan_id
+%p
+  %b From huozhan name:
+  = @cargo.from_huozhan_name
+%p
+  %b To huozhan name:
+  = @cargo.to_huozhan_name
+%p
+  %b Huoyun route:
+  = @cargo.huoyun_route_id
+
+= link_to 'Edit', edit_cargo_path(@cargo)
+\|
+= link_to 'Back', cargos_path

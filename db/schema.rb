@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130921064445) do
+ActiveRecord::Schema.define(:version => 20130921080622) do
 
   create_table "balances", :force => true do |t|
     t.decimal  "amount",        :precision => 10, :scale => 0
@@ -31,6 +31,18 @@ ActiveRecord::Schema.define(:version => 20130921064445) do
     t.text     "desc"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "cargos", :force => true do |t|
+    t.string   "serial_num"
+    t.integer  "form_huozhan_id"
+    t.integer  "to_huozhan_id"
+    t.string   "from_huozhan_name"
+    t.string   "to_huozhan_name"
+    t.integer  "huoyun_route_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "user_id"
   end
 
   create_table "foos", :force => true do |t|
@@ -123,6 +135,7 @@ ActiveRecord::Schema.define(:version => 20130921064445) do
     t.string   "serial_num"
     t.string   "from_huozhan_name"
     t.string   "to_huozhan_name"
+    t.integer  "cargo_id"
   end
 
   add_index "shippings", ["serial_num"], :name => "index_shippings_on_serial_num"

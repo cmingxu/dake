@@ -8,6 +8,7 @@
 
 %table.table.table-stripped
   %thead
+    %th 单号
     %th 收货地址
     %th 发货人
     %th 收货人
@@ -23,6 +24,7 @@
 
   - @shippings.each do |shipping|
     %tr
+      %td= link_to shipping.serial_num, edit_admin_ship_out_path(shipping)
       %td= shipping.to_huozhan.huozhan_name
       %td= "#{shipping.sender_name} #{shipping.sender_tel}"
       %td= "#{shipping.receiver_name} #{shipping.receiver_tel}"
@@ -34,8 +36,7 @@
       %td= shipping.daishouhuokuan_amount
       %td= "#{shipping.daishouhuokuan_fee} (#{boolean_helper shipping.is_daishouhuokuan})"
       %td= status_in_word shipping
-      %td
-        = link_to icon_link(:search), edit_admin_ship_out_path(shipping)
+      %td= render :partial => "admin/widgets/action_bar", :locals => { :shipping => shipping }
 
 
 = paginate @shippings
