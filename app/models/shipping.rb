@@ -57,4 +57,32 @@ class Shipping < ActiveRecord::Base
     s.is_daishouhuokuan = false
     s.is_paid = true
   end
+
+  # 收件
+  state_machine :status, :initial => :received do
+    # 发货
+    event :ship do
+      transition :received => :shipped 
+    end
+
+    # 到货 / 收货
+    event :reach do
+      transition :shipped => :reached
+    end
+
+    # 发件
+    event :deliver do
+      transition :shipped => :delivered
+    end
+
+    # 代收货款
+    event :shouhuokuan do
+      transition :delivered => :yishouhuokuan
+    end
+
+    # 取货款
+    event :quhuokuan do
+      transition :yishouhuokuan => :huokuanyiqu
+    end
+  end
 end

@@ -1,4 +1,4 @@
-= form_for @shipping, :url => admin_ship_outs_path, :class => "form form-horizontal" do |f|
+= form_for @shipping, :url => @shipping.persisted? ? admin_ship_out_path(@shipping) : admin_ship_outs_path, :class => "form form-horizontal" do |f|
 
   = hidden_field_tag "shipping[from_huozhan_id]", current_user.huozhan.id
 
@@ -37,9 +37,6 @@
 
   = control_group_helper "货物保费", "如客户需要保价填写， 否则不需要填写", f.object.errors[:baozhi_fee].first do
     = f.text_field :baozhi_fee, :class => "input-xxlarge"
-
-  = control_group_helper "代收货款", "是否代收货款", f.object.errors[:is_daishouhuokuan].first do
-    = f.check_box :is_daishouhuokuan
 
   = control_group_helper "代收金额", "代收货款金额", f.object.errors[:daishouhuokuan_amount].first do
     = f.text_field :daishouhuokuan_amount, :class => "input-xxlarge"

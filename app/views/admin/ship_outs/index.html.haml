@@ -33,7 +33,7 @@
       %td= "#{shipping.baozhi_fee} (#{boolean_helper shipping.is_paid})"
       %td= shipping.daishouhuokuan_amount
       %td= "#{shipping.daishouhuokuan_fee} (#{boolean_helper shipping.is_daishouhuokuan})"
-      %td= shipping.status
+      %td= status_in_word shipping
       %td
         = link_to icon_link(:search), edit_admin_ship_out_path(shipping)
 

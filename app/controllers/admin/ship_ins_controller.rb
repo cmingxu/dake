@@ -1,6 +1,5 @@
 # -*- encoding : utf-8 -*-
 class Admin::ShipInsController < Admin::BaseController
-  # GET /shippings.json
   def index
     params[:search] ||= {}
     ship_scope = scope

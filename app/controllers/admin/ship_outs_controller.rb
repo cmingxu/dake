@@ -73,7 +73,7 @@ class Admin::ShipOutsController < Admin::BaseController
 
     respond_to do |format|
       if @shipping.update_attributes(params[:shipping])
-        format.html { redirect_to @shipping, notice: 'scope was successfully updated.' }
+        format.html { redirect_to edit_admin_ship_out_path(@shipping), notice: 'scope was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

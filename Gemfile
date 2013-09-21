@@ -41,4 +41,5 @@ end
 
 gem 'disqus'
 gem 'thin'
+gem 'state_machine'
 
