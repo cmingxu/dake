@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130918071431) do
+ActiveRecord::Schema.define(:version => 20130921064445) do
 
   create_table "balances", :force => true do |t|
     t.decimal  "amount",        :precision => 10, :scale => 0
@@ -121,6 +121,8 @@ ActiveRecord::Schema.define(:version => 20130918071431) do
     t.integer  "baozhi_fee"
     t.integer  "user_id"
     t.string   "serial_num"
+    t.string   "from_huozhan_name"
+    t.string   "to_huozhan_name"
   end
 
   add_index "shippings", ["serial_num"], :name => "index_shippings_on_serial_num"

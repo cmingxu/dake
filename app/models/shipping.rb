@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class Shipping < ActiveRecord::Base
   DANWEI = %w{箱 包 个 吨 袋 件}.freeze
+  STATUS  = %w{}.freeze
   attr_accessible :baozhi_needed, :daishouhuokuan_fee, :fee, :huowu_amount, :huowu_baozhi, :huowu_beizhu, :huowu_cost, :huowu_danwei, :huowu_name, :is_daishouhuokuan, :is_paid, :receiver_address, :receiver_name, :receiver_tel, :sender_name, :sender_tel, :status, :from_huozhan_id, :to_huozhan_id, :baozhi_fee, :daishouhuokuan_amount
 
   belongs_to :from_huozhan, :class_name => "Huozhan", :foreign_key => "from_huozhan_id"
@@ -25,9 +26,25 @@ class Shipping < ActiveRecord::Base
   validates :daishouhuokuan_fee, :presence => { :message => "代收货款费用不能为空" }
   validates :daishouhuokuan_fee, :numericality => { :message => "代收货款费用需要数字" }
 
+
+  scope :with_created_at_between, lambda {|start, end_time|
+    where(["created_at > ? AND created_at < ?", start, end_time]) } 
+  scope :with_from_huozhan, lambda { |huozhan_name| where(:from_huozhan_name => huozhan_name) }
+  scope :with_to_huozhan, lambda { |huozhan_name| where(:to_huozhan_name => huozhan_name) }
+  scope :with_status, lambda { |status| where(:status => status) }
+  scope :with_sender_name, lambda { |sender_name| where(:sender_name => sender_name) }
+  scope :with_sender_tel, lambda { |sender_tel| where(:sender_tel => sender_tel) }
+  scope :with_receiver_name, lambda { |receiver_name| where(:receiver_name => receiver_name) }
+  scope :with_receiver_tel, lambda { |receiver_tel| where(:receiver_tel => receiver_tel) }
+
   before_create do
     from_huozhan_shipping_count = self.from_huozhan.ship_outs.count
     self.serial_num = sprintf "%03d%03d%08d" % [self.from_huozhan_id, self.to_huozhan_id, from_huozhan_shipping_count]
+  end
+
+  before_save do |s|
+    s.from_huozhan_name = s.from_huozhan.huozhan_name
+    s.to_huozhan_name   = s.to_huozhan.huozhan_name
   end
 
 
