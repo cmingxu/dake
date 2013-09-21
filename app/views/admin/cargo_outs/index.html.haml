@@ -1,26 +1,22 @@
-%h1 Listing cargos
-
-%table
+%table.table.table-stripped
   %tr
-    %th Serial num
-    %th Form huozhan
-    %th To huozhan
-    %th From huozhan name
-    %th To huozhan name
-    %th Huoyun route
-    %th
-    %th
+    %th 批号
+    %th 始发站
+    %th 终到站
+    %th 车牌号码
+    %th 司机姓名
+    %th 联系电话
+    %th 货物单数
     %th
 
   - @cargos.each do |cargo|
     %tr
       %td= cargo.serial_num
-      %td= cargo.form_huozhan_id
-      %td= cargo.to_huozhan_id
       %td= cargo.from_huozhan_name
       %td= cargo.to_huozhan_name
-      %td= cargo.huoyun_route_id
-      %td= link_to 'Show', cargo
-      %td= link_to 'Edit', edit_cargo_path(cargo)
+      %td= cargo.paizhao
+      %td= cargo.siji
+      %td= cargo.tel
+      %td= cargo.shippings.count
       %td= link_to 'Destroy', cargo, :method => :delete, :data => { :confirm => 'Are you sure?' }
 

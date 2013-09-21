@@ -3,7 +3,7 @@ module ShippingsHelper
 
   def status_in_word(shipping)
      case shipping.status.to_sym
-     when :received 
+     when :received
         "已收件"
       when :shipped
         "发货中"
