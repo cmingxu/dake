@@ -1,0 +1,22 @@
+%table.table.table-stripped
+  %thead
+    %th 单号
+    %th 收货地址
+    %th 发货人
+    %th 收货人
+    %th 货物
+    %th 数量
+    %th 运费
+    %th 状态
+
+  - @shippings.each do |shipping|
+    %tr
+      %td= link_to shipping.serial_num, edit_admin_ship_out_path(shipping)
+      %td= shipping.to_huozhan.huozhan_name
+      %td= "#{shipping.sender_name} #{shipping.sender_tel}"
+      %td= "#{shipping.receiver_name} #{shipping.receiver_tel}"
+      %td= shipping.huowu_name
+      %td= "#{shipping.huowu_amount}#{shipping.huowu_danwei}"
+      %td= "#{shipping.fee}(#{boolean_helper shipping.is_paid})"
+      %td= status_in_word shipping
+

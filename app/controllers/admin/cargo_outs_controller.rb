@@ -25,6 +25,7 @@ class Admin::CargoOutsController < Admin::BaseController
   # GET /cargos/new.json
   def new
     @cargo = current_scope.new
+    @cargo.serial_num = Cargo.next_serial_num(current_user.huozhan.id)
 
     respond_to do |format|
       format.html # new.html.erb

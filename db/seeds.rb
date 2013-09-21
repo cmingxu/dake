@@ -130,6 +130,18 @@ db = Huozhan.create :huozhan_name => "大阪", :huozhan_address => "大阪汽车
 db.user = daban
 db.save
 
+##############################
+#
+Huozhan.all.each do |f|
+  Huozhan.all.each do |t|
+    next if f == t
+    hr = HuoyunRoute.new
+    hr.from_huozhan = f 
+    hr.to_huozhan = t
+    hr.save
+  end
+end
+
 ##########SHIPPING###########
 #
 

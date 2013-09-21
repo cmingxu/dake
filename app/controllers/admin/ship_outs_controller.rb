@@ -2,24 +2,32 @@
 class Admin::ShipOutsController < Admin::BaseController
   # GET /shippings.json
   def index
-    params[:search] ||= {}
-    ship_scope = scope
-    ship_scope = shiship_scope.with_from_huozhan(params[:search][:from]) if params[:search][:from].present?
-
-    ship_scope = ship_scope.with_to_huozhan(params[:search][:to]) if params[:search][:to].present?
-    ship_scope = ship_scope.with_receiver_tel(params[:search][:receiver_tel]) if params[:search][:receiver_tel].present?
-    ship_scope = ship_scope.with_receiver_name(params[:search][:receiver_name]) if params[:search][:receiver_name].present?
-    ship_scope = ship_scope.with_receiver_tel(params[:search][:receiver_tel]) if params[:search][:receiver_tel].present?
-    ship_scope = ship_scope.with_sender_tel(params[:search][:sender_tel]) if params[:search][:sender_tel].present?
-    ship_scope = ship_scope.with_sender_tel(params[:search][:sender_name]) if params[:search][:sender_name].present?
-    start_at = Date.strptime(params[:search][:start_at]) if params[:search][:start_at].present?
-    end_at   = Date.strptime(params[:search][:end_at]) if params[:search][:end_at].present?
-    ship_scope = ship_scope.with_created_at_between(start_at || 3.years.ago, end_at || Time.now)
-    @shippings = ship_scope.page params[:page]
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html do
+        params[:search] ||= {}
+        ship_scope = scope
+        ship_scope = shiship_scope.with_from_huozhan(params[:search][:from]) if params[:search][:from].present?
+
+        ship_scope = ship_scope.with_to_huozhan(params[:search][:to]) if params[:search][:to].present?
+        ship_scope = ship_scope.with_receiver_tel(params[:search][:receiver_tel]) if params[:search][:receiver_tel].present?
+        ship_scope = ship_scope.with_receiver_name(params[:search][:receiver_name]) if params[:search][:receiver_name].present?
+        ship_scope = ship_scope.with_receiver_tel(params[:search][:receiver_tel]) if params[:search][:receiver_tel].present?
+        ship_scope = ship_scope.with_sender_tel(params[:search][:sender_tel]) if params[:search][:sender_tel].present?
+        ship_scope = ship_scope.with_sender_tel(params[:search][:sender_name]) if params[:search][:sender_name].present?
+        start_at = Date.strptime(params[:search][:start_at]) if params[:search][:start_at].present?
+        end_at   = Date.strptime(params[:search][:end_at]) if params[:search][:end_at].present?
+        ship_scope = ship_scope.with_created_at_between(start_at || 3.years.ago, end_at || Time.now)
+        @shippings = ship_scope.page params[:page]
+      end
       format.json { render json: @shippings }
+
+      format.js {
+        ship_scope = scope
+        ship_scope = ship_scope.with_to_huozhan(params[:to]) if params[:to].present?
+        @shippings = ship_scope.all
+        render :partial => "list"
+      }
     end
   end
 

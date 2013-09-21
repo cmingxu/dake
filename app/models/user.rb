@@ -29,6 +29,14 @@ class User < ActiveRecord::Base
     roles.include? "agent"
   end
 
+  def huozhan_admin?
+    self.huozhan.present?
+  end
+
+  def caiwu_admin?
+    self.location.present?
+  end
+
   def roles_in_words
     self.roles.map do |role|
       ROLES[role.to_sym]

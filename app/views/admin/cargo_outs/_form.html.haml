@@ -1,28 +1,20 @@
-= form_for @cargo do |f|
-  - if @cargo.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@cargo.errors.count, "error")} prohibited this cargo from being saved:"
-      %ul
-        - @cargo.errors.full_messages.each do |msg|
-          %li= msg
+= form_for @cargo, :url => @cargo.persisted? ? edit_admin_cargo_out_path(@cargo) : admin_cargo_outs_path do |f|
+  - huoyun_routes = HuoyunRoute.where(:from_huozhan_id => current_user.huozhan.id).collect{|h| ["#{h.from_huozhan.huozhan_name}-#{h.to_huozhan.huozhan_name}", h.id] }
+   
+  = control_group_helper "目的地", "选择目的地", f.object.errors[:huoyun_route_id].first do
+    = f.select :huoyun_route_id, options_for_select(huoyun_routes, @cargo.huoyun_route_id), :id => "to"
+  = control_group_helper "批次号码", "系统自动生成", f.object.errors[:serial_num].first do
+    = f.text_field :serial_num,  :class => "input-xxlarge", :disabled => true
+  = control_group_helper "车牌照", "例如： 京A000123", f.object.errors[:paizhao].first do
+    = f.text_field :paizhao, :class => "input-xxlarge"
+  = control_group_helper "司机姓名", "随车司机姓名", f.object.errors[:siji].first do
+    = f.text_field :siji, :class => "input-xxlarge"
+  = control_group_helper "随车电话", "随车电话", f.object.errors[:tel].first do
+    = f.text_field :tel, :class => "input-xxlarge"
 
-  .field
-    = f.label :serial_num
-    = f.text_field :serial_num
-  .field
-    = f.label :form_huozhan_id
-    = f.number_field :form_huozhan_id
-  .field
-    = f.label :to_huozhan_id
-    = f.number_field :to_huozhan_id
-  .field
-    = f.label :from_huozhan_name
-    = f.text_field :from_huozhan_name
-  .field
-    = f.label :to_huozhan_name
-    = f.text_field :to_huozhan_name
-  .field
-    = f.label :huoyun_route_id
-    = f.number_field :huoyun_route_id
   .actions
-    = f.submit 'Save'
+    = f.submit '保存', :class => "btn btn-primary"
+
+#shippings
+
+

@@ -13,10 +13,10 @@
 
   - @huoyun_routes.each do |huoyun_route|
     %tr
-      %td= huoyun_route.form_huozhan.name
-      %td= huoyun_route.to_huozhan.name
-      %td= huoyun_route.fahuo_time.to_s(:simple)
-      %td= huoyun_route.daohuo_time.to_s(:simple)
+      %td= huoyun_route.from_huozhan.huozhan_name
+      %td= huoyun_route.to_huozhan.huozhan_name
+      %td= huoyun_route.fahuo_time
+      %td= huoyun_route.daohuo_time
  
 
 = paginate @huoyun_routes
