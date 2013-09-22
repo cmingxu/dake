@@ -59,3 +59,8 @@ $(document).ready(function () {
   $(".date").datepicker();
 });
 
+////////// cargo destination select //////////////
+
+$("body").on('change', "#cargo_huoyun_route_id", function () {
+  console.log($(this).val());
+});
