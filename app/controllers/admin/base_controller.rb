@@ -7,4 +7,11 @@ class Admin::BaseController < ApplicationController
       render "boss_dashboard"
     end
   end
+
+  def configuration
+    if current_user.boss?
+      @locations = Location.page params[:page]
+      render "boss_configuration"
+    end
+  end
 end

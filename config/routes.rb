@@ -35,6 +35,7 @@ Dake::Application.routes.draw do
     resources :in_balances
 
     get "dashboard" => "base#dashboard"
+    get "configuration" => "base#configuration"
   end
 
   devise_for :users

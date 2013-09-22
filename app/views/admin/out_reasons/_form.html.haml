@@ -1,3 +1,5 @@
+= render :partial => "admin/widgets/configuration_tab_bar", :locals => { :current_tab => "out_reasons" }
+
 = form_for @reason, :url => admin_out_reasons_path, :class => "form form-horizontal" do |f|
   = hidden_field_tag "reason[cate]", "out"
   = control_group_helper "原因", "例如: 修车或者备品", f.object.errors[:reason].first do

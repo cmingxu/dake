@@ -1,3 +1,5 @@
+= render :partial => "admin/widgets/configuration_tab_bar", :locals => { :current_tab => "locations" }
+
 = form_for [:admin, @location], :class => "form form-horizontal" do |f|
 
   = control_group_helper "地点", "例如： 呼市，北京，敖汉", f.object.errors[:name].first do
