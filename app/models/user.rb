@@ -42,5 +42,4 @@ class User < ActiveRecord::Base
       ROLES[role.to_sym]
     end.join(", ")
   end
-
 end
