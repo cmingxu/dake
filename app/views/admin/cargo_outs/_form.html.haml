@@ -1,9 +1,12 @@
-= form_for @cargo, :url => @cargo.persisted? ? edit_admin_cargo_out_path(@cargo) : admin_cargo_outs_path do |f|
+= form_for @cargo, :url => @cargo.persisted? ? admin_cargo_out_path(@cargo) : admin_cargo_outs_path do |f|
+
+  = f.hidden_field :from_huozhan_id
   - huoyun_routes = HuoyunRoute.where(:from_huozhan_id => current_user.huozhan.id).collect{|h| ["#{h.from_huozhan.huozhan_name}-#{h.to_huozhan.huozhan_name}", h.id] }
 
   = control_group_helper "目的地", "选择目的地", f.object.errors[:huoyun_route_id].first do
     = f.select :huoyun_route_id, options_for_select(huoyun_routes, @cargo.huoyun_route_id), :id => "to"
   = control_group_helper "批次号码", "系统自动生成", f.object.errors[:serial_num].first do
+    = f.hidden_field :serial_num
     = f.text_field :serial_num,  :class => "input-xxlarge", :disabled => true
   = control_group_helper "车牌照", "例如： 京A000123", f.object.errors[:paizhao].first do
     = f.text_field :paizhao, :class => "input-xxlarge"
@@ -12,9 +15,37 @@
   = control_group_helper "随车电话", "随车电话", f.object.errors[:tel].first do
     = f.text_field :tel, :class => "input-xxlarge"
 
+  %hr
+
+  %table.table.table-stripped
+    %thead
+      %th 序号
+      %th 单号
+      %th 收货地址
+      %th 发货人
+      %th 收货人
+      %th 货物
+      %th 数量
+      %th 状态
+      %th
+        = link_to "全选", "#", :id => "check_all"
+        |
+        = link_to "全不选", "#", :id => "uncheck_all"
+
+    - cargo_shippings = @cargo.shippings
+    - @shippings.each_with_index do |shipping, index|
+      %tr
+        %td= index.next
+        %td
+          = link_to shipping.serial_num, edit_admin_ship_out_path(shipping)
+        %td= shipping.to_huozhan.huozhan_name
+        %td= "#{shipping.sender_name} #{shipping.sender_tel}"
+        %td= "#{shipping.receiver_name} #{shipping.receiver_tel}"
+        %td= shipping.huowu_name
+        %td= "#{shipping.huowu_amount}#{shipping.huowu_danwei}"
+        %td= status_in_word shipping
+        %td= check_box_tag "cargo[shipping_ids][]", shipping.id, cargo_shippings.include?(shipping), :class => "check"
+
+
   .actions
     = f.submit '保存', :class => "btn btn-primary"
-
-#shippings
-
-

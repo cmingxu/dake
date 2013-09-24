@@ -9,4 +9,7 @@ class Huozhan < ActiveRecord::Base
   belongs_to :user
   has_many :ship_outs, :class_name => "Shipping", :foreign_key => "from_huozhan_id"
   has_many :ship_ins, :class_name => "Shipping", :foreign_key => "to_huozhan_id"
+
+  has_many :huoyun_routes, :foreign_key => "from_huozhan_id"
+  has_many :to_huozhans, :through => :huoyun_routes, :class_name => "Huozhan", :source => :to_huozhan
 end

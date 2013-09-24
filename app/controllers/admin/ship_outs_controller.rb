@@ -26,7 +26,7 @@ class Admin::ShipOutsController < Admin::BaseController
         ship_scope = scope
         ship_scope = ship_scope.with_to_huozhan(params[:to]) if params[:to].present?
         @shippings = ship_scope.all
-        render :partial => "list"
+        render :partial => "list", :layout => false
       }
     end
   end

@@ -4,8 +4,17 @@
 #
 
 
-$("#cargo_huoyun_route_id").on 'change', () ->
-  console.log $("#cargo_huoyun_route_id").val()
 
 $(document).ready () ->
-  $("#cargo_huoyun_route_id").trigger 'change'
+  $("#cargo_huoyun_route_id").change () ->
+    target = $(this).find('option:selected').val()
+    window.location.href="/admin/cargo_outs/new?to=" + target
+
+  $("#check_all").click () ->
+    $(".check").each () ->
+      $(this).prop('checked', 'checked')
+  
+  $("#uncheck_all").click () ->
+    $(".check").each () ->
+      $(this).prop('checked', false)
+

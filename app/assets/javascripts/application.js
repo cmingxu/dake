@@ -61,6 +61,3 @@ $(document).ready(function () {
 
 ////////// cargo destination select //////////////
 
-$("body").on('change', "#cargo_huoyun_route_id", function () {
-  console.log($(this).val());
-});

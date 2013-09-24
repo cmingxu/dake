@@ -24,8 +24,11 @@ class Admin::CargoOutsController < Admin::BaseController
   # GET /cargos/new
   # GET /cargos/new.json
   def new
+    @huoyun_route = current_user.huozhan.huoyun_routes.find_by_id(params[:to]) || current_user.huozhan.huoyun_routes.first
     @cargo = current_scope.new
     @cargo.serial_num = Cargo.next_serial_num(current_user.huozhan.id)
+    @cargo.huoyun_route = @huoyun_route
+    @shippings = current_user.huozhan.ship_outs.with_status("received").with_to_huozhan(@huoyun_route.to_huozhan.huozhan_name).includes(:to_huozhan)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,6 +39,7 @@ class Admin::CargoOutsController < Admin::BaseController
   # GET /cargos/1/edit
   def edit
     @cargo = current_scope.find(params[:id])
+    @shippings = [@cargo.shippings.includes(:to_huozhan) + current_user.huozhan.ship_outs.with_status("received").with_to_huozhan(@cargo.to_huozhan.huozhan_name).includes(:to_huozhan)].flatten.uniq
   end
 
   # POST /cargos
@@ -45,9 +49,10 @@ class Admin::CargoOutsController < Admin::BaseController
 
     respond_to do |format|
       if @cargo.save
-        format.html { redirect_to @cargo, notice: 'current_scope was successfully created.' }
+        format.html { redirect_to admin_cargo_outs_path, notice: 'current_scope was successfully created.' }
         format.json { render json: @cargo, status: :created, location: @cargo }
       else
+        @shippings = current_user.huozhan.ship_outs.with_status("received").with_to_huozhan(params[:to]).includes(:to_huozhan)
         format.html { render action: "new" }
         format.json { render json: @cargo.errors, status: :unprocessable_entity }
       end
@@ -61,9 +66,10 @@ class Admin::CargoOutsController < Admin::BaseController
 
     respond_to do |format|
       if @cargo.update_attributes(params[:cargo])
-        format.html { redirect_to @cargo, notice: 'current_scope was successfully updated.' }
+        format.html { redirect_to admin_cargo_outs_path, notice: 'current_scope was successfully updated.' }
         format.json { head :no_content }
       else
+        @shippings = @cargo.shippings.includes(:to_huozhan) + current_user.huozhan.ship_outs.with_status("received").with_to_huozhan(params[:to]).includes(:to_huozhan)
         format.html { render action: "edit" }
         format.json { render json: @cargo.errors, status: :unprocessable_entity }
       end

@@ -7,7 +7,8 @@ class Shipping < ActiveRecord::Base
   belongs_to :from_huozhan, :class_name => "Huozhan", :foreign_key => "from_huozhan_id"
   belongs_to :to_huozhan, :class_name => "Huozhan", :foreign_key => "to_huozhan_id"
   belongs_to :user #录入人
-  belongs_to :cargo
+  has_many :shipping_cargos
+  has_many :cargos, :through => :shippings_cargos
 
   validates :huowu_name, :presence => { :message => "发货物品不能为空" }
   validates :huowu_amount, :presence => { :message => "物品数量不能为空" }
