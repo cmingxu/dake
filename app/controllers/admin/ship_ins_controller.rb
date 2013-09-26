@@ -94,6 +94,6 @@ class Admin::ShipInsController < Admin::BaseController
   end
 
   def scope
-    current_user.huozhan.ship_outs
+    current_user.huozhan.ship_ins.order("updated_at DESC")
   end
 end

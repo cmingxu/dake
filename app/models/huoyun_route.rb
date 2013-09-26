@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class HuoyunRoute < ActiveRecord::Base
-  attr_accessible :daohuo_time, :destription, :fahuo_time, :form_huozhan_id, :to_huozhan_id
+  attr_accessible :daohuo_time, :destription, :fahuo_time, :form_huozhan_id, :to_huozhan_id, :sicheng, :tel, :paizhao
 
   belongs_to :from_huozhan, :class_name => "Huozhan", :foreign_key => "from_huozhan_id"
   belongs_to :to_huozhan, :class_name => "Huozhan", :foreign_key => "to_huozhan_id"

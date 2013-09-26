@@ -12,4 +12,7 @@ class Huozhan < ActiveRecord::Base
 
   has_many :huoyun_routes, :foreign_key => "from_huozhan_id"
   has_many :to_huozhans, :through => :huoyun_routes, :class_name => "Huozhan", :source => :to_huozhan
+
+  has_many :out_cargos, :class_name => "Cargo", :foreign_key => "from_huozhan_id"
+  has_many :in_cargos, :class_name => "Cargo", :foreign_key => "to_huozhan_id"
 end

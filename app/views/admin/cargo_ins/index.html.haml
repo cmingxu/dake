@@ -1,6 +1,10 @@
+%legend 
+  收货管理
+
 %table.table.table-stripped
   %tr
     %th 批号
+    %th 日期
     %th 始发站
     %th 终到站
     %th 车牌号码
@@ -11,11 +15,16 @@
 
   - @cargos.each do |cargo|
     %tr
-      %td= cargo.serial_num
+      %td= link_to cargo.serial_num, edit_admin_cargo_in_path(cargo)
+      %td= cargo.created_at.to_s(:human_zh)
       %td= cargo.from_huozhan_name
       %td= cargo.to_huozhan_name
       %td= cargo.paizhao
       %td= cargo.siji
       %td= cargo.tel
       %td= cargo.shippings.count
+      %td
+        = link_to "收货", "#", :class => "btn btn-mini btn-warning"
+        = link_to icon_link(:search), edit_admin_cargo_in_path(cargo)
+        = link_to icon_link(:print), "#"
 

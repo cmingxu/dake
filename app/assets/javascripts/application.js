@@ -61,3 +61,7 @@ $(document).ready(function () {
 
 ////////// cargo destination select //////////////
 
+$(document).ready(function () {
+  controller_name = $('body').attr("class");
+  $("li." + controller_name).addClass("active");
+});

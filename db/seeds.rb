@@ -8,6 +8,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
 
+require "faker"
 User.create! :name => "经理", :login => "admin", :password => "adminadmin",
   :password_confirmation => "adminadmin", :email => "adminadmin@admin.com", :roles => ["boss"], :mobile => '13811223212'
 hushi   = User.create! :name => "呼市管理员", :login => "hushi_admin", :password => "adminadmin", :password_confirmation => "adminadmin", :email => "hushia_dmin@admin.com", :roles => ["agent"], :mobile => "13812345678"
@@ -138,6 +139,9 @@ Huozhan.all.each do |f|
     hr = HuoyunRoute.new
     hr.from_huozhan = f 
     hr.to_huozhan = t
+    hr.sicheng = Faker.fake_name
+    hr.tel = Faker.fake_phone
+    hr.paizhao = Faker.fake_paizhao
     hr.save
   end
 end
@@ -145,7 +149,6 @@ end
 ##########SHIPPING###########
 #
 
-require "faker"
 $huowu = %w(服装 书籍 汽车配件 动物 鞋 食品 手机 文件)
 
 def fake_shipping

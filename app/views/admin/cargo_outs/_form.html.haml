@@ -1,3 +1,7 @@
+- if @cargo.persisted?
+  = link_to "打印","#", :class => "btn btn-primary" #admin_print_cargo_path(@cargo)
+  %hr
+
 = form_for @cargo, :url => @cargo.persisted? ? admin_cargo_out_path(@cargo) : admin_cargo_outs_path do |f|
 
   = f.hidden_field :from_huozhan_id
@@ -48,4 +52,5 @@
 
 
   .actions
-    = f.submit '保存', :class => "btn btn-primary"
+    = f.submit '发货', :class => "btn btn-primary"
+    = link_to "返回", admin_cargo_outs_path, :class => "btn btn-primary"

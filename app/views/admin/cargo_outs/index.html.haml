@@ -1,3 +1,24 @@
+= form_tag admin_cargo_outs_path, :class => "form form-horizontal well", :method => :get  do
+  = search_control_group_helper("收货站") do
+    = select_tag "search[to]", options_from_collection_for_select(Huozhan.all, "huozhan_name", "huozhan_name", params["search"].fetch("to", "")), :include_blank => true
+
+  = search_control_group_helper("物流单号") do
+    = text_field_tag "search[serial_num]", params["search"]["serial_num"]
+
+  #search_form.hide
+
+    = search_control_group_helper("时间") do
+      = text_field_tag "search[start_at]", (params["search"].fetch("start_at", "2012-01-01")), :class => "input-small date"
+      = text_field_tag "search[end_at]", (params["search"].fetch("end_at", "2020-01-01")), :class => "input-small date"
+
+  %hr
+  .actions{:style => "text-align:center"}
+    =  submit_tag "搜索", :class => "btn btn-primary"
+
+  #search_form_swicher{:style => "text-align:right; margin-top: -20px"}
+    = link_to icon_link("arrow-down"), "javascript:slidedown();", :id => "up"
+    = link_to icon_link("arrow-up"), "javascript:slideup();", :id => "down", :class => "hide"
+
 %legend 
   发货管理
   %span.pull-right
@@ -6,6 +27,7 @@
 %table.table.table-stripped
   %tr
     %th 批号
+    %th 日期
     %th 始发站
     %th 终到站
     %th 车牌号码
@@ -17,10 +39,14 @@
   - @cargos.each do |cargo|
     %tr
       %td= link_to cargo.serial_num, edit_admin_cargo_out_path(cargo)
+      %td= cargo.created_at.to_s(:human_zh)
       %td= cargo.from_huozhan_name
       %td= cargo.to_huozhan_name
       %td= cargo.paizhao
       %td= cargo.siji
       %td= cargo.tel
       %td= cargo.shippings.count
+      %td
+        = link_to icon_link(:search), edit_admin_cargo_out_path(cargo)
+        = link_to icon_link(:print), "#"
 

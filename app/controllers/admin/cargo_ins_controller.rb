@@ -85,7 +85,7 @@ class Admin::CargoInsController < Admin::BaseController
     if current_user.boss?
       current_scope
     else 
-      current_user.cargos
+      current_user.huozhan.in_cargos
     end 
   end
 end

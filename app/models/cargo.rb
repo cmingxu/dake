@@ -9,6 +9,12 @@ class Cargo < ActiveRecord::Base
   belongs_to :from_huozhan, :foreign_key => "from_huozhan_id", :class_name => "Huozhan"
   belongs_to :to_huozhan, :foreign_key => "to_huozhan_id", :class_name => "Huozhan"
 
+  scope :with_to_huozhan, lambda {|huozhan_name| where(:to_huozhan_name => huozhan_name)}
+  scope :with_from_huozhan, lambda {|huozhan_name| where(:from_huozhan_name => huozhan_name)}
+  scope :with_serial_num, lambda {|serial_num| where(:serial_num => serial_num)}
+  scope :with_created_at_between, lambda {|start, end_time|
+    where(["created_at > ? AND created_at < ?", start, end_time]) } 
+
   def self.next_serial_num from_huozhan_id
      "%03d%08d" % [from_huozhan_id, Cargo.count]
   end

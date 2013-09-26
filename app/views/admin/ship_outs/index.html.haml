@@ -36,7 +36,9 @@
       %td= shipping.daishouhuokuan_amount
       %td= "#{shipping.daishouhuokuan_fee} (#{boolean_helper shipping.is_daishouhuokuan})"
       %td= status_in_word shipping
-      %td= render :partial => "admin/widgets/action_bar", :locals => { :shipping => shipping }
+      %td
+        = link_to icon_link(:search), edit_admin_ship_in_path(shipping)
+        = link_to icon_link(:print), edit_admin_ship_in_path(shipping)
 
 
 = paginate @shippings

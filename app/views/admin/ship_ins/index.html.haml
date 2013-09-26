@@ -1,9 +1,7 @@
-= render :partial => "admin/widgets/shipping_search", :locals => { :path => admin_ship_outs_path }
+= render :partial => "admin/widgets/shipping_search", :locals => { :path => admin_ship_ins_path }
 
 %legend 
   货件列表
-  %span.pull-right
-    = link_to icon_link(:plus) + "  收件", new_admin_ship_out_path
 
 
 %table.table.table-stripped
@@ -37,7 +35,7 @@
       %td= shipping.daishouhuokuan_amount
       %td= "#{shipping.daishouhuokuan_fee} (#{boolean_helper shipping.is_daishouhuokuan})"
       %td= status_in_word shipping
-      %td
+      %td= render :partial => "admin/widgets/action_bar", :locals => { :shipping => shipping }
 
 
 = paginate @shippings
