@@ -1,0 +1,78 @@
+#print_title
+  赤峰金刚辉腾物流货运单
+  = "(#{@shipping.serial_num})"
+%table.table.table-bordered
+  %tr
+    %td 发货站
+    %td{:colspan => 2}= @shipping.from_huozhan_name
+    %td 收货站
+    %td.bold{:colspan => 2}= @shipping.to_huozhan_name
+  %tr
+    %td 寄件人
+    %td{:colspan => 2}= @shipping.sender_name
+    %td 收件人
+    %td.bold{:colspan => 2}= @shipping.receiver_name
+  %tr
+    %td 寄件人电话
+    %td{:colspan => 2}= @shipping.sender_tel
+    %td 收件人电话
+    %td.bold{:colspan => 2}= @shipping.receiver_tel
+  %tr
+    %td 货物类型
+    %td{:colspan => 2}= @shipping.huowu_name
+    %td 数量
+    %td{:colspan => 2}= @shipping.huowu_amount + @shipping.huowu_danwei
+  %tr
+    %td 运费
+    %td{:colspan => 3}
+      = @shipping.fee
+      元
+    %td.bold.center{:rowspan => 2}= @shipping.is_paid? ? "已付" : "未付"
+  %tr
+    %td
+      保价
+    %td.bold
+      = @shipping.huowu_baozhi
+      元
+    %td
+      保价费
+    %td.bold
+      = @shipping.baozhi_fee
+      元
+
+  %tr
+    %td
+      代收货款
+    %td.bold
+      = @shipping.daishouhuokuan_amount
+      元
+    %td
+      手续费
+    %td.bold
+      = @shipping.daishouhuokuan_fee
+      元
+
+    %td.bold.center
+      - if @shipping.daishouhuokuan_fee == 0
+        \-
+      - else
+        未付
+
+  %tr
+    %td{} 运输协议
+    %td{:colspan => 5}
+      1，货物发出三日内到达， 未收到货物请与发货人联系， 超过六天概不负责。 
+      %br
+      2，保价货物按照保价费额10%-20%收取保价费。
+      %br
+      3，代收货款每周日上午发放。
+      %br
+      4，货物丢失赔偿办法：
+      (1) 承运方按声明价格赔偿。
+      (2）无保价货物按照运费价格5-10倍赔偿, 最高金额不超过1000元。
+  %tr
+    %td{:rowspan => 2} 备注
+    %td.bold{:rowspan => 2, :colspan => 3}
+      = @shipping.description
+    %td{:rowspan => 2}
+      发货人签字: 

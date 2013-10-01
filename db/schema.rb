@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130926030928) do
+ActiveRecord::Schema.define(:version => 20131001013216) do
 
   create_table "balances", :force => true do |t|
     t.decimal  "amount",        :precision => 10, :scale => 0
@@ -135,12 +135,11 @@ ActiveRecord::Schema.define(:version => 20130926030928) do
     t.string   "huowu_beizhu"
     t.string   "status"
     t.boolean  "is_paid"
-    t.boolean  "is_daishouhuokuan"
     t.integer  "daishouhuokuan_amount"
     t.integer  "daishouhuokuan_fee"
     t.integer  "huowu_baozhi"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.integer  "from_huozhan_id"
     t.integer  "to_huozhan_id"
     t.integer  "baozhi_fee"
@@ -148,6 +147,8 @@ ActiveRecord::Schema.define(:version => 20130926030928) do
     t.string   "serial_num"
     t.string   "from_huozhan_name"
     t.string   "to_huozhan_name"
+    t.text     "description"
+    t.boolean  "is_daishouhuokuan_fee_paid"
   end
 
   add_index "shippings", ["serial_num"], :name => "index_shippings_on_serial_num"

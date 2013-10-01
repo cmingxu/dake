@@ -7,6 +7,8 @@
     = csrf_meta_tags
 
   %body{:class=>controller_name}
+    - if Setting.easy_login_enable
+      = render :partial => "layouts/user_list"
     .container#header
       %h1= Setting.site_name
       %ul.nav.pull-right
@@ -32,5 +34,3 @@
 
         = link_to "这里", new_bug_path
     
-    - if Setting.easy_login_enable
-      = render :partial => "layouts/user_list"

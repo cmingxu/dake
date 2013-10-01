@@ -7,6 +7,8 @@
     = csrf_meta_tags
 
   %body
+    - if Setting.easy_login_enable
+      = render :partial => "layouts/user_list"
     .container#header
       %h1= Setting.site_name
       %ul.nav.pull-right
@@ -25,8 +27,6 @@
       %p 
         由cming.xu@gmail.com制作
 
-    - if Setting.easy_login_enable
-      = render :partial => "layouts/user_list"
 :javascript
   $(document).ready(function(){
     if(!navigator.userAgent.match(/Chrome/)){

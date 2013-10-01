@@ -67,3 +67,27 @@ input[type="text"]
 table.report td
   text-align: right
 
+
+table td.bold
+  font-weight: bold
+
+
+table td.center
+  text-align: center
+  vertical-align: middle
+
+#print_title
+  font-size: 24px
+  font-weight: bold
+  padding-bottom: 4px
+  padding-top: 4px
+  text-align: center
+
+@media print
+  table
+    font-size: 22px
+    font-weight: bold
+  .table-bordered
+    border: 2px solid black
+  .table-bordered th, .table-bordered td 
+    border-left: 2px solid black

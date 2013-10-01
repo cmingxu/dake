@@ -81,6 +81,29 @@ class Admin::CargoInsController < Admin::BaseController
     end
   end
 
+  def print
+    @cargo_in = current_scope.find params[:id]
+    @shippings = @cargo_in.shippings
+  
+    respond_to do |format|
+      format.html { render :layout => "print" }
+      format.xml  { render :xml => @shippings }
+    end
+  end
+
+  def reach
+    @cargo_in = current_scope.find params[:id]
+    @shippings = @cargo_in.shippings
+    @shippings.each do |ship|
+      ship.reach
+    end
+  
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.xml  { render :xml => @cargo_in }
+    end
+  end
+
   def current_scope
     if current_user.boss?
       current_scope

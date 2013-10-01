@@ -29,4 +29,11 @@ class Cargo < ActiveRecord::Base
     self.from_huozhan_name = self.huoyun_route.from_huozhan.huozhan_name
     self.to_huozhan_name   = self.huoyun_route.to_huozhan.huozhan_name
   end
+
+  after_create do
+    self.shippings.each do |ship|
+      ship.ship
+    end
+  end
+
 end

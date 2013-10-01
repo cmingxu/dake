@@ -1,12 +1,15 @@
 - if current_user.boss?
 - else
-  - if controller_name == "ship_ins"
+  - if controller_name == "ship_outs"
     = link_to "收物流费", "#"
     = link_to "打印", "#"
     = link_to "查看", "#"
-  - elsif controller_name == "ship_outs"
-    = link_to "放件", "#"
-    = link_to "收物流费", "#"
-    = link_to "收货款", "#"
+  - elsif controller_name == "ship_ins"
+    - if shipping.reached?
+      = link_to "放件", deliver_admin_ship_in_path(shipping), :method => :put
+    - if !shipping.is_paid?
+      = link_to "收物流费", "#"
+    - if shipping.daishouhuokuan_amount > 0
+      = link_to "收货款", "#"
   - elsif controller_name == "shippings"
 

@@ -96,4 +96,13 @@ class Admin::ShipOutsController < Admin::BaseController
   def scope
     current_user.huozhan.ship_outs.order("created_at DESC")
   end
+
+  def print
+    @shipping = current_user.huozhan.ship_outs.find(params[:id])
+  
+    respond_to do |format|
+      format.html { render :layout => "print" }
+      format.xml  { render :xml => @shipping }
+    end
+  end
 end

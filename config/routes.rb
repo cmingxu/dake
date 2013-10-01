@@ -20,10 +20,24 @@ Dake::Application.routes.draw do
     resources :routes
     resources :huozhans
     resources :shippings
-    resources :ship_ins
-    resources :ship_outs
+    resources :ship_ins do
+      member do
+        get :print
+        put :deliver
+      end
+    end
+    resources :ship_outs do
+      member do
+        get :print
+      end
+    end
     resources :huoyun_routes
-    resources :cargo_ins
+    resources :cargo_ins do
+      member do
+        get :print
+        put :reach
+      end
+    end
     resources :cargos do
       member do
         get :print

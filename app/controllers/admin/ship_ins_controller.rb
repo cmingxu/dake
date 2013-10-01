@@ -81,6 +81,16 @@ class Admin::ShipInsController < Admin::BaseController
     end
   end
 
+  def deliver
+    @ship_in = scope.find params[:id]
+    @ship_in.deliver
+  
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.xml  { render :xml => @ship_in }
+    end
+  end
+
   # DELETE /shippings/1
   # DELETE /shippings/1.json
   def destroy

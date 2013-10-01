@@ -56,7 +56,7 @@ class Shipping < ActiveRecord::Base
     s.baozhi_fee   = 0
     s.daishouhuokuan_fee = 0
     s.daishouhuokuan_amount = 0
-    s.is_daishouhuokuan = false
+    s.is_daishouhuokuan_fee_paid = false
     s.is_paid = true
   end
 
@@ -74,7 +74,7 @@ class Shipping < ActiveRecord::Base
 
     # 发件
     event :deliver do
-      transition :shipped => :delivered
+      transition :reached => :delivered
     end
 
     # 代收货款

@@ -23,7 +23,7 @@
   - @shippings.each do |shipping|
     %tr
       %td
-        = link_to shipping.serial_num, edit_admin_ship_out_path(shipping)
+        = link_to shipping.serial_num, edit_admin_ship_in_path(shipping)
       %td= shipping.to_huozhan.huozhan_name
       %td= "#{shipping.sender_name} #{shipping.sender_tel}"
       %td= "#{shipping.receiver_name} #{shipping.receiver_tel}"
@@ -33,7 +33,7 @@
       %td= shipping.huowu_baozhi
       %td= "#{shipping.baozhi_fee} (#{boolean_helper shipping.is_paid})"
       %td= shipping.daishouhuokuan_amount
-      %td= "#{shipping.daishouhuokuan_fee} (#{boolean_helper shipping.is_daishouhuokuan})"
+      %td= "#{shipping.daishouhuokuan_fee} (#{boolean_helper shipping.is_daishouhuokuan_fee_paid && shipping.daishouhuokuan_amount > 0})"
       %td= status_in_word shipping
       %td= render :partial => "admin/widgets/action_bar", :locals => { :shipping => shipping }
 

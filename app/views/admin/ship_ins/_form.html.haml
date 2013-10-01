@@ -1,3 +1,7 @@
+= link_to "返回", admin_ship_ins_path, :class => "btn btn-primary"
+
+%hr
+
 = form_for @shipping, :url => admin_ship_outs_path, :class => "form form-horizontal" do |f|
 
   = hidden_field_tag "shipping[from_huozhan_id]", current_user.huozhan.id
@@ -50,6 +54,3 @@
   = control_group_helper "备注", "特殊情况需要说明", f.object.errors[:huowu_beizhu].first do
     = f.text_field :huowu_beizhu, :class => "input-xxlarge"
 
-  .actions
-    = f.submit '收货', :class => "btn btn-primary"
-    = link_to "返回", admin_ship_outs_path, :class => "btn"
