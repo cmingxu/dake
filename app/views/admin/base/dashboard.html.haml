@@ -4,6 +4,15 @@
   地区, 本地区客车有
   - current_user.location.routes.each do |r|
     = link_to r.friendly_name, edit_admin_route_path(r)
-%br
-= link_to " 支出 ", new_admin_balance_path, :class => "btn btn-large btn-primary"
-= link_to " 收入 ", new_admin_in_balance_path, :class => "btn btn-large btn-primary"
+%hr
+
+- if current_user.caiwu_admin?
+  = link_to " 支出 ", new_admin_balance_path, :class => "btn btn-large btn-primary"
+  = link_to " 收入 ", new_admin_in_balance_path, :class => "btn btn-large btn-primary"
+
+%hr
+- if current_user.huozhan_admin?
+  = link_to " 收件 ", new_admin_ship_out_path, :class => "btn btn-large btn-primary"
+  = link_to " 发货 ", new_admin_cargo_out_path, :class => "btn btn-large btn-primary"
+  = link_to " 收货 ", new_admin_cargo_in_path, :class => "btn btn-large btn-primary"
+  = link_to " 放件 ", admin_ship_ins_path, :class => "btn btn-large btn-primary"

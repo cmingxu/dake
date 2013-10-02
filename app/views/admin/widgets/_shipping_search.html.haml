@@ -1,7 +1,7 @@
 = form_tag path, :class => "form form-horizontal well", :method => :get  do
   - if current_user.boss?
     = search_control_group_helper("发货站") do
-      = select_tag "search[from]", options_from_collection_for_select(Huozhan.all, "houzhan_name", "huozhan_name", params["search"].fetch('from', "")), :include_blank => true
+      = select_tag "search[from]", options_from_collection_for_select(Huozhan.all, "huozhan_name", "huozhan_name", params["search"].fetch('from', "")), :include_blank => true
   - else
     = search_control_group_helper("收货站") do
       = select_tag "search[to]", options_from_collection_for_select(Huozhan.all, "huozhan_name", "huozhan_name", params["search"].fetch("to", "")), :include_blank => true

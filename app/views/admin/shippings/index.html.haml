@@ -1,45 +1,37 @@
-%legend 
-  货物列表
-
+= render :partial => "admin/widgets/shipping_search", :locals => { :path => admin_ship_outs_path }
 
 %table.table.table-stripped
-  %tr
-    %th Sender name
-    %th Sender tel
-    %th Receiver name
-    %th Receiver tel
-    %th Receiver address
-    %th Fee
-    %th Huowu name
-    %th Huowu danwei
-    %th Huowu amount
-    %th Huowu beizhu
-    %th Status
-    %th Is paid
-    %th Is daishouhuokuan
-    %th Huowu cost
-    %th Huowu baozhi
-    %th Baozhi needed
-    %th Daishouhuokuan fee
+  %thead
+    %th 单号
+    %th 收货地址
+    %th 发货人
+    %th 收货人
+    %th 货物
+    %th 数量
+    %th 运费
+    %th 保值
+    %th 保值费
+    %th 代收货款
+    %th 代收货款费
+    %th 状态
     %th
 
   - @shippings.each do |shipping|
     %tr
-      %td= shipping.sender_name
-      %td= shipping.sender_tel
-      %td= shipping.receiver_name
-      %td= shipping.receiver_tel
-      %td= shipping.receiver_address
-      %td= shipping.fee
+      %td= link_to shipping.serial_num, edit_admin_ship_out_path(shipping)
+      %td= shipping.to_huozhan.huozhan_name
+      %td= "#{shipping.sender_name} #{shipping.sender_tel}"
+      %td= "#{shipping.receiver_name} #{shipping.receiver_tel}"
       %td= shipping.huowu_name
-      %td= shipping.huowu_danwei
-      %td= shipping.huowu_amount
-      %td= shipping.huowu_beizhu
-      %td= shipping.status
-      %td= shipping.is_paid
-      %td= shipping.is_daishouhuokuan
-      %td= shipping.huowu_cost
+      %td= "#{shipping.huowu_amount}#{shipping.huowu_danwei}"
+      %td= "#{shipping.fee}(#{boolean_helper shipping.is_paid})"
       %td= shipping.huowu_baozhi
-      %td= shipping.baozhi_needed
-      %td= shipping.daishouhuokuan_fee
+      %td= "#{shipping.baozhi_fee} (#{boolean_helper shipping.is_paid})"
+      %td= shipping.daishouhuokuan_amount
+      %td= "#{shipping.daishouhuokuan_fee} (#{boolean_helper shipping.is_daishouhuokuan_fee_paid && shipping.daishouhuokuan_amount > 0})"
+      %td= status_in_word shipping
+      %td
+        = link_to icon_link(:search), edit_admin_shipping_path(shipping)
 
+
+= paginate @shippings
