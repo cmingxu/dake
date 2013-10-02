@@ -1,0 +1,13 @@
+= render :partial => "admin/widgets/configuration_tab_bar", :locals => { :current_tab => "reminds" }
+
+= form_for @remind, :url => @remind.persisted? ? admin_remind_path(@remind) : admin_reminds_path do |f|
+  = control_group_helper "项目", "例如： 加油，年审", f.object.errors[:name].first do
+    = f.text_field :name, :class => "input-xxlarge"
+  = control_group_helper "周期", "周期，例如： 15, 365", f.object.errors[:repeating].first do
+    = f.text_field :repeating, :class => "input-xxlarge"
+  = control_group_helper "提前提醒天数", "到期前多少天提醒，例如： 3, 60", f.object.errors[:remind].first do
+    = f.text_field :remind, :class => "input-xxlarge"
+
+  .actions
+    = f.submit '保存', :class => "btn btn-primary"
+    = link_to "返回", admin_reminds_path, :class => "btn"

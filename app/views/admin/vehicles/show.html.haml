@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Paizhao:
+  = @vehicle.paizhao
+%p
+  %b Xinghao:
+  = @vehicle.xinghao
+%p
+  %b Leixing:
+  = @vehicle.leixing
+
+= link_to 'Edit', edit_vehicle_path(@vehicle)
+\|
+= link_to 'Back', vehicles_path

@@ -1,18 +1,10 @@
 # -*- encoding : utf-8 -*-
 Dake::Application.routes.draw do
-
-
-
-
-
-
-
-  get "reports/index"
-
   resources :bugs
 
-
   namespace :admin do
+    resources :vehicles
+    resources :reminds
     resources :reports
     resources :users
     resources :pages

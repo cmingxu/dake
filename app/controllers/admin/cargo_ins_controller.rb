@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Admin::CargoInsController < Admin::BaseController
   # GET /cargos
   # GET /cargos.json

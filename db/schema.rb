@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# -*- encoding : utf-8 -*-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131001013216) do
+ActiveRecord::Schema.define(:version => 20131002105700) do
 
   create_table "balances", :force => true do |t|
     t.decimal  "amount",        :precision => 10, :scale => 0
@@ -102,6 +102,14 @@ ActiveRecord::Schema.define(:version => 20131001013216) do
     t.string   "cate"
   end
 
+  create_table "reminds", :force => true do |t|
+    t.string   "name"
+    t.integer  "repeating"
+    t.integer  "remind"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "routes", :force => true do |t|
     t.integer  "start_location_id"
     t.integer  "end_location_id"
@@ -173,5 +181,20 @@ ActiveRecord::Schema.define(:version => 20131001013216) do
   end
 
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "vehicle_reminds", :force => true do |t|
+    t.integer  "vehicle_id"
+    t.integer  "remind_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "vehicles", :force => true do |t|
+    t.string   "paizhao"
+    t.string   "xinghao"
+    t.string   "leixing"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

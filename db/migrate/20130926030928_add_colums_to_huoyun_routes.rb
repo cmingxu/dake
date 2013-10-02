@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddColumsToHuoyunRoutes < ActiveRecord::Migration
   def change
     add_column :huoyun_routes, :paizhao, :string

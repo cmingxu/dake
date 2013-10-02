@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class DaishouhuokuanMigration < ActiveRecord::Migration
   def up
     remove_column :shippings, :is_daishouhuokuan

@@ -1,0 +1,32 @@
+= render :partial => "admin/widgets/configuration_tab_bar", :locals => { :current_tab => "reminds" }
+
+%legend 
+  车辆提醒
+  %span.pull-right
+    = link_to icon_link(:plus) + "  新提醒", new_admin_remind_path
+
+%table.table.table-stripped
+  %thead
+    %th 项目
+    %th 周期
+    %th 提醒时间
+    %th
+
+  - @reminds.each do |remind|
+    %tr
+      %td= remind.name
+      %td
+        = remind.repeating
+        天
+        
+      %td
+        = remind.remind
+        天
+
+      %td
+        = link_to icon_link(:search), edit_admin_remind_path(remind)
+        = link_to icon_link(:trash), admin_remind_path(remind), :confirm => "此操作会删除支出类型， 确认继续？", :method => :delete
+
+
+= paginate @reminds
+

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddColumnToCargo < ActiveRecord::Migration
   def change
     add_column :cargos, :siji, :string

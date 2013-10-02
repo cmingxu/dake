@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ShippingCargo < ActiveRecord::Base
   attr_accessible :cargo_id, :shipping_id
 
