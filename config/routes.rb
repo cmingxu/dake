@@ -24,6 +24,8 @@ Dake::Application.routes.draw do
       member do
         get :print
         put :deliver
+        put :pay
+        put :daishouhuokuan
       end
     end
     resources :ship_outs do

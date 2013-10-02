@@ -37,6 +37,12 @@ class Admin::ShipOutsController < Admin::BaseController
   # GET /shippings/new.json
   def new
     @shipping = scope.new
+    @shipping.huowu_baozhi = 0
+    @shipping.baozhi_fee   = 0
+    @shipping.daishouhuokuan_fee = 0
+    @shipping.daishouhuokuan_amount = 0
+    @shipping.is_daishouhuokuan_fee_paid = false
+    @shipping.is_paid = true
 
     respond_to do |format|
       format.html # new.html.erb
@@ -56,7 +62,7 @@ class Admin::ShipOutsController < Admin::BaseController
 
     respond_to do |format|
       if @shipping.save
-        format.html { redirect_to admin_ship_out_path(@shipping), notice: 'scope was successfully created.' }
+        format.html { redirect_to admin_ship_outs_path, notice: 'scope was successfully created.' }
         format.json { render json: @shipping, status: :created, location: @shipping }
       else
         format.html { render action: "new" }
@@ -72,7 +78,7 @@ class Admin::ShipOutsController < Admin::BaseController
 
     respond_to do |format|
       if @shipping.update_attributes(params[:shipping])
-        format.html { redirect_to @shipping, notice: 'scope was successfully updated.' }
+        format.html { redirect_to admin_ship_outs_path, notice: 'scope was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -162,9 +162,9 @@ def fake_shipping
   s.huowu_danwei = Shipping::DANWEI.sample
   s.huowu_amount = rand(10)
   s.is_paid = rand(10).even?
-  s.is_daishouhuokuan = rand(10).even?
   s.daishouhuokuan_amount = rand(1000)
   s.daishouhuokuan_fee = s.daishouhuokuan_amount * 0.2
+  s.is_daishouhuokuan_fee_paid = false
   s.huowu_baozhi = rand(1000)
   s.from_huozhan = Huozhan.all.sample
   s.to_huozhan = Huozhan.all.sample

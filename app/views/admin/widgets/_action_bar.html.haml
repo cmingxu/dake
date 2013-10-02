@@ -8,8 +8,8 @@
     - if shipping.reached?
       = link_to "放件", deliver_admin_ship_in_path(shipping), :method => :put
     - if !shipping.is_paid?
-      = link_to "收物流费", "#"
-    - if shipping.daishouhuokuan_amount > 0
-      = link_to "收货款", "#"
+      = link_to "收物流费", pay_admin_ship_in_path(shipping), :method => :put
+    - if shipping.daishouhuokuan_amount > 0 and !shipping.is_daishouhuokuan_fee_paid?
+      = link_to "收货款", daishouhuokuan_admin_ship_in_path(shipping), :method => :put
   - elsif controller_name == "shippings"
 

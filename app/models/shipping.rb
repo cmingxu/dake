@@ -50,16 +50,6 @@ class Shipping < ActiveRecord::Base
   end
 
 
-  after_initialize do |s|
-    s.huowu_baozhi = 1
-    s.huowu_baozhi = 0
-    s.baozhi_fee   = 0
-    s.daishouhuokuan_fee = 0
-    s.daishouhuokuan_amount = 0
-    s.is_daishouhuokuan_fee_paid = false
-    s.is_paid = true
-  end
-
   # 收件
   state_machine :status, :initial => :received do
     # 发货
