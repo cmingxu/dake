@@ -1,12 +1,14 @@
-%h1 Listing vehicles
+= render :partial => "admin/widgets/configuration_tab_bar", :locals => { :current_tab => "vehicles" }
 
-%table
-  %tr
-    %th Paizhao
-    %th Xinghao
-    %th Leixing
-    %th
-    %th
+%legend 
+  车辆
+  %span.pull-right
+    = link_to icon_link(:plus) + "  新车辆", new_admin_vehicle_path
+%table.table.table-stripped
+  %thead
+    %th 牌照
+    %th 型号
+    %th 类型
     %th
 
   - @vehicles.each do |vehicle|
@@ -14,10 +16,3 @@
       %td= vehicle.paizhao
       %td= vehicle.xinghao
       %td= vehicle.leixing
-      %td= link_to 'Show', vehicle
-      %td= link_to 'Edit', edit_vehicle_path(vehicle)
-      %td= link_to 'Destroy', vehicle, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Vehicle', new_vehicle_path

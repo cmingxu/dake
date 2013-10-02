@@ -1,19 +1,13 @@
-= form_for @vehicle do |f|
-  - if @vehicle.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@vehicle.errors.count, "error")} prohibited this vehicle from being saved:"
-      %ul
-        - @vehicle.errors.full_messages.each do |msg|
-          %li= msg
+= render :partial => "admin/widgets/configuration_tab_bar", :locals => { :current_tab => "vehicles" }
 
-  .field
-    = f.label :paizhao
-    = f.text_field :paizhao
-  .field
-    = f.label :xinghao
-    = f.text_field :xinghao
-  .field
-    = f.label :leixing
-    = f.text_field :leixing
+= form_for @vehicle, :url => @vehicle.persisted? ? admin_vehicle_path(@vehicle) : admin_vehicles_path do |f|
+  = control_group_helper "车型", "例如： 客车", f.object.errors[:leixing].first do
+    = f.select :leixing, options_for_select(Vehicle::LEIXNG, @vehicle.leixing), :class => "input-xxlarge"
+  = control_group_helper "拍照", "例如： 京A00001", f.object.errors[:paizhao].first do
+    = f.text_field :paizhao, :class => "input-xxlarge"
+  = control_group_helper "型号", "例如： 金龙", f.object.errors[:xinghao].first do
+    = f.text_field :xinghao, :class => "input-xxlarge"
+
   .actions
-    = f.submit 'Save'
+    = f.submit '保存', :class => "btn btn-primary"
+    = link_to "返回", admin_vehicles_path, :class => "btn"
