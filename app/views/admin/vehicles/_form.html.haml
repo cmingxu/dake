@@ -3,7 +3,7 @@
 = form_for @vehicle, :url => @vehicle.persisted? ? admin_vehicle_path(@vehicle) : admin_vehicles_path do |f|
   = control_group_helper "车型", "例如： 客车", f.object.errors[:leixing].first do
     = f.select :leixing, options_for_select(Vehicle::LEIXNG, @vehicle.leixing), :class => "input-xxlarge"
-  = control_group_helper "拍照", "例如： 京A00001", f.object.errors[:paizhao].first do
+  = control_group_helper "牌照", "例如： 京A00001", f.object.errors[:paizhao].first do
     = f.text_field :paizhao, :class => "input-xxlarge"
   = control_group_helper "型号", "例如： 金龙", f.object.errors[:xinghao].first do
     = f.text_field :xinghao, :class => "input-xxlarge"
