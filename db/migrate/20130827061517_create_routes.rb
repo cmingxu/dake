@@ -4,8 +4,7 @@ class CreateRoutes < ActiveRecord::Migration
     create_table :routes do |t|
       t.integer :start_location_id
       t.integer :end_location_id
-      t.string :paizhao
-      t.string :xinghao
+      t.integer :vehicle_id
       t.string :driver_names
       t.string :mobile
       t.string :start_when

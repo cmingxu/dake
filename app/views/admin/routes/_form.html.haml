@@ -8,11 +8,8 @@
     = f.select :end_location_id, options_from_collection_for_select(Location.all, "id", "name", @route.end_location_id)
 
   .clearfix
-  = control_group_helper "车牌照", "例如：京A203212", f.object.errors[:paizhao].first do
-    = f.text_field :paizhao, :class => "input-xxlarge"
-
-  = control_group_helper "客车型号", "例如：金龙II型", f.object.errors[:xinghao].first do
-    = f.text_field :xinghao, :class => "input-xxlarge"
+  = control_group_helper "车辆信息", "选择运营车辆信息", f.object.errors[:vehicle_id].first do
+    = f.select :vehicle_id, options_from_collection_for_select(Vehicle.all, "id", "paizhao", @route.vehicle_id)
 
   = control_group_helper "司机姓名", "例如：张三，王强", f.object.errors[:driver_names].first do
     = f.text_field :driver_names, :class => "input-xxlarge"

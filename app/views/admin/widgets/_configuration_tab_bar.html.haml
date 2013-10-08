@@ -1,18 +1,20 @@
 .tabbable.tabs
   %ul.nav.nav-tabs
+    %li{"class" => current_tab == "vehicles" ? "active" : ""}
+      = link_to icon_link(:heart) + " 车辆信息", admin_vehicles_path
+    %li{"class" => current_tab == "huoyun_routes" ? "active" : ""}
+      = link_to icon_link(:heart) + " 物流线路", admin_huoyun_routes_path
+    %li{"class" => current_tab == "routes" ? "active" : ""}
+      = link_to icon_link(:heart) + " 线路管理", admin_routes_path
+    %li{"class" => current_tab == "huozhans" ? "active" : ""}
+      = link_to icon_link(:heart) + " 货站管理", admin_huozhans_path
+    %li{"class" => current_tab == "reminds" ? "active" : ""}
+      = link_to icon_link(:heart) + " 车辆提醒", admin_reminds_path
+    %li{"class" => current_tab == "users" ? "active" : ""}
+      = link_to icon_link(:heart) + " 用户管理", admin_users_path
     %li{"class" => current_tab == "locations" ? "active" : ""}
       = link_to icon_link(:heart) + " 地点管理", admin_locations_path
     %li{"class" => current_tab == "out_reasons" ? "active" : ""}
       = link_to icon_link(:heart) + " 支出类型", admin_out_reasons_path
     %li{"class" => current_tab == "reasons" ? "active" : ""}
       = link_to icon_link(:heart) + " 收入类型", admin_reasons_path
-    %li{"class" => current_tab == "huozhans" ? "active" : ""}
-      = link_to icon_link(:heart) + " 货站管理", admin_huozhans_path
-    %li{"class" => current_tab == "huoyun_routes" ? "active" : ""}
-      = link_to icon_link(:heart) + " 物流线路", admin_huoyun_routes_path
-    %li{"class" => current_tab == "routes" ? "active" : ""}
-      = link_to icon_link(:heart) + " 线路管理", admin_routes_path
-    %li{"class" => current_tab == "vehicles" ? "active" : ""}
-      = link_to icon_link(:heart) + " 车辆管理", admin_vehicles_path
-    %li{"class" => current_tab == "reminds" ? "active" : ""}
-      = link_to icon_link(:heart) + " 车辆提醒", admin_reminds_path

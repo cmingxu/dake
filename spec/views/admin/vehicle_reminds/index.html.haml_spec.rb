@@ -1,0 +1,5 @@
+require 'spec_helper'
+
+describe "vehicle_reminds/index.html.haml" do
+  pending "add some examples to (or delete) #{__FILE__}"
+end

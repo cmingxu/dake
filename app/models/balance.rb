@@ -23,6 +23,6 @@ class Balance < ActiveRecord::Base
   belongs_to :route
 
   before_save do
-    self.route = Route.find_by_paizhao self.paizhao
+    self.route = Vehicle.find_by_paizhao(self.paizhao).route
   end
 end

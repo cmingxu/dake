@@ -9,10 +9,11 @@
     %th 牌照
     %th 型号
     %th 类型
-    %th
+    %th 提醒
 
   - @vehicles.each do |vehicle|
     %tr
-      %td= vehicle.paizhao
+      %td
+        = link_to vehicle.paizhao, admin_vehicle_vehicle_reminds_path(vehicle)
       %td= vehicle.xinghao
       %td= vehicle.leixing

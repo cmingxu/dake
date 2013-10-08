@@ -1,0 +1,37 @@
+= render :partial => "admin/widgets/configuration_tab_bar", :locals => { :current_tab => "vehicles" }
+
+%legend 
+  = @vehicle.paizhao
+  %span.pull-right
+    = link_to icon_link("hand-left") + "  返回", admin_vehicles_path, :class => "btn"
+
+%table.table.table-stripped
+  %thead
+    %th 类型
+    %th 周期
+    %th 上次时间
+    %th 剩余几天
+    %th
+
+  - @vehicle.vehicle_reminds.includes(:remind).each do |vr|
+    %tr
+      %td= vr.remind.name
+      %td= vr.remind.repeating
+      %td= vr.created_at.to_s(:human_zh)
+      %td= vr.created_at.to_s(:human_zh)
+      %td
+        = link_to icon_link(:trash), admin_vehicle_vehicle_remind_path(@vehicle, vr), :confirm => "此操作会删除,， 确认继续？", :method => :delete
+
+
+%hr
+= form_for @vr, :url => admin_vehicle_vehicle_reminds_path(@vehicle), :class => "form form-horizontal" do |f|
+  = f.hidden_field :vehicle_id
+  = control_group_helper "提醒", "例如： 加油  年审", f.object.errors[:remind_id].first do
+    = f.select :remind_id, options_from_collection_for_select(Remind.all, "id", "name", @vr.remind_id)
+
+  = control_group_helper "时间", "例如： 2013/1/1", f.object.errors[:happend_at].first do
+    = f.text_field :happend_at, :class => "input-xxlarge date"
+
+  = control_group_helper "描述", "", f.object.errors[:description].first do
+    = f.text_field :description, :class => "input-xxlarge"
+  = f.submit "保存", :class => "btn btn-primary"

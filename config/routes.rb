@@ -1,9 +1,13 @@
 # -*- encoding : utf-8 -*-
 Dake::Application.routes.draw do
+  get "vehicle_reminds/index"
+
   resources :bugs
 
   namespace :admin do
-    resources :vehicles
+    resources :vehicles do
+      resources :vehicle_reminds
+    end
     resources :reminds
     resources :reports
     resources :users

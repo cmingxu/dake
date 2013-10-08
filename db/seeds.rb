@@ -36,39 +36,57 @@ location9 = Location.create :name => "天山", :fuzeren => "负责人9", :fuzere
 location10 = Location.create :name => "长胜", :fuzeren => "负责人10", :fuzeren_mobile => "13111111111", :fuzeren_address => "赤峰汽车客运站东", :fuzeren => changsheng.id
 location11 = Location.create :name => "通辽", :fuzeren => "负责人11", :fuzeren_mobile => "13111111111", :fuzeren_address => "赤峰汽车客运站东", :fuzeren => tongliao.id
 
+# 车辆
+#
 
-Route.create :start_location_id => location1.id, :end_location_id => location2.id, :paizhao => "京A00213", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location1.id, :end_location_id => location3.id, :paizhao => "京A00214", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location1.id, :end_location_id => location4.id, :paizhao => "京A00215", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location1.id, :end_location_id => location5.id, :paizhao => "京A00216", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location1.id, :end_location_id => location6.id, :paizhao => "京A00217", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location1.id, :end_location_id => location7.id, :paizhao => "京A00218", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location1.id, :end_location_id => location8.id, :paizhao => "京A00219", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location1.id, :end_location_id => location9.id, :paizhao => "京A00223", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
+Vehicle.create :paizhao => Faker.fake_paizhao, :leixing => Vehicle::LEIXING.sample, :xinghao => "金龙"
+Vehicle.create :paizhao => Faker.fake_paizhao, :leixing => Vehicle::LEIXING.sample, :xinghao => "金龙"
+Vehicle.create :paizhao => Faker.fake_paizhao, :leixing => Vehicle::LEIXING.sample, :xinghao => "金龙"
+Vehicle.create :paizhao => Faker.fake_paizhao, :leixing => Vehicle::LEIXING.sample, :xinghao => "金龙"
+Vehicle.create :paizhao => Faker.fake_paizhao, :leixing => Vehicle::LEIXING.sample, :xinghao => "金龙"
+Vehicle.create :paizhao => Faker.fake_paizhao, :leixing => Vehicle::LEIXING.sample, :xinghao => "金龙"
+Vehicle.create :paizhao => Faker.fake_paizhao, :leixing => Vehicle::LEIXING.sample, :xinghao => "金龙"
+Vehicle.create :paizhao => Faker.fake_paizhao, :leixing => Vehicle::LEIXING.sample, :xinghao => "金龙"
+Vehicle.create :paizhao => Faker.fake_paizhao, :leixing => Vehicle::LEIXING.sample, :xinghao => "金龙"
+Vehicle.create :paizhao => Faker.fake_paizhao, :leixing => Vehicle::LEIXING.sample, :xinghao => "金龙"
+Vehicle.create :paizhao => Faker.fake_paizhao, :leixing => Vehicle::LEIXING.sample, :xinghao => "金龙"
+Vehicle.create :paizhao => Faker.fake_paizhao, :leixing => Vehicle::LEIXING.sample, :xinghao => "金龙"
+Vehicle.create :paizhao => Faker.fake_paizhao, :leixing => Vehicle::LEIXING.sample, :xinghao => "金龙"
+Vehicle.create :paizhao => Faker.fake_paizhao, :leixing => Vehicle::LEIXING.sample, :xinghao => "金龙"
 
-Route.create :start_location_id => location3.id, :end_location_id => location2.id, :paizhao => "京A00233", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location3.id, :end_location_id => location4.id, :paizhao => "京A00243", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location3.id, :end_location_id => location5.id, :paizhao => "京A00253", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location3.id, :end_location_id => location6.id, :paizhao => "京A00263", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location3.id, :end_location_id => location7.id, :paizhao => "京A00273", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location3.id, :end_location_id => location8.id, :paizhao => "京A00213", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location3.id, :end_location_id => location9.id, :paizhao => "京A00113", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
 
-Route.create :start_location_id => location5.id, :end_location_id => location2.id, :paizhao => "京A10213", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location5.id, :end_location_id => location3.id, :paizhao => "京A20213", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location5.id, :end_location_id => location4.id, :paizhao => "京A30213", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location5.id, :end_location_id => location6.id, :paizhao => "京A40213", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location5.id, :end_location_id => location7.id, :paizhao => "京A50213", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location5.id, :end_location_id => location8.id, :paizhao => "京A60213", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location5.id, :end_location_id => location9.id, :paizhao => "京A70213", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
+Route.create :start_location_id => location1.id, :end_location_id => location2.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location1.id, :end_location_id => location3.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location1.id, :end_location_id => location4.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location1.id, :end_location_id => location5.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location1.id, :end_location_id => location6.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location1.id, :end_location_id => location7.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location1.id, :end_location_id => location8.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location1.id, :end_location_id => location9.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
 
-Route.create :start_location_id => location6.id, :end_location_id => location2.id, :paizhao => "京A80213", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location6.id, :end_location_id => location3.id, :paizhao => "京A90213", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location6.id, :end_location_id => location4.id, :paizhao => "京B00213", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location6.id, :end_location_id => location5.id, :paizhao => "京C00213", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location6.id, :end_location_id => location7.id, :paizhao => "京E00213", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location6.id, :end_location_id => location8.id, :paizhao => "京F00213", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
-Route.create :start_location_id => location6.id, :end_location_id => location9.id, :paizhao => "京G00213", :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :xinghao => "金龙II"
+Route.create :start_location_id => location3.id, :end_location_id => location2.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location3.id, :end_location_id => location4.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location3.id, :end_location_id => location5.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location3.id, :end_location_id => location6.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location3.id, :end_location_id => location7.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location3.id, :end_location_id => location8.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location3.id, :end_location_id => location9.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+
+Route.create :start_location_id => location5.id, :end_location_id => location2.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location5.id, :end_location_id => location3.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location5.id, :end_location_id => location4.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location5.id, :end_location_id => location6.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location5.id, :end_location_id => location7.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location5.id, :end_location_id => location8.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location5.id, :end_location_id => location9.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+
+Route.create :start_location_id => location6.id, :end_location_id => location2.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location6.id, :end_location_id => location3.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location6.id, :end_location_id => location4.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location6.id, :end_location_id => location5.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location6.id, :end_location_id => location7.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location6.id, :end_location_id => location8.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
+Route.create :start_location_id => location6.id, :end_location_id => location9.id,  :driver_names => "张三,李四", :mobile => "13900001234, 13900004321", :start_when => "6.30", :end_when => "16:40", :paths => "赤峰，天义， 平泉，承德", :vehicle_id =>  Vehicle.all.sample.id
 
 
 Reason.create!(:cate => "in", :reason => "结算单")
@@ -177,3 +195,7 @@ end
 1000.times do 
   fake_shipping
 end
+
+Remind.create :name => "加油", :repeating => 15, :remind => 3
+Remind.create :name => "年审", :repeating => 365, :remind => 3
+Remind.create :name => "机齿油", :repeating => 30, :remind => 7
