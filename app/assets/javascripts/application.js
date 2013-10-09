@@ -64,4 +64,10 @@ $(document).ready(function () {
 $(document).ready(function () {
   controller_name = $('body').attr("class");
   $("li." + controller_name).addClass("active");
+
+  $("#vr tr").hover(function () {
+    $(this).parent().find("tr").removeClass("tr_hover");
+    $(this).parent().find("tr:contains(" + $(this).find("td:first").text() + ")").addClass("tr_hover");
+  });
 });
+

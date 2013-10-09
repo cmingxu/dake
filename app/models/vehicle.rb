@@ -11,4 +11,27 @@ class Vehicle < ActiveRecord::Base
 
   has_many :vehicle_reminds
   has_many :reminds, :through => :vehicle_reminds
+
+  def remind_results
+    Remind.all.map do |remind|
+      vr_cared = self.vehicle_reminds.with_remind(remind).last
+      os  = OpenStruct.new
+      os.name = remind.name
+      if vr_cared
+        if vr_cared.jijiangdaoqi?
+          os.type = "jijiangdaoqi"
+          os.days = vr_cared.dayleft
+        elsif vr_cared.chaoqi?
+          os.type = "chaoqi"
+          os.days = -vr_cared.dayleft
+        else
+          next
+        end
+
+      else
+        os.type = "not_found"
+      end
+      os
+    end
+  end
 end

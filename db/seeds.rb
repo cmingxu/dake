@@ -199,3 +199,9 @@ end
 Remind.create :name => "加油", :repeating => 15, :remind => 3
 Remind.create :name => "年审", :repeating => 365, :remind => 3
 Remind.create :name => "机齿油", :repeating => 30, :remind => 7
+
+
+  Remind.all.each do |remind|
+    vehicle.vehicle_reminds.create :remind_id => remind.id, :happend_at => Time.now - rand(565).days
+  end
+end

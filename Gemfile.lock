@@ -122,6 +122,7 @@ GEM
     net-ssh (2.6.8)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
+    newrelic_rpm (3.6.0.78)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
     quiet_assets (1.0.2)
@@ -231,6 +232,7 @@ DEPENDENCIES
   kaminari
   magic_encoding
   mysql2
+  newrelic_rpm
   quiet_assets
   rails (= 3.2.13)
   rails_kindeditor

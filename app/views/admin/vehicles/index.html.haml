@@ -17,3 +17,9 @@
         = link_to vehicle.paizhao, admin_vehicle_vehicle_reminds_path(vehicle)
       %td= vehicle.xinghao
       %td= vehicle.leixing
+      %td= remind_helper(vehicle.remind_results.compact)
+
+%h1
+  %span.label.label-important 已经超期
+  %span.label.label-warning 即将到期
+  %span.label.label-default 无记录
