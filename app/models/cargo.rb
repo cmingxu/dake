@@ -3,6 +3,8 @@ class Cargo < ActiveRecord::Base
   attr_accessible :from_huozhan_id, :from_huozhan_name, :huoyun_route_id, :serial_num, :to_huozhan_id, :to_huozhan_name
   attr_accessible :paizhao, :siji, :tel, :shipping_ids
 
+  default_scope order("created_at DESC")
+
   has_many :shipping_cargos
   has_many :shippings, :through => :shipping_cargos
   belongs_to :user
