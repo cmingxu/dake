@@ -94,6 +94,7 @@ class Admin::CargoInsController < Admin::BaseController
 
   def reach
     @cargo_in = current_scope.find params[:id]
+    @cargo_in.update_attribute(:cargo_status, "received")
     @shippings = @cargo_in.shippings
     @shippings.each do |ship|
       ship.reach

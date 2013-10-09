@@ -34,6 +34,7 @@
     %th 司机姓名
     %th 联系电话
     %th 货物单数
+    %th 状态
     %th
 
   - @cargos.each do |cargo|
@@ -46,6 +47,7 @@
       %td= cargo.siji
       %td= cargo.tel
       %td= cargo.shippings.count
+      %td= cargo.cargo_status == "sent" ? "已发出" : "已收货"
       %td
         = link_to icon_link(:search), edit_admin_cargo_out_path(cargo)
         = link_to icon_link(:print), "#"

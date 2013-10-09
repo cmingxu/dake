@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131007141102) do
+ActiveRecord::Schema.define(:version => 20131009142847) do
 
   create_table "balances", :force => true do |t|
     t.decimal  "amount",        :precision => 10, :scale => 0
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20131007141102) do
     t.string   "siji"
     t.string   "tel"
     t.string   "paizhao"
+    t.string   "cargo_status"
   end
 
   create_table "foos", :force => true do |t|

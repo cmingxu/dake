@@ -24,7 +24,8 @@
       %td= cargo.tel
       %td= cargo.shippings.count
       %td
-        = link_to "收货", reach_admin_cargo_in_path(cargo), :class => "btn btn-mini btn-warning", :method => :put
+        - if cargo.cargo_status == "sent"
+          = link_to "收货", reach_admin_cargo_in_path(cargo), :class => "btn btn-mini btn-warning", :method => :put
         = link_to icon_link(:search), edit_admin_cargo_in_path(cargo)
         = link_to icon_link(:print), print_admin_cargo_in_path(cargo), :target => "_blank"
 

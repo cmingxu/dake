@@ -32,6 +32,8 @@ class Cargo < ActiveRecord::Base
   end
 
   after_create do
+    self.update_attribute :cargo_status, "sent"
+
     self.shippings.each do |ship|
       ship.ship
     end
