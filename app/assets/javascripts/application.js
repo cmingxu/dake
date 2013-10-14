@@ -63,7 +63,6 @@ $(document).ready(function () {
 ////////// cargo destination select //////////////
 
 $(document).ready(function () {
-  $('#myCarousel').carousel()
   controller_name = $('body').attr("class");
   $("li." + controller_name).addClass("active");
 
@@ -75,3 +74,4 @@ $(document).ready(function () {
 
 
 
+$('.carousel').carousel()
