@@ -21,6 +21,7 @@
 //= require jquery.ui.datepicker
 //= require balances
 //= require cargos
+//= require bootstrap-carousel
 //= require_self
 //
 
@@ -62,6 +63,7 @@ $(document).ready(function () {
 ////////// cargo destination select //////////////
 
 $(document).ready(function () {
+  $('#myCarousel').carousel()
   controller_name = $('body').attr("class");
   $("li." + controller_name).addClass("active");
 
@@ -70,4 +72,6 @@ $(document).ready(function () {
     $(this).parent().find("tr:contains(" + $(this).find("td:first").text() + ")").addClass("tr_hover");
   });
 });
+
+
 
