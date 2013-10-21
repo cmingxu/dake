@@ -9,7 +9,7 @@
 
   .clearfix
   = control_group_helper "车辆信息", "选择运营车辆信息", f.object.errors[:vehicle_id].first do
-    = f.select :vehicle_id, options_from_collection_for_select(Vehicle.all, "id", "paizhao", @route.vehicle_id)
+    = f.select :vehicle_id, options_from_collection_for_select(Vehicle.all, "id", "paizhao", @route.try(:vehicle_id))
 
   = control_group_helper "司机姓名", "例如：张三，王强", f.object.errors[:driver_names].first do
     = f.text_field :driver_names, :class => "input-xxlarge"
