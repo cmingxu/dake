@@ -18,12 +18,14 @@
           %li= link_to "退出系统", destroy_user_session_path, :method => :delete
 
 
-
     .container-fluid#body
       .row-fluid
         .span2
           = render :partial => "layouts/sidebar"
         .span10
+          - if flash[:notice]
+            .alert.alert-error
+              = flash[:notice]
           = yield
     
     #footer.footer

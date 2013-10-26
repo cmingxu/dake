@@ -45,7 +45,7 @@ class Admin::VehiclesController < Admin::BaseController
 
     respond_to do |format|
       if @vehicle.save
-        format.html { redirect_to @vehicle, notice: 'Vehicle was successfully created.' }
+        format.html { redirect_to admin_vehicles_path, notice: '车辆添加成功' }
         format.json { render json: @vehicle, status: :created, location: @vehicle }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class Admin::VehiclesController < Admin::BaseController
 
     respond_to do |format|
       if @vehicle.update_attributes(params[:vehicle])
-        format.html { redirect_to @vehicle, notice: 'Vehicle was successfully updated.' }
+        format.html { redirect_to admin_vehicles_path, notice: '车辆更新成功' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -77,7 +77,7 @@ class Admin::VehiclesController < Admin::BaseController
     @vehicle.destroy
 
     respond_to do |format|
-      format.html { redirect_to vehicles_url }
+      format.html { redirect_to admin_vehicle_path }
       format.json { head :no_content }
     end
   end

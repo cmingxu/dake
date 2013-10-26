@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 class Remind < ActiveRecord::Base
+  has_many :vehicle_reminds
+
   attr_accessible :name, :remind, :repeating
 
   validates :name, :presence => { :message => "项目名称不能为空" }

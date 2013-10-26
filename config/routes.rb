@@ -5,6 +5,7 @@ Dake::Application.routes.draw do
   resources :bugs
 
   namespace :admin do
+    resources :vehicle_views, :only => [:index]
     resources :vehicles do
       resources :vehicle_reminds
     end

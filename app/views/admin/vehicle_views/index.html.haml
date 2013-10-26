@@ -1,5 +1,3 @@
-= render :partial => "admin/widgets/configuration_tab_bar", :locals => { :current_tab => "vehicles" }
-
 %legend 
   车辆
   %span.pull-right
@@ -9,7 +7,7 @@
     %th 牌照
     %th 型号
     %th 类型
-    %th 
+    %th 提醒
 
   - @vehicles.each do |vehicle|
     %tr
@@ -17,6 +15,9 @@
         = link_to vehicle.paizhao, admin_vehicle_vehicle_reminds_path(vehicle)
       %td= vehicle.xinghao
       %td= vehicle.leixing
-      %td
-        = link_to icon_link(:search), edit_admin_vehicle_path(vehicle)
-        = link_to icon_link(:trash), admin_vehicle_path(vehicle), :confirm => "此操作会删除车辆,， 确认继续？", :method => :delete
+      %td= remind_helper(vehicle.remind_results.compact)
+
+%h1
+  %span.label.label-important 已经超期
+  %span.label.label-warning 即将到期
+  %span.label.label-default 无记录

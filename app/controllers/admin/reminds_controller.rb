@@ -73,11 +73,16 @@ class Admin::RemindsController < Admin::BaseController
   # DELETE /reminds/1
   # DELETE /reminds/1.json
   def destroy
-    @remind = Remind.find(params[:id])
-    @remind.destroy
+    @remind = Remind.find(params[:id]) 
+    if @remind.vehicle_reminds.exists?
+      notice = "此提醒类型使用中， 在车辆管理中删除后可删除此提醒"
+    else
+      @remind.destroy
+      notice = "删除成功"
+    end
 
     respond_to do |format|
-      format.html { redirect_to reminds_url }
+      format.html { redirect_to admin_reminds_url, notice: notice }
       format.json { head :no_content }
     end
   end
