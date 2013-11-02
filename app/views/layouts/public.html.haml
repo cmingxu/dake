@@ -8,19 +8,21 @@
 
   %body
     .container
-      .navbar
+      .navbar#navbar
         .navbar-inner
           %a.brand 赤峰金刚辉腾物流
           .nav-collapse.collapse
             %ul.nav
               %li
-                = link_to "客运线路", "#"
+                = link_to "客运线路", "/routes"
               %li
-                = link_to "物流网络", "#"
+                = link_to "物流网络", "/huoyun_routes"
               %li
-                = link_to "联系我们", "#"
+                = link_to "联系我们", "/contact"
               %li
-                = link_to "关于我们", "#"
+                = link_to "招贤纳士", "/jobs"
+              %li
+                = link_to "关于我们", "/about"
 
     .container
       #myCarousel.carousel.slide

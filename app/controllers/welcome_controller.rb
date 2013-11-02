@@ -8,11 +8,28 @@ class WelcomeController < ApplicationController
   def dashboard
   end
 
+  def routes
+    @routes = Route.all
+  end
+
+  def huoyun_routes
+    @huoyun_routes = HuoyunRoute.all
+  end
+
   def about
     @page = Page.find_by_slug "about"
   end
 
   def team
+    @page = Page.find_by_slug "team"
+  end
+
+  def jobs
+    @page = Page.find_by_slug "jobs"
+  end
+
+  def contact
+    @page = Page.find_by_slug "contact"
   end
 
   def sign_as

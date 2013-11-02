@@ -38,6 +38,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'magic_encoding'
   gem 'newrelic_rpm'
+  gem 'rails_best_practices'
 end
 
 gem 'disqus'

@@ -60,13 +60,20 @@ Dake::Application.routes.draw do
   
 
   get "welcome/index"
+  get "welcome/about"
+  get "welcome/contact"
+  get "welcome/job"
   get "welcome/dashboard"
 
   resources :foos
 
   match "about" => "welcome#about"
-  match "sign_as" => "welcome#sign_as"
   match "team" => "welcome#team"
+  match "contact" => "welcome#contact"
+  match "jobs" => "welcome#jobs"
+  match "sign_as" => "welcome#sign_as"
+  match "routes" => "welcome#routes"
+  match "huoyun_routes" => "welcome#huoyun_routes"
 
 
   # The priority is based upon order of creation:

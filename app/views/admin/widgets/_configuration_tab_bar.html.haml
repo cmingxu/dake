@@ -18,3 +18,5 @@
       = link_to icon_link(:heart) + " 支出类型", admin_out_reasons_path
     %li{"class" => current_tab == "reasons" ? "active" : ""}
       = link_to icon_link(:heart) + " 收入类型", admin_reasons_path
+    %li{"class" => current_tab == "pages" ? "active" : ""}
+      = link_to icon_link(:heart) + " 页面管理", admin_pages_path

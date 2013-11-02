@@ -1,0 +1,12 @@
+%table.table.table-bordered.table-stripped
+  %thead
+    %th 始发站
+    %th 终点站
+    %th 货站地址
+    %th 货站电话
+  - @huoyun_routes.each do |route|
+    %tr
+      %td= route.from_huozhan.huozhan_name
+      %td= route.to_huozhan.huozhan_name
+      %td= route.from_huozhan.huozhan_address
+      %td= route.from_huozhan.huozhan_tel

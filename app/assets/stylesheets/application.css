@@ -44,3 +44,7 @@
 #body {
   min-height: 600px;
 }
+
+.navbar{
+  background-image: "/images/nav_bg.png";
+}
