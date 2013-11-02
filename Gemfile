@@ -14,10 +14,10 @@ group :assets do
   gem 'font-awesome-rails'
   gem 'bootstrap-wysihtml5-rails'
   gem 'bootstrap-sass'
-  gem 'rails_kindeditor'
   gem "highcharts-rails", "~> 3.0.5"
 end
 
+gem 'rails_kindeditor'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
