@@ -28,6 +28,7 @@ Dake::Application.routes.draw do
     resources :ship_outs do
       member do
         get :print
+        put :fangkuan
       end
     end
     resources :huoyun_routes
@@ -42,7 +43,11 @@ Dake::Application.routes.draw do
         get :print
       end
     end
-    resources :cargo_outs
+    resources :cargo_outs do
+      member do
+        get :print
+      end
+    end
     resources :reasons do
       member do
         get :detail_reason

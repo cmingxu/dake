@@ -15,6 +15,8 @@ class Admin::ShippingsController < Admin::BaseController
     start_at = Date.strptime(params[:search][:start_at]) if params[:search][:start_at].present?
     end_at   = Date.strptime(params[:search][:end_at]) if params[:search][:end_at].present?
     ship_scope = ship_scope.with_created_at_between(start_at || 3.years.ago, end_at || Time.now)
+
+
     @shippings = ship_scope.page params[:page]
 
     respond_to do |format|

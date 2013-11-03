@@ -58,7 +58,7 @@ class Admin::CargoOutsController < Admin::BaseController
 
     respond_to do |format|
       if @cargo.save
-        format.html { redirect_to admin_cargo_outs_path, notice: 'current_scope was successfully created.' }
+        format.html { redirect_to admin_cargo_outs_path, notice: '发货完成' }
         format.json { render json: @cargo, status: :created, location: @cargo }
       else
         @shippings = current_user.huozhan.ship_outs.with_status("received").with_to_huozhan(params[:to]).includes(:to_huozhan)
@@ -94,6 +94,16 @@ class Admin::CargoOutsController < Admin::BaseController
     respond_to do |format|
       format.html { redirect_to cargos_url }
       format.json { head :no_content }
+    end
+  end
+
+  def print
+    @cargo_out = current_scope.find params[:id]
+    @shippings = @cargo_out.shippings
+  
+    respond_to do |format|
+      format.html { render :layout => "print" }
+      format.xml  { render :xml => @shippings }
     end
   end
 

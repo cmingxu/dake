@@ -62,7 +62,7 @@ class Admin::ShipOutsController < Admin::BaseController
 
     respond_to do |format|
       if @shipping.save
-        format.html { redirect_to admin_ship_outs_path, notice: 'scope was successfully created.' }
+        format.html { redirect_to admin_ship_outs_path, notice: '收件完成' }
         format.json { render json: @shipping, status: :created, location: @shipping }
       else
         format.html { render action: "new" }
@@ -109,6 +109,17 @@ class Admin::ShipOutsController < Admin::BaseController
     respond_to do |format|
       format.html { render :layout => "print" }
       format.xml  { render :xml => @shipping }
+    end
+  end
+
+  def fangkuan
+    @shipping = scope.find(params[:id])
+    @shipping.quhuokuan
+    @shipping.save
+  
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.xml  { render :xml => @ship_in }
     end
   end
 end

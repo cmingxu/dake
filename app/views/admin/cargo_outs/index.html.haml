@@ -50,5 +50,5 @@
       %td= cargo.cargo_status == "sent" ? "已发出" : "已收货"
       %td
         = link_to icon_link(:search), edit_admin_cargo_out_path(cargo)
-        = link_to icon_link(:print), "#"
+        = link_to icon_link(:print), print_admin_cargo_out_path(cargo)
 

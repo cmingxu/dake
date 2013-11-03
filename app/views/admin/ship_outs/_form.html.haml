@@ -3,7 +3,7 @@
   = hidden_field_tag "shipping[from_huozhan_id]", current_user.huozhan.id
 
   = control_group_helper "收货货站", "选择要收货的货站", f.object.errors[:to_huozhan_id].first do
-    = f.select :to_huozhan_id, options_from_collection_for_select(Huozhan.all, "id", "huozhan_name", @shipping.to_huozhan_id)
+    = f.select :to_huozhan_id, options_from_collection_for_select(Huozhan.all - [current_user.huozhan], "id", "huozhan_name", @shipping.to_huozhan_id)
 
 
 
