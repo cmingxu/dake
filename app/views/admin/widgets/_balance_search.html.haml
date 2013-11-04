@@ -6,7 +6,7 @@
       = select_tag "search[route]", options_from_collection_for_select(Route.all, "paizhao", "paizhao", params["search"].fetch("route", "")), :include_blank => true
   - else
     = search_control_group_helper("车牌照") do
-      = select_tag "search[route]", options_from_collection_for_select(current_user.location.routes, "paizhao", "paizhao", params["search"].fetch("route", "")), :include_blank => true
+      = select_tag "search[route]", options_from_collection_for_select(current_user.locations.collect(&:routes).flatten, "paizhao", "paizhao", params["search"].fetch("route", "")), :include_blank => true
 
 
   #search_form.hide

@@ -33,7 +33,7 @@ class Admin::BalancesController < Admin::BaseController
   # GET /balances/new.json
   def new
     @balance = scope.new
-    @routes = current_user.location.routes
+    @routes = current_user.locations.collect(&:routes).flatten
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,7 +43,7 @@ class Admin::BalancesController < Admin::BaseController
 
   # GET /balances/1/edit
   def edit
-    @routes = current_user.location.routes
+    @routes = current_user.locations.collect(&:routes).flatten
     @balance = scope.find(params[:id])
   end
 
@@ -51,7 +51,7 @@ class Admin::BalancesController < Admin::BaseController
   # POST /balances.json
   def create
     @balance = scope.new(params[:balance])
-    @routes = current_user.location.routes
+    @routes = current_user.locations.collect(&:routes).flatten
 
     respond_to do |format|
       if @balance.save
@@ -68,7 +68,7 @@ class Admin::BalancesController < Admin::BaseController
   # PUT /balances/1.json
   def update
     @balance = scope.find(params[:id])
-    @routes = current_user.location.routes
+    @routes = current_user.locations.collect(&:routes).flatten
 
     respond_to do |format|
       if @balance.update_attributes(params[:balance])
@@ -97,7 +97,7 @@ class Admin::BalancesController < Admin::BaseController
     if current_user.boss? 
       Balance
     else
-      current_user.location.balances
+      current_user.balances
     end
   end
 end

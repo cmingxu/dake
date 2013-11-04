@@ -34,7 +34,7 @@ class Admin::InBalancesController < Admin::BaseController
   # GET /balances/new.json
   def new
     @balance = Balance.new
-    @routes = current_user.location.routes
+    @routes = current_user.locations.collect(&:routes).flatten.uniq
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +44,7 @@ class Admin::InBalancesController < Admin::BaseController
 
   # GET /balances/1/edit
   def edit
-    @routes = current_user.location.routes
+    @routes = current_user.locations.collect(&:routes).flatten
     @balance = Balance.find(params[:id])
   end
 
@@ -52,11 +52,11 @@ class Admin::InBalancesController < Admin::BaseController
   # POST /balances.json
   def create
     @balance = Balance.new(params[:balance])
-    @routes = current_user.location.routes
+    @routes = current_user.locations.collect(&:routes).flatten
 
     respond_to do |format|
       if @balance.save
-        format.html { redirect_to admin_in_balances_path, notice: 'Balance was successfully created.' }
+        format.html { redirect_to admin_in_balances_path, notice: '收入成功' }
         format.json { render json: @balance, status: :created, location: @balance }
       else
         format.html { render action: "new" }
@@ -69,7 +69,8 @@ class Admin::InBalancesController < Admin::BaseController
   # PUT /balances/1.json
   def update
     @balance = Balance.find(params[:id])
-    @routes = current_user.location.routes
+    @routes = current_user.locations.collect(&:routes).flatten
+
 
     respond_to do |format|
       if @balance.update_attributes(params[:balance])

@@ -1,8 +1,9 @@
 = form_for [:admin, @balance], :class => "form form-horizontal" do |f|
   = hidden_field_tag "balance[cate]", "out"
   = hidden_field_tag "balance[user_id]", current_user.id
-  - if current_user.location
-    = hidden_field_tag "balance[location_id]", current_user.location.id
+  - if current_user.locations.exists?
+    = control_group_helper "支出地点", "支出地点", f.object.errors[:location_id].first do
+      = f.select :location_id, options_from_collection_for_select(current_user.locations, "id", "name", @balance.location_id)
   = control_group_helper "客车牌照", "支出用于车辆，例如： 京A000123", f.object.errors[:paizhao].first do
     = f.select :paizhao, options_from_collection_for_select(@routes, "paizhao", "paizhao", @balance.paizhao)
 

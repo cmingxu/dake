@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   validates :roles, :presence => { :message => "用户角色不能为空" }
 
   has_many :locations
+  has_many :balances
   has_one :huozhan
   has_many :shippings
   has_many :cargos
@@ -36,7 +37,7 @@ class User < ActiveRecord::Base
   end
 
   def caiwu_admin?
-    self.location.present?
+    self.locations.present?
   end
 
   def roles_in_words

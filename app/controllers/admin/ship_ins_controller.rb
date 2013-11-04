@@ -94,7 +94,6 @@ class Admin::ShipInsController < Admin::BaseController
   def daishouhuokuan
     @ship_in = scope.find params[:id]
     @ship_in.shouhuokuan
-    @ship_in.is_daishouhuokuan_fee_paid = true
     @ship_in.save
   
     respond_to do |format|

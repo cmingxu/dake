@@ -2,7 +2,7 @@
   = search_control_group_helper("发货站") do
     = select_tag "search[from]", options_from_collection_for_select(Huozhan.all, "huozhan_name", "huozhan_name", params["search"].fetch("from", "")), :include_blank => true
 
-  = search_control_group_helper("物流单号") do
+  = search_control_group_helper("货运单号") do
     = text_field_tag "search[serial_num]", params["search"]["serial_num"]
 
   #search_form.hide

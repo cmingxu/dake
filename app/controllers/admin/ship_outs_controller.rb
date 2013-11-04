@@ -10,7 +10,7 @@ class Admin::ShipOutsController < Admin::BaseController
     ship_scope = ship_scope.with_receiver_name(params[:search][:receiver_name]) if params[:search][:receiver_name].present?
     ship_scope = ship_scope.with_receiver_tel(params[:search][:receiver_tel]) if params[:search][:receiver_tel].present?
     ship_scope = ship_scope.with_sender_tel(params[:search][:sender_tel]) if params[:search][:sender_tel].present?
-    ship_scope = ship_scope.with_sender_tel(params[:search][:sender_name]) if params[:search][:sender_name].present?
+    ship_scope = ship_scope.with_sender_name(params[:search][:sender_name]) if params[:search][:sender_name].present?
     start_at = Date.strptime(params[:search][:start_at]) if params[:search][:start_at].present?
     end_at   = Date.strptime(params[:search][:end_at]) if params[:search][:end_at].present?
     ship_scope = ship_scope.with_created_at_between(start_at || 3.years.ago, end_at || Time.now)
@@ -115,6 +115,7 @@ class Admin::ShipOutsController < Admin::BaseController
   def fangkuan
     @shipping = scope.find(params[:id])
     @shipping.quhuokuan
+    @shipping.is_daishouhuokuan_fee_paid = true
     @shipping.save
   
     respond_to do |format|

@@ -1,8 +1,8 @@
 - if current_user.boss?
 - else
   - if controller_name == "ship_outs"
-    - if !shipping.is_daishouhuokuan_fee_paid? and shipping.daishouhuokuan_fee > 0
-      = link_to "收物流费", fangkuan_admin_ship_out_path(shipping), :method => :put
+    - if !shipping.is_daishouhuokuan_fee_paid? and (shipping.daishouhuokuan_fee > 0) and shipping.yishouhuokuan?
+      = link_to "放款", fangkuan_admin_ship_out_path(shipping), :method => :put
     = link_to "打印", print_admin_ship_out_path(shipping)
     = link_to "查看", edit_admin_ship_out_path(shipping)
   - elsif controller_name == "ship_ins"
