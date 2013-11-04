@@ -1,6 +1,6 @@
 = render :partial => "admin/widgets/configuration_tab_bar", :locals => { :current_tab => "huoyun_routes" }
 
-= form_for [:admin, @huoyun_route], :url => "form form-horizontal" do |f|
+= form_for [:admin, @huoyun_route], :class => "form form-horizontal" do |f|
 
   = control_group_helper "始发货站", "例如： 呼市，北京，敖汉", f.object.errors[:from_huozhan_id].first do
     = f.select :from_huozhan_id, options_from_collection_for_select(Huozhan.all, "id", "huozhan_name", @huoyun_route.from_huozhan_id)

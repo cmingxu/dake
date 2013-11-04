@@ -48,3 +48,7 @@
 .navbar{
   background-image: "/images/nav_bg.png";
 }
+
+#header .nav li a{
+  color: white;
+}

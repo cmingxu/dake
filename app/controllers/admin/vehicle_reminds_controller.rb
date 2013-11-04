@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Admin::VehicleRemindsController < Admin::BaseController
   before_filter :load_vehicle
 
@@ -10,8 +11,8 @@ class Admin::VehicleRemindsController < Admin::BaseController
   
     respond_to do |format|
       if @vr.save
-        flash[:notice] = '@vehicle.vehicle_reminds was successfully created.'
-        format.html { redirect_to :back }
+        flash[:notice] = '保存成功'
+        format.html { redirect_to admin_vehicle_views_path }
         format.xml  { render :xml => @vr, :status => :created, :location => @vr }
       else
         format.html { render :action => "new" }

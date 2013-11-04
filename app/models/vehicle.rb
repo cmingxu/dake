@@ -5,6 +5,7 @@ class Vehicle < ActiveRecord::Base
 
   validates :leixing, :presence =>  { :message => "类型需填写" }
   validates :xinghao, :presence => { :message => "型号需要填写" }
+  validates :paizhao, :presence => { :message => "拍照需要填写" }
 
 
   has_one :route

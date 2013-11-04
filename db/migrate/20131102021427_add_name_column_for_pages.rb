@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddNameColumnForPages < ActiveRecord::Migration
   def up
     add_column :pages, :name, :string

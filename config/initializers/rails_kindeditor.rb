@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require "rails_kindeditor"
 
 RailsKindeditor.setup do |config|

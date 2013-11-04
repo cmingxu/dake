@@ -3,12 +3,13 @@
 %legend 
   = @vehicle.paizhao
   %span.pull-right
-    = link_to icon_link("hand-left") + "  返回", admin_vehicles_path, :class => "btn"
+    = link_to icon_link("hand-left") + "  返回", admin_vehicle_views_path, :class => "btn"
 
 %table.table.table-stripped#vr
   %thead
     %th 类型
     %th 周期
+    %th 提前提醒
     %th 上次时间
     %th 到期时间
     %th
@@ -17,8 +18,9 @@
     %tr
       %td= vr.remind.name
       %td= vr.remind.repeating
-      %td= vr.happend_at.to_s(:human_zh)
-      %td= (vr.happend_at + vr.remind.repeating.days).to_s(:human_zh)
+      %td= vr.remind.remind
+      %td= vr.happend_at.to_s(:human_zh_year)
+      %td= (vr.happend_at + vr.remind.repeating.days).to_s(:human_zh_year)
       %td
         = link_to icon_link(:trash), admin_vehicle_vehicle_remind_path(@vehicle, vr), :confirm => "此操作会删除,， 确认继续？", :method => :delete
 

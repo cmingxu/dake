@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddColumnsForVehicleReminds < ActiveRecord::Migration
   def change
     add_column :vehicle_reminds, :happend_at, :datetime 
