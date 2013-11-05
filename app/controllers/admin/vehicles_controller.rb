@@ -77,7 +77,7 @@ class Admin::VehiclesController < Admin::BaseController
     @vehicle.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_vehicle_path }
+      format.html { redirect_to admin_vehicles_path }
       format.json { head :no_content }
     end
   end
