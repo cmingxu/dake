@@ -22,3 +22,4 @@
         = link_to icon_link(:search), edit_admin_huozhan_path(huozhan)
         = link_to icon_link(:trash), admin_huozhan_path(huozhan), :confirm => "此操作会删除此货站， 确认继续？", :method => :delete
 
+= paginate @huozhans
