@@ -2,7 +2,7 @@
 class Shipping < ActiveRecord::Base
   DANWEI = %w{箱 包 个 吨 袋 件}.freeze
   STATUS  = %w{}.freeze
-  attr_accessible :baozhi_needed, :daishouhuokuan_fee, :fee, :huowu_amount, :huowu_baozhi, :huowu_beizhu, :huowu_cost, :huowu_danwei, :huowu_name, :is_daishouhuokuan, :is_paid, :receiver_address, :receiver_name, :receiver_tel, :sender_name, :sender_tel, :status, :from_huozhan_id, :to_huozhan_id, :baozhi_fee, :daishouhuokuan_amount
+  attr_accessible :baozhi_needed, :daishouhuokuan_fee, :fee, :huowu_amount, :huowu_baozhi, :huowu_beizhu, :huowu_cost, :huowu_danwei, :huowu_name, :is_daishouhuokuan, :is_paid, :receiver_address, :receiver_name, :receiver_tel, :sender_name, :sender_tel, :status, :from_huozhan_id, :to_huozhan_id, :baozhi_fee, :daishouhuokuan_amount, :is_daishouhuokuan_shouqu
 
   belongs_to :from_huozhan, :class_name => "Huozhan", :foreign_key => "from_huozhan_id"
   belongs_to :to_huozhan, :class_name => "Huozhan", :foreign_key => "to_huozhan_id"

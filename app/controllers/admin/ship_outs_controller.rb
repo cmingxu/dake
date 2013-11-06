@@ -13,7 +13,7 @@ class Admin::ShipOutsController < Admin::BaseController
     ship_scope = ship_scope.with_sender_name(params[:search][:sender_name]) if params[:search][:sender_name].present?
     start_at = Date.strptime(params[:search][:start_at]) if params[:search][:start_at].present?
     end_at   = Date.strptime(params[:search][:end_at]) if params[:search][:end_at].present?
-    ship_scope = ship_scope.with_created_at_between(start_at || 3.years.ago, end_at || Time.now)
+    ship_scope = ship_scope.with_created_at_between(start_at || 3.years.ago, end_at || Time.now + 1.year)
     @shippings = ship_scope.page params[:page]
 
     respond_to do |format|
@@ -59,6 +59,7 @@ class Admin::ShipOutsController < Admin::BaseController
   # POST /shippings.json
   def create
     @shipping = scope.new(params[:shipping])
+    @shipping.is_daishouhuokuan_shouqu = false
 
     respond_to do |format|
       if @shipping.save

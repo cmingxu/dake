@@ -4,6 +4,7 @@ class Admin::ShipInsController < Admin::BaseController
     params[:search] ||= {}
     ship_scope = scope
     ship_scope = ship_scope.with_from_huozhan(params[:search][:from]) if params[:search][:from].present?
+    ship_scope = ship_scope.with_to_huozhan(params[:search][:to]) if params[:search][:to].present?
     ship_scope = ship_scope.with_receiver_tel(params[:search][:receiver_tel]) if params[:search][:receiver_tel].present?
     ship_scope = ship_scope.with_receiver_name(params[:search][:receiver_name]) if params[:search][:receiver_name].present?
     ship_scope = ship_scope.with_receiver_tel(params[:search][:receiver_tel]) if params[:search][:receiver_tel].present?
@@ -94,6 +95,7 @@ class Admin::ShipInsController < Admin::BaseController
   def daishouhuokuan
     @ship_in = scope.find params[:id]
     @ship_in.shouhuokuan
+    @ship_in.is_daishouhuokuan_shouqu = true
     @ship_in.save
   
     respond_to do |format|
@@ -126,6 +128,6 @@ class Admin::ShipInsController < Admin::BaseController
   end
 
   def scope
-    current_user.huozhan.ship_ins.order("updated_at DESC")
+    Shipping
   end
 end

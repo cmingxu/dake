@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131102021427) do
+ActiveRecord::Schema.define(:version => 20131106022228) do
 
   create_table "balances", :force => true do |t|
     t.decimal  "amount",        :precision => 10, :scale => 0
@@ -159,6 +159,7 @@ ActiveRecord::Schema.define(:version => 20131102021427) do
     t.string   "to_huozhan_name"
     t.text     "description"
     t.boolean  "is_daishouhuokuan_fee_paid"
+    t.boolean  "is_daishouhuokuan_shouqu"
   end
 
   add_index "shippings", ["serial_num"], :name => "index_shippings_on_serial_num"

@@ -8,6 +8,8 @@ class Admin::CargoInsController < Admin::BaseController
     cargo_scope = cargo_scope.with_created_at_between(Date.strptime(params[:search].fetch('start_at'), "%Y-%m-%d"), Date.strptime(params[:search].fetch('end_at'), "%Y-%m-%d") )  if params[:search].fetch("start_at", "").present? and params[:search].fetch('end_at',"").present?
     cargo_scope = cargo_scope.with_serial_num(params[:search]['serial_num']) if params[:search]['serial_num'].present?
     cargo_scope = cargo_scope.with_from_huozhan(params[:search]['from']) if params[:search]['from'].present?
+    cargo_scope = cargo_scope.with_to_huozhan(params[:search]['to']) if params[:search]['to'].present?
+    cargo_scope = cargo_scope.order("created_at DESC")
 
     @cargos = cargo_scope.page params[:id]
     respond_to do |format|
@@ -115,7 +117,7 @@ class Admin::CargoInsController < Admin::BaseController
     if current_user.boss?
       current_scope
     else 
-      current_user.huozhan.in_cargos
+      Cargo
     end 
   end
 end
