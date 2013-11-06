@@ -4,9 +4,9 @@
 %table.table.table-bordered
   %tr
     %td 发货站
-    %td{:colspan => 2}= @shipping.from_huozhan_name
+    %td{:colspan => 2}= "#{@shipping.from_huozhan_name} (#{@shipping.from_huozhan.huozhan_tel})"
     %td 收货站
-    %td.bold{:colspan => 2}= @shipping.to_huozhan_name
+    %td.bold{:colspan => 2}= "#{@shipping.to_huozhan_name} (#{@shipping.to_huozhan.huozhan_tel})"
   %tr
     %td 寄件人
     %td{:colspan => 2}= @shipping.sender_name
