@@ -10,7 +10,7 @@ class Admin::BaseController < ApplicationController
 
   def configuration
     if current_user.boss?
-      @locations = Location.page params[:page]
+      @locations = Location.all
       render "boss_configuration"
     end
   end
