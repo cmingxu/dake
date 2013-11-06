@@ -3,7 +3,7 @@ class Admin::OutReasonsController < Admin::BaseController
   # GET /reasons
   # GET /reasons.json
   def index
-    @reasons = Reason.out.page params[:page]
+    @reasons = Reason.out.all
 
     respond_to do |format|
       format.html # index.html.erb

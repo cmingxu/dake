@@ -3,7 +3,7 @@ class Admin::VehiclesController < Admin::BaseController
   # GET /vehicles
   # GET /vehicles.json
   def index
-    @vehicles = Vehicle.all
+    @vehicles = Vehicle.order("paizhao")
 
     respond_to do |format|
       format.html # index.html.erb

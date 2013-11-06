@@ -3,7 +3,7 @@ class Admin::HuozhansController < Admin::BaseController
   # GET /huozhans
   # GET /huozhans.json
   def index
-    @huozhans = Huozhan.page params[:page]
+    @huozhans = Huozhan.all
 
     respond_to do |format|
       format.html # index.html.erb

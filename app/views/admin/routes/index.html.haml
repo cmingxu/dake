@@ -1,7 +1,9 @@
 = render :partial => "admin/widgets/configuration_tab_bar", :locals => { :current_tab => "routes" }
 
 %legend 
-  线路管理
+  线路管理(
+  = @routes.count
+  )
   %span.pull-right
     = link_to icon_link(:plus) + "  新线路", new_admin_route_path
 
@@ -29,7 +31,6 @@
       %td= route.end_when
       %td
         = link_to icon_link(:search), edit_admin_route_path(route)
-        = link_to icon_link(:trash), admin_route_path(route), :confirm => "此操作会删除路线信息,， 确认继续？", :method => :delete
+        =# link_to icon_link(:trash), admin_route_path(route), :confirm => "此操作会删除路线信息,， 确认继续？", :method => :delete
 
 
-= paginate @routes

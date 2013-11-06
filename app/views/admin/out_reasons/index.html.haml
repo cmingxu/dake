@@ -1,7 +1,9 @@
 = render :partial => "admin/widgets/configuration_tab_bar", :locals => { :current_tab => "out_reasons" }
 
 %legend 
-  支出类型
+  支出类型(
+  = @reasons.count
+  )
   %span.pull-right
     = link_to icon_link(:plus) + "  新类型", new_admin_out_reason_path
 
@@ -17,5 +19,5 @@
       %td= reason.details
       %td
         = link_to icon_link(:search), edit_admin_out_reason_path(reason)
-        = link_to icon_link(:trash), admin_out_reason_path(reason), :confirm => "此操作会删除支出类型， 确认继续？", :method => :delete
+        =# link_to icon_link(:trash), admin_out_reason_path(reason), :confirm => "此操作会删除支出类型， 确认继续？", :method => :delete
 

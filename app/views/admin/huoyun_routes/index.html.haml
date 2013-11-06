@@ -1,7 +1,9 @@
 = render :partial => "admin/widgets/configuration_tab_bar", :locals => { :current_tab => "huoyun_routes" }
 
 %legend 
-  物流线路
+  物流线路(
+  = @huoyun_routes.count
+  )
   %span.pull-right
     = link_to icon_link(:plus) + "  新线路", new_admin_huoyun_route_path
 
@@ -21,7 +23,6 @@
       %td= huoyun_route.daohuo_time
       %td
         = link_to icon_link(:search), edit_admin_huoyun_route_path(huoyun_route)
-        = link_to icon_link(:trash), admin_huoyun_route_path(huoyun_route), :confirm => "此操作会删除物流线路？", :method => :delete
+        =# link_to icon_link(:trash), admin_huoyun_route_path(huoyun_route), :confirm => "此操作会删除物流线路？", :method => :delete
  
 
-= paginate @huoyun_routes

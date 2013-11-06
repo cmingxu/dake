@@ -3,8 +3,7 @@ class Admin::RoutesController < Admin::BaseController
   # GET /routes
   # GET /routes.json
   def index
-    @routes = Route.order("updated_at DESC").page params[:page]
-
+    @routes = Route.order("updated_at DESC")
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @routes }

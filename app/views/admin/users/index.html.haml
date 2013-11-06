@@ -1,7 +1,9 @@
 = render :partial => "admin/widgets/configuration_tab_bar", :locals => { :current_tab => "users" }
 
 %legend 
-  用户列表
+  用户列表(
+  = @users.count
+  )
   %span.pull-right
     = link_to icon_link(:plus) + "  新用户", new_admin_user_path
 
@@ -23,8 +25,7 @@
       %td= time_ago_in_words_zh(user.last_sign_in_at || 1.years.ago) + "前"
       %td
         = link_to icon_link(:search), edit_admin_user_path(user)
-        = link_to icon_link(:trash), admin_user_path(user), :confirm => "此操作会删除地点， 确认继续？", :method => :delete
+        =# link_to icon_link(:trash), admin_user_path(user), :confirm => "此操作会删除地点， 确认继续？", :method => :delete
         
 
 
-= paginate @users

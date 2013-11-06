@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class Admin::UsersController < Admin::BaseController
   def index
-    @users = User.page params[:page]
+    @users = User.all
   end
 
   def new

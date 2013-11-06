@@ -3,7 +3,7 @@ class Admin::RemindsController < Admin::BaseController
   # GET /reminds
   # GET /reminds.json
   def index
-    @reminds = Remind.page params[:page]
+    @reminds = Remind.all
 
     respond_to do |format|
       format.html # index.html.erb

@@ -3,7 +3,7 @@ class Admin::HuoyunRoutesController < Admin::BaseController
   # GET /huoyun_routes
   # GET /huoyun_routes.json
   def index
-    @huoyun_routes = HuoyunRoute.page params[:page]
+    @huoyun_routes = HuoyunRoute.all
 
     respond_to do |format|
       format.html # index.html.erb

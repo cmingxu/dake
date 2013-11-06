@@ -1,7 +1,9 @@
 = render :partial => "admin/widgets/configuration_tab_bar", :locals => { :current_tab => "reminds" }
 
 %legend 
-  车辆提醒
+  车辆提醒(
+  = @reminds.count
+  )
   %span.pull-right
     = link_to icon_link(:plus) + "  新提醒", new_admin_remind_path
 
@@ -25,8 +27,7 @@
 
       %td
         = link_to icon_link(:search), edit_admin_remind_path(remind)
-        = link_to icon_link(:trash), admin_remind_path(remind), :confirm => "此操作会删除支出类型， 确认继续？", :method => :delete
+        =# link_to icon_link(:trash), admin_remind_path(remind), :confirm => "此操作会删除支出类型， 确认继续？", :method => :delete
 
 
-= paginate @reminds
 

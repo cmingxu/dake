@@ -1,7 +1,10 @@
 = render :partial => "admin/widgets/configuration_tab_bar", :locals => { :current_tab => "vehicles" }
 
 %legend 
-  车辆
+  车辆(
+  = @vehicles.count
+  )
+
   %span.pull-right
     = link_to icon_link(:plus) + "  新车辆", new_admin_vehicle_path
 %table.table.table-stripped
@@ -19,4 +22,4 @@
       %td= vehicle.leixing
       %td
         = link_to icon_link(:search), edit_admin_vehicle_path(vehicle)
-        = link_to icon_link(:trash), admin_vehicle_path(vehicle), :confirm => "此操作会删除车辆,， 确认继续？", :method => :delete
+        =# link_to icon_link(:trash), admin_vehicle_path(vehicle), :confirm => "此操作会删除车辆,， 确认继续？", :method => :delete
