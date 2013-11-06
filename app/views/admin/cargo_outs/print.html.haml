@@ -1,3 +1,11 @@
+#print_title
+  = "#{@cargo_out.from_huozhan_name} - #{@cargo_out.to_huozhan_name}货物详单(#{@cargo_out.serial_num})"
+
+%p.pull-left
+  = @cargo_out.created_at.to_s(:human_zh_year)
+
+%p.pull-right
+  = "#{@cargo_out.paizhao} #{@cargo_out.siji} #{@cargo_out.tel}"
 %table.table.table-bordered
   %thead
     %th 单号
@@ -15,7 +23,7 @@
 
   - @shippings.each do |shipping|
     %tr
-      %td= link_to shipping.serial_num, edit_admin_ship_out_path(shipping)
+      %td= shipping.serial_num
       %td= shipping.from_huozhan.huozhan_name
       %td= "#{shipping.sender_name} #{shipping.sender_tel}"
       %td= "#{shipping.receiver_name} #{shipping.receiver_tel}"
