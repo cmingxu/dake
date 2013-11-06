@@ -1,10 +1,13 @@
 # -*- encoding : utf-8 -*-
 Dake::Application.routes.draw do
+
+
   get "vehicle_reminds/index"
 
   resources :bugs
 
   namespace :admin do
+    resources :drivers
     resources :vehicle_views, :only => [:index]
     resources :vehicles do
       resources :vehicle_reminds

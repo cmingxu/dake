@@ -1,0 +1,33 @@
+%legend
+  人员(
+  = @drivers.count
+  )
+  %span.pull-right
+    = link_to icon_link(:plus) + "  录入人员", new_admin_driver_path
+%table.table.table-stripped
+  %thead
+    %th 职能
+    %th 姓名
+    %th 年龄
+    %th 电话
+    %th 工资
+    %th 入职时间
+    %th 合同到期时间
+    %th 家庭住址
+    %th
+
+  - @drivers.each do |driver|
+    %tr
+      %td= driver.duty
+      %td= driver.name
+      %td= driver.age
+      %td= driver.phone
+      %td= driver.salary
+      %td= driver.start_date
+      %td= driver.end_date
+      %td= driver.address
+      %td
+        = link_to icon_link(:search), edit_admin_driver_path(driver)
+        = link_to icon_link(:trash), admin_driver_path(driver), :confirm => "此操作会删除人员信息,， 确认继续？", :method => :delete
+
+

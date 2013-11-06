@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @driver.name
+%p
+  %b Age:
+  = @driver.age
+%p
+  %b Phone:
+  = @driver.phone
+%p
+  %b Address:
+  = @driver.address
+%p
+  %b Salary:
+  = @driver.salary
+%p
+  %b Start date:
+  = @driver.start_date
+%p
+  %b End date:
+  = @driver.end_date
+%p
+  %b Description:
+  = @driver.description
+
+= link_to 'Edit', edit_driver_path(@driver)
+\|
+= link_to 'Back', drivers_path

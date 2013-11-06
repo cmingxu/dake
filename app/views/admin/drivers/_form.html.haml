@@ -1,0 +1,21 @@
+= form_for [:admin, @driver], :class => "form form-horizontal" do |f|
+  = control_group_helper "职能", "例如: 司机，会计", f.object.errors[:duty].first do
+    = f.select :duty, options_for_select(Driver::DUTY, @driver.duty)
+  = control_group_helper "姓名", "例如: 张三", f.object.errors[:name].first do
+    = f.text_field :name, :class => "input-xxlarge"
+  = control_group_helper "年龄", "例如: 40", f.object.errors[:age].first do
+    = f.text_field :age, :class => "input-xxlarge"
+  = control_group_helper "联系电话", "例如: 13912344321", f.object.errors[:phone].first do
+    = f.text_field :phone, :class => "input-xxlarge"
+  = control_group_helper "家庭住址","例如: 敖汉长胜", f.object.errors[:address].first do
+    = f.text_field :address, :class => "input-xxlarge"
+  = control_group_helper "工资", "例如: 3000, 每趟400", f.object.errors[:salary].first do
+    = f.text_field :salary, :class => "input-xxlarge"
+  = control_group_helper "入职时间", "例如: 2012/12/1", f.object.errors[:start_date].first do
+    = f.text_field :start_date, :class => "input-xxlarge date"
+  = control_group_helper "合同到期时间", "例如: 2015/12/1", f.object.errors[:end_date].first do
+    = f.text_field :end_date, :class => "input-xxlarge date"
+  = control_group_helper "备注", "例如: 介绍人是xxx", f.object.errors[:description].first do
+    = f.text_area :description, :class => "input-xxlarge"
+  .actions
+    = f.submit '保存', :class => "btn btn-primary"
