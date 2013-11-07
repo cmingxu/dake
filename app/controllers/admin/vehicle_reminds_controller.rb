@@ -12,7 +12,7 @@ class Admin::VehicleRemindsController < Admin::BaseController
     respond_to do |format|
       if @vr.save
         flash[:notice] = '保存成功'
-        format.html { redirect_to admin_vehicle_views_path }
+        format.html { redirect_to admin_vehicle_vehicle_reminds_path(@vehicle) }
         format.xml  { render :xml => @vr, :status => :created, :location => @vr }
       else
         format.html { render :action => "new" }
