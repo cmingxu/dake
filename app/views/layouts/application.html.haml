@@ -9,12 +9,14 @@
   %body{:class=>controller_name}
     - if Setting.easy_login_enable
       = render :partial => "layouts/user_list"
+    #user_agent_warnning
     .container#header
       %h1= Setting.site_name
       %ul.nav.pull-right
-        %li= link_to "网站首页", root_path
+        %li= link_to icon_link(:home, "white") + "网站首页", root_path
         - if user_signed_in?
-          %li= link_to current_user.name, admin_dashboard_path
+          %li= link_to icon_link(:user, "white") + current_user.name, admin_dashboard_path
+          %li= link_to icon_link(:wrench, "white") + "修改密码", change_path
           %li= link_to "退出系统", destroy_user_session_path, :method => :delete
 
 
@@ -36,4 +38,13 @@
         由cming.xu@gmail.com制作, 有问题请点击
 
         = link_to "这里", new_bug_path
-    
+
+    :javascript
+      $(document).ready(function(){
+        if(!navigator.userAgent.match(/chrome/i)){
+          var user_agent_suggestion = "<div class='alert alert-info'>为了达到更好的显示效果， 推荐您使用"
+            + "<a href='http://www.google.cn/intl/zh-CN/chrome/browser/?installdataindex=chinabookmarkcontrol&brand=CHUN' class='label' target='_blank'>Chrome浏览器</a></div>";
+            $("#user_agent_warnning").html(user_agent_suggestion);
+          }
+          });
+  

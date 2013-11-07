@@ -82,6 +82,8 @@ Dake::Application.routes.draw do
   match "sign_as" => "welcome#sign_as"
   match "routes" => "welcome#routes"
   match "huoyun_routes" => "welcome#huoyun_routes"
+  match "change" => "admin/users#password"
+  match "change_password" => "admin/users#change_password"
 
 
   # The priority is based upon order of creation:

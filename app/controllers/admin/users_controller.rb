@@ -44,4 +44,35 @@ class Admin::UsersController < Admin::BaseController
       end
     end
   end
+
+  def password
+  end
+
+  def change_password
+    @user = User.find_by_id(params[:id]) || current_user
+    @user.password = params[:password]
+    @user.password_confirmation = params[:password_confirmation]
+    notice = ""
+    if params[:password].blank?
+      notice = "密码不能空"
+    end
+
+    if params[:password] != params[:password_confirmation]
+      notice = "两次密码不一致" 
+    end
+
+    if notice.blank?
+      if @user.save
+        notice = "密码修改成功"
+      else
+        notice = "密码修改失败"
+      end
+    end
+
+    if params[:id]
+      redirect_to admin_users_path, :notice => notice
+    else
+      redirect_to admin_dashboard_path, :notice => notice
+    end
+  end
 end

@@ -61,7 +61,7 @@
 
 :javascript
   $(document).ready(function(){
-    if(!navigator.userAgent.match(/Chrome/)){
+    if(!navigator.userAgent.match(/chrome/i)){
       var user_agent_suggestion = "<div class='alert alert-info'>为了达到更好的显示效果， 推荐您使用"
         + "<a href='http://www.google.cn/intl/zh-CN/chrome/browser/?installdataindex=chinabookmarkcontrol&brand=CHUN' class='label' target='_blank'>Chrome浏览器</a></div>";
         $("#user_agent_warnning").html(user_agent_suggestion);

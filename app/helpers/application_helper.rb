@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 module ApplicationHelper
-  def icon_link(what)
-    raw "<i class = 'icon-#{what.to_s}'></i>"
+  def icon_link(what, color="")
+    raw "<i class = 'icon-#{what.to_s} icon-#{color}'></i>"
   end
 
   def search_control_group_helper(label_name,  &block)
