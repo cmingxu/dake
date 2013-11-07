@@ -18,4 +18,7 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
+every 1.day do
+  rake "backup"
+end
 # Learn more: http://github.com/javan/whenever
