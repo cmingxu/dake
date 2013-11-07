@@ -1,0 +1,31 @@
+%h1 Listing item_records
+
+%table
+  %tr
+    %th Item
+    %th User
+    %th Num
+    %th Usage type
+    %th Price
+    %th Vehicle
+    %th Reason
+    %th
+    %th
+    %th
+
+  - @item_records.each do |item_record|
+    %tr
+      %td= item_record.item_id
+      %td= item_record.user_id
+      %td= item_record.num
+      %td= item_record.usage_type
+      %td= item_record.price
+      %td= item_record.vehicle_id
+      %td= item_record.reason
+      %td= link_to 'Show', item_record
+      %td= link_to 'Edit', edit_item_record_path(item_record)
+      %td= link_to 'Destroy', item_record, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Item record', new_item_record_path

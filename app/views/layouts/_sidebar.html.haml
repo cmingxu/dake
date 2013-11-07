@@ -4,10 +4,12 @@
   - if current_user.boss?
     %li.shippings
       = link_to icon_link(:heart) + " 物流管理", admin_shippings_path
-    %li.vehicles
+    %li.vehicle_views
       = link_to icon_link(:heart) + " 车辆管理", admin_vehicle_views_path
-    %li.vehicles
+    %li.drivers
       = link_to icon_link(:heart) + " 人员管理", admin_drivers_path
+    %li.items
+      = link_to icon_link(:heart) + " 库存管理", admin_items_path
     %li.balances
       = link_to icon_link(:heart) + " 支出管理", admin_balances_path
     %li.in_balances

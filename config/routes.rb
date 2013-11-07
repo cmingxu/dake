@@ -7,6 +7,10 @@ Dake::Application.routes.draw do
   resources :bugs
 
   namespace :admin do
+    resources :items do
+      resources :item_records
+    end
+
     resources :drivers
     resources :vehicle_views, :only => [:index]
     resources :vehicles do
