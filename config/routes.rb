@@ -8,7 +8,10 @@ Dake::Application.routes.draw do
 
   namespace :admin do
     resources :items do
-      resources :item_records
+      resources :item_records do
+        get :ruku
+        get :chuku
+      end
     end
 
     resources :drivers

@@ -12,7 +12,10 @@
     %th 牌照
     %th 型号
     %th 类型
-    %th 
+    %th 路线
+    %th 司机姓名
+    %th 随车电话
+    %th
 
   - @vehicles.each do |vehicle|
     %tr
@@ -20,6 +23,9 @@
         = link_to vehicle.paizhao, admin_vehicle_vehicle_reminds_path(vehicle)
       %td= vehicle.xinghao
       %td= vehicle.leixing
+      %td= vehicle.route.try(:friendly_name)
+      %td= vehicle.route.try(:driver_names)
+      %td= vehicle.route.try(:mobile)
       %td
         = link_to icon_link(:search), edit_admin_vehicle_path(vehicle)
         =# link_to icon_link(:trash), admin_vehicle_path(vehicle), :confirm => "此操作会删除车辆,， 确认继续？", :method => :delete

@@ -22,7 +22,7 @@
       %td
         = link_to icon_link(:search), edit_admin_item_path(item)
         = link_to icon_link(:trash), admin_item_path(item), :confirm => "此操作会删除物品,， 确认继续？", :method => :delete
-        = link_to icon_link("arrow-up"), new_admin_item_item_record_path(item, :usage_type => "in")
-        = link_to icon_link("arrow-down"), new_admin_item_item_record_path(item, :usage_type => "out")
+        = link_to icon_link("arrow-up"), ruku_admin_item_item_record_path(item, :usage_type => "in")
+        = link_to icon_link("arrow-down"), chuku_admin_item_item_record_path(item, :usage_type => "out")
 
 = paginate @items
