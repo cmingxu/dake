@@ -12,6 +12,7 @@ class Vehicle < ActiveRecord::Base
 
   has_many :vehicle_reminds
   has_many :reminds, :through => :vehicle_reminds
+  has_many :balances, :foreign_key => "paizhao"
 
   def remind_results
     Remind.all.map do |remind|

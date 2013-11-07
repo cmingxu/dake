@@ -61,8 +61,16 @@ Dake::Application.routes.draw do
       end
     end
     resources :out_reasons
-    resources :balances
-    resources :in_balances
+    resources :balances do
+      collection do
+        get :vehicle_balances
+      end
+    end
+    resources :in_balances do
+      collection do
+        get :vehicle_in_balances
+      end
+    end
 
     get "dashboard" => "base#dashboard"
     get "configuration" => "base#configuration"

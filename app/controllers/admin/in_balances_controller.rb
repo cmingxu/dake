@@ -19,6 +19,18 @@ class Admin::InBalancesController < Admin::BaseController
     end
   end
 
+  def vehicle_in_balances
+    @vehicle = Vehicle.find_by_paizhao params[:paizhao]
+    @current_tab = "in_balances"
+    balance_scope = Balance.with_paizhao params[:paizhao]
+    @balances = balance_scope.in.page(params[:page]).order("created_at DESC")
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @balances }
+    end
+  end
+
   # GET /balances/1
   # GET /balances/1.json
   def show
