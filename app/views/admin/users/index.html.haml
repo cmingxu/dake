@@ -13,6 +13,8 @@
     %th 姓名
     %th 联系方式
     %th 身份
+    %th 负责地点 
+    %th 负责货站
     %th 最后登录时间
     %th
 
@@ -22,6 +24,8 @@
       %td= user.name
       %td= user.mobile
       %td= user.roles_in_words
+      %td= raw user.locations.collect(&:name).join("<br> ")
+      %td= user.huozhan.try(:huozhan_name)
       %td= time_ago_in_words_zh(user.last_sign_in_at || 1.years.ago) + "前"
       %td
         = link_to icon_link(:search), edit_admin_user_path(user)
