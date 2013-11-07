@@ -4,7 +4,7 @@ class Admin::ItemRecordsController < Admin::BaseController
   # GET /item_records
   # GET /item_records.json
   def index
-    @item_records = ItemRecord.all
+    @item_records = @item.item_records.page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -23,23 +23,12 @@ class Admin::ItemRecordsController < Admin::BaseController
     end
   end
 
-  def ruku
-    @item_record = @item.item_records.new(:user_id => current_user.id, :usage_type => "in")
-
+  def new
+    @item_record = @item.item_records.new(:user_id => current_user.id, :usage_type => params[:usage_type])
+  
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @item_record }
-    end
-  end
-
-  # GET /item_records/new
-  # GET /item_records/new.json
-  def chuku
-    @item_record = @item.item_records.new(:user_id => current_user.id, :usage_type => "out")
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @item_record }
+      format.xml  { render :json => @item_record }
     end
   end
 
@@ -87,7 +76,7 @@ class Admin::ItemRecordsController < Admin::BaseController
     @item_record.destroy
 
     respond_to do |format|
-      format.html { redirect_to item_records_url }
+      format.html { redirect_to admin_item_item_records_url(@item) }
       format.json { head :no_content }
     end
   end

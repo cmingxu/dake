@@ -8,10 +8,7 @@ Dake::Application.routes.draw do
 
   namespace :admin do
     resources :items do
-      resources :item_records do
-        get :ruku
-        get :chuku
-      end
+      resources :item_records
     end
 
     resources :drivers
@@ -72,7 +69,7 @@ Dake::Application.routes.draw do
   end
 
   devise_for :users
-  
+
 
   get "welcome/index"
   get "welcome/about"
