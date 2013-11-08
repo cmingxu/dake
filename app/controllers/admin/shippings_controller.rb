@@ -4,7 +4,7 @@ class Admin::ShippingsController < Admin::BaseController
   def index
     params[:search] ||= {}
     ship_scope = Shipping.scoped
-    ship_scope = shiship_scope.with_from_huozhan(params[:search][:from]) if params[:search][:from].present?
+    ship_scope = ship_scope.with_from_huozhan(params[:search][:from]) if params[:search][:from].present?
 
     ship_scope = ship_scope.with_to_huozhan(params[:search][:to]) if params[:search][:to].present?
     ship_scope = ship_scope.with_receiver_tel(params[:search][:receiver_tel]) if params[:search][:receiver_tel].present?
