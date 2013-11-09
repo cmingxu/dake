@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Admin::VehicleViewsController < ApplicationController
   def index
-    @vehicles = Vehicle.all
+    @vehicles = Vehicle.includes(:vehicle_reminds)
   end
 end

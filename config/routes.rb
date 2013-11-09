@@ -6,7 +6,14 @@ Dake::Application.routes.draw do
 
   resources :bugs
 
+
   namespace :admin do
+    resources :item_records do
+      collection do
+        get :vehicle_item_records
+      end
+    end
+
     resources :items do
       resources :item_records
     end

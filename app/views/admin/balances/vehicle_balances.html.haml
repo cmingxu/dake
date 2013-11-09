@@ -1,9 +1,6 @@
-= render :partial => "admin/widgets/", :locals => { :path => admin_balances_path, :reasons => Reason.out }
+= render :partial => "admin/widgets/vehicle_tab_bar", :locals => { :current_tab => "balances" }
 %legend 
   支出列表
-  - if current_user.agent?
-    %span.pull-right
-      = link_to icon_link(:plus) + "  新支出", new_admin_balance_path
 
 
 %table.table.table-stripped

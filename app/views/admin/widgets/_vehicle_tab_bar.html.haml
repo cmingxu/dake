@@ -7,4 +7,4 @@
     %li{"class" => current_tab == "balances" ? "active" : ""}
       = link_to icon_link(:heart) + " 支出", vehicle_balances_admin_balances_path(:paizhao => @vehicle.paizhao)
     %li{"class" => current_tab == "items" ? "active" : ""}
-      = link_to icon_link(:heart) + " 消耗", admin_vehicle_views_path
+      = link_to icon_link(:heart) + " 消耗", vehicle_item_records_admin_item_records_path(:paizhao => @vehicle.paizhao)

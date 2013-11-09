@@ -1,10 +1,20 @@
 # -*- encoding : utf-8 -*-
 class Admin::ItemRecordsController < Admin::BaseController
-  before_filter :load_item
+  before_filter :load_item, :except => [:vehicle_item_records]
   # GET /item_records
   # GET /item_records.json
   def index
     @item_records = @item.item_records.page params[:page]
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @item_records }
+    end
+  end
+
+  def vehicle_item_records
+    @vehicle = Vehicle.find_by_paizhao params[:paizhao]
+    @item_records = @vehicle.item_records
 
     respond_to do |format|
       format.html # index.html.erb
