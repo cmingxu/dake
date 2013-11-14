@@ -16,7 +16,7 @@ chifeng = User.create! :name => "赤峰管理员", :login => "chifeng_admin", :p
 aohan   = User.create! :name => "敖汉管理员", :login => "aohan_admin", :password => "adminadmin", :password_confirmation => "adminadmin", :email => "hushia_dmin@admin.com", :roles => ["agent"], :mobile => "13812345678"
 datong  = User.create! :name => "大同管理员", :login => "datong_admin", :password => "adminadmin", :password_confirmation => "adminadmin", :email => "hushia_dmin@admin.com", :roles => ["agent"], :mobile => "13812345678"
 beijing = User.create! :name => "北京管理员", :login => "beijing_admin", :password => "adminadmin", :password_confirmation => "adminadmin", :email => "hushia_dmin@admin.com", :roles => ["agent"], :mobile => "13812345678"
-tongliao = User.create! :name => "北京管理员", :login => "tongliao_admin", :password => "adminadmin", :password_confirmation => "adminadmin", :email => "hushia_dmin@admin.com", :roles => ["agent"], :mobile => "13812345678"
+tongliao = User.create! :name => "通辽管理员", :login => "tongliao_admin", :password => "adminadmin", :password_confirmation => "adminadmin", :email => "hushia_dmin@admin.com", :roles => ["agent"], :mobile => "13812345678"
 
 naman   = User.create! :name => "奈曼管理员", :login => "naman_admin", :password => "adminadmin", :password_confirmation => "adminadmin", :email => "hushia_dmin@admin.com", :roles => ["agent"], :mobile => "13812345678"
 chengde = User.create! :name => "承德管理员", :login => "chengde_admin", :password => "adminadmin", :password_confirmation => "adminadmin", :email => "hushia_dmin@admin.com", :roles => ["agent"], :mobile => "13812345678"
@@ -111,8 +111,8 @@ def rand_balance
    b = Balance.new
    b.amount = 10000 * rand()
    u = User.all.select{|u| u.agent? }.sample
-   l = u.location
-   r = u.location.routes.sample
+   l = u.locations.first
+   r = u.locations.first.routes.sample
    return unless r
    reason = Reason.out.all.sample
 

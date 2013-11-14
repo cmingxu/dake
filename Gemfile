@@ -31,7 +31,7 @@ gem 'rvm-capistrano'
 gem 'settingslogic'
 gem 'kaminari'
 gem 'awesome_print', :require => "ap"
-
+gem 'sqlite3', '1.3.7'
 
 group :development, :test do
   gem 'rspec-rails'
