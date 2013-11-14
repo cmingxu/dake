@@ -14,15 +14,15 @@
 ActiveRecord::Schema.define(:version => 20131107071738) do
 
   create_table "balances", :force => true do |t|
-    t.decimal  "amount",        :precision => 10, :scale => 0
+    t.decimal  "amount"
     t.integer  "user_id"
     t.string   "paizhao"
     t.string   "location_id"
     t.string   "reason"
     t.string   "detail_reason"
     t.text     "desc"
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "route_id"
     t.string   "cate"
   end
@@ -95,13 +95,13 @@ ActiveRecord::Schema.define(:version => 20131107071738) do
   create_table "item_records", :force => true do |t|
     t.integer  "item_id"
     t.integer  "user_id"
-    t.integer  "num"
+    t.integer  "num",        :limit => 255
     t.string   "usage_type"
     t.integer  "price"
     t.string   "vehicle_id"
     t.text     "reason"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "items", :force => true do |t|

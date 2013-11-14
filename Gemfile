@@ -2,8 +2,9 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-
-gem 'mysql2'
+group :production do
+  gem 'mysql2'
+end
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -31,6 +32,7 @@ gem 'settingslogic'
 gem 'kaminari'
 gem 'awesome_print', :require => "ap"
 
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
@@ -39,6 +41,7 @@ group :development, :test do
   gem 'magic_encoding'
   gem 'newrelic_rpm'
   gem 'rails_best_practices'
+  gem 'sqlite3', '1.3.7'
 end
 
 gem 'disqus'
