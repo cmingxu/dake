@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.13'
 
 group :production do
-  gem 'mysql2'
+  gem 'mysql2', '0.3.11'
 end
 
 group :assets do
