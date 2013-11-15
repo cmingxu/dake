@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+  <meta name="author" content="北京麦浪科技有限公司" />
+  <meta name="copyright" content="Copyright (c) 2010-2010 Mylood. All rights reserved." />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Language" content="utf-8" />
+  <meta name="keywords" content=<%= @metak || "麦浪科技有限公司" %> />
+  <meta name="description" content=<%= @metad || "北京麦浪科技有限公司，专业的中小型电子商务解决方案提供商" %> />
+  <link rel="bookmark" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+
+  <title>麦浪科技有限公司</title>
+  <%= stylesheet_link_tag 'insub.css', :media => 'screen, projection'%>
+  <%= stylesheet_link_tag 'mylood.css', :media => 'screen, projection'%>
+  <%= stylesheet_link_tag 'nav.css', :media => 'screen, projection'%>
+  <%= stylesheet_link_tag 'slideshow.css', :media => 'screen, projection'%>
+  
+  <%= javascript_include_tag "jquery-1.4.3.min" %>
+  <%= javascript_include_tag 'nivo.slider.pack' %>
+  <%= javascript_include_tag 'mylood' %>
+  
+
+</head>
+<body>
+  <div id="header">
+    <div id="logo"><a href="/">&nbsp;</a></div>
+    <div id="header_right">
+      <img src="../images/free_tel.jpg" alt="麦浪科技">
+    </div>
+
+    <div id="mynav">
+      <ul>
+        <li><a href="/"><span>首 页</span></a></li>
+        <li><a href="/welcome/info"><span>独立网站</span></a></li>
+        <li><a href="/welcome/about"><span>关于我们</span></a></li>
+      </ul>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div id="content">
+    <%= yield :layout %>
+    <div class="clear"></div>
+  </div>
+  <div id="footer">
+    <div class="footer_left">
+    <div class="nav_footer">
+      <a href="#">关于麦浪</a> |
+      <a href="#">联系我们</a> |
+           <a href="/news">麦浪新闻</a> |
+                         <a href="/44.html">法律声明</a> |
+          <a href="#">网站地图</a> | 
+            <a href="/1264.html">友情链接</a>
+    </div>
+    <p class="copyright">北京麦浪科技 版权所有 京ICP备10215661 &nbsp;&nbsp;&nbsp;&nbsp;© 2011-2012 Mylood.com. All rights reserved.</p>
+    </div>
+    <div class="footer_right">
+      <p>提供专业的<span>海外网站推广</span>、<span>海外网站建设</span>、<span>海外营销策略</span>等</p>
+      <p>一站式<span>海外整合营销推广</span>方案</p>
+    </div>
+  </div>
+</body>
+</html>
