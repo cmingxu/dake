@@ -11,10 +11,10 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'compass-rails'
   gem 'uglifier', '>= 1.0.3'
-  gem 'twitter-bootstrap-rails'
+  gem 'twitter-bootstrap-rails', '2.2.6'
   gem 'font-awesome-rails'
   gem 'bootstrap-wysihtml5-rails'
-  gem 'bootstrap-sass'
+  gem 'bootstrap-sass', '<= 2.3.2.0'
   gem "highcharts-rails", "~> 3.0.5"
 end
 
@@ -45,6 +45,5 @@ group :development, :test do
 end
 
 gem 'disqus'
-gem 'thin'
 gem 'state_machine'
 
