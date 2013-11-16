@@ -2,7 +2,7 @@
 class VehicleRemind < ActiveRecord::Base
   attr_accessible :remind_id, :vehicle_id, :happend_at, :description
   default_scope order("happend_at ASC")
-  validates :happened_at, :presence => { :message => "时间不能为空" }
+  validates :happend_at, :presence => { :message => "时间不能为空" }
 
   belongs_to :remind
   belongs_to :vehicle
