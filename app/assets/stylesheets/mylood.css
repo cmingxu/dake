@@ -272,10 +272,11 @@ hr.Mylood_hr{ width:45px; border:none; height:2px; background-color:#13609D;}
 .custom_h2_title{margin: 0px 0px 10px 0px; height:30px; width:560px; overflow: hidden; float: left; }
 .custom_h4_title{ margin:25px 0; height:20px; }
 
-.ectable_table{ border: 1px solid #ededed; width: 635px; }
-.ectable_table th{ border: 1px solid #ededed; height: 40px; line-height:40px; color: #fff; text-align: center; text-shadow: #1b83d8 1px 1px 1px; background: url(../images/ectable_bg.png) repeat-x; }
-.ectable_table td{ border: 1px solid #ededed; padding:10px 0; text-align: center; color: #000;}
+.ectable_table{ border: 1px solid #ededed; width: 100%;}
+.ectable_table th{ border: 1px solid #ededed; color: #fff; text-align: center; text-shadow: #1b83d8 1px 1px 1px; background: url(../images/ectable_bg.png) repeat-x; }
+.ectable_table td{ border: 1px solid #ededed; padding:10px 0; color: #000; text-align: center;}
 .ectable_table .odd_mod{ background-color:#f5f8fc;} 
+.ectable_table td.routes{ text-align: left;}
 
 .ectable_case{}
 .ectable_case_item{ float: left; margin: 0px 10px 10px 0px; background:#f8f8f8; border:1px solid #ededed; padding:10px 10px 0 10px}
