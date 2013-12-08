@@ -15,20 +15,12 @@ $(document).ready(function() {
   <h3>我们提供的服务</h3>
   <div class="index_commend">
   <div class="commend_mod mod_export_new">  
-      <h4 class="mod_title"><a href="#">专业商品图片拍摄</a></h4>
-      <p>专业影棚专业摄影师，国际标准图片，用途广泛。</p>
+      <h4 class="mod_title"><a href="#">方便的客运服务</a></h4>
+      <p>公司拥有大客车近百辆，客运网络覆盖北京，济南，天津，呼市以及内蒙古多个省市。</p>
     </div>
   <div class="commend_mod mod_ppc_new"> 
-      <h4 class="mod_title"><a href="#">淘宝拍拍多渠道铺货</a></h4>
-      <p>淘宝, 拍拍, 天猫等零售批发平台，销量迅速增加，成本不增加。</p>
-    </div>
-  <div class="commend_mod mod_table_new"> 
-      <h4 class="mod_title"><a href="#">翻译商品上外贸平台</a></h4>
-      <p>替您翻译产品，铺货到速卖通等10多家外贸批发零售平台!</p>
-    </div>
-  <div class="commend_mod mod_seo_new"> 
-      <h4 class="mod_title"><a href="#">代您运营销售</a></h4>
-      <p>精通电子商务专业人员替您运营销售，仅在卖出东西后收取适量提成。</p>
+      <h4 class="mod_title"><a href="#">快捷的物流服务</h4>
+      <p>为您提供快捷的物流服务， 公司拥有多网点, 并且可提供代收货款服务</p>
     </div>
   </div>
 </div>
@@ -40,28 +32,3 @@ $(document).ready(function() {
 </div>
 
 
-<section class="index_case"> 
-    <span id="JS_indexCasePrev" class="btn prev"></span>
-  <div id="JS_indexCase" class="case_list" style="overflow: hidden; position: relative; z-index: 2; width: 875px; height: 55px; ">
-    <ul style="overflow: hidden; position: relative; z-index: 1; width: 4725px; left: -525px; ">
-      <li><img src="../images/scroll/index_logo_15.jpg" alt="赤峰金刚辉腾物流"></li>
-      <li><img src="../images/scroll/index_logo_16.jpg" alt="赤峰金刚辉腾物流"></li>
-      <li><img src="../images/scroll/index_logo_6.jpg" alt="赤峰金刚辉腾物流"></li>
-      <li><img src="../images/scroll/index_logo_14.jpg" alt="赤峰金刚辉腾物流"></li>
-      <li><img src="../images/scroll/index_logo_12.jpg" alt="赤峰金刚辉腾物流"></li>
-      <li><img src="../images/scroll/index_logo_5.jpg" alt="赤峰金刚辉腾物流"></li>
-      <li><img src="../images/scroll/index_logo_4.jpg" alt="赤峰金刚辉腾物流"></li>
-      <li><img src="../images/scroll/index_logo_10.jpg" alt="赤峰金刚辉腾物流"></li>
-      <li><img src="../images/scroll/index_logo_18.jpg" alt="赤峰金刚辉腾物流"></li>
-    </ul>
-  </div>
-    <span id="JS_indexCaseNext" class="btn next"></span> 
-</section>
-<script type="text/javascript">
-/*scroll*/
-  $.fn.Scroll=function(b,k){if(!b){var b={}}var g=$(this);var a=$(b.next);var i=$(b.prev);var d=g.children("ul");speed:500;var c=g.find("li:first").outerWidth(true);var j=g.find("li:first").outerHeight(true);c=c?c:0;j=j?j:0;var l=d.find("li:visible").size();g.css({overflow:"hidden",position:"relative","z-index":"2"});d.css({overflow:"hidden",position:"relative","z-index":"1",left:"0"});if(b.vertical){g.width(c);g.height(b.visible*j)}else{d.width(l*c);g.width(b.visible*c);g.height(j)}var h=0;i.addClass("unclick_prev");a.removeClass("unclick_next");if(b.visible>=l){a.addClass("unclick_next")}speed=b.speed?parseInt(b.speed,10):500;var f=function(){if(b.vertical){if((b.visible*j-h)<l*j){h=h-j;d.animate({top:h},speed);if((b.visible*j-h)>=l*j){a.addClass("unclick_next")}if(h<0){i.removeClass("unclick_prev")}}}else{if((b.visible*c-h)<l*c){h=h-c;var n=parseInt((-h)/c);var m=n+b.visible;d.animate({left:h},speed);if((b.visible*c-h)>=l*c){a.addClass("unclick_next")}if(h<0){i.removeClass("unclick_prev")}}}};var e=function(){if(b.vertical){if(h<0){h=h+j;d.animate({top:h},speed);if((b.visible*j-h)<l*j){a.removeClass("unclick_next")}if(h>=0){i.addClass("unclick_prev")}}}else{if(h<0){h=h+c;var n=parseInt((-h)/c);var m=n+b.visible;d.animate({left:h},speed);if((b.visible*c-h)<l*c){a.removeClass("unclick_next")}if(h>=0){i.addClass("unclick_prev")}}}};a.unbind().bind("click",f).bind("mouseover",function(){a.addClass("mover_next")}).bind("mouseout",function(){a.removeClass("mover_next")});i.unbind().bind("click",e).bind("mouseover",function(){i.addClass("mover_prev")}).bind("mouseout",function(){i.removeClass("mover_prev")})};
-
-  $("#JS_indexCase").Scroll({visible:5,next:"#JS_indexCaseNext",prev:"#JS_indexCasePrev"});
-  $("#JS_indexCase li").hover(function(){
-    $(this).find("img").attr("src",$(this).find("img").attr("src").replace(".jpg","_hover.jpg"))},function(){$(this).find("img").attr("src",$(this).find("img").attr("src").replace("_hover.jpg",".jpg"))});
-</script>

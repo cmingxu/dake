@@ -90,6 +90,9 @@ Dake::Application.routes.draw do
   get "welcome/about"
   get "welcome/contact"
   get "welcome/job"
+  get "welcome/links"
+  get "welcome/news"
+  get "welcome/term"
   get "welcome/dashboard"
 
   resources :foos

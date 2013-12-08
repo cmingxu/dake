@@ -32,6 +32,18 @@ class WelcomeController < ApplicationController
     @page = Page.find_by_slug "contact"
   end
 
+  def news
+    @page = Page.find_by_slug "news"
+  end
+
+  def links
+    @page = Page.find_by_slug "links"
+  end
+
+  def term
+    @page = Page.find_by_slug "term"
+  end
+
   def sign_as
     if Setting.easy_login_enable
       sign_in(User.find_by_login  params[:login])
