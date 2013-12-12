@@ -146,7 +146,7 @@ h3{
 
 .index_commend{ width:640px; float: left; }
 .index_commend .commend_mod{ width:228px; padding-left: 75px; float: left; margin: 15px 0; }
-.commend_mod .mod_title{width: 228px; height: 40px; text-indent:-999px; background:url(../images/index_2012_title.png) no-repeat;}
+.commend_mod .mod_title{width: 228px; height: 40px; text-indent:-999px; background:url(../images/fbkyfw.png) no-repeat;}
 .commend_mod .mod_title a{ display: block; width: 228px; height: 40px; }
 .commend_mod p{text-indent: 0;}
 .index_commend .mod_export_new{ background:url(../images/index_2012_ico1.png) no-repeat;margin-right:20px;}
@@ -158,6 +158,11 @@ h3{
 .index_commend .mod_seo_new{ width:242px; background:url(../images/index_2012_ico4.png) no-repeat}
 .mod_seo_new .mod_title{background-position:0px -120px ;}
 
+
+
+.commend_mod h4{
+  margin-bottom: 15px;
+}
 .index_right p{
 	margin: 15px 0 0 0;
 	line-height: 24px;
