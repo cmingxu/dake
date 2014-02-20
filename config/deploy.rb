@@ -14,7 +14,7 @@ role :db,  "112.124.57.67", :primary => true # This is where Rails migrations wi
 role :db,  "112.124.57.67"
 
 set :user, "deploy"
-set :password, "Xuchunming123"
+set :password, "P@@ssword"
 
 set :use_sudo, false
 
