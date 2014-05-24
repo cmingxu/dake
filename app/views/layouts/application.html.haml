@@ -16,6 +16,7 @@
         %li= link_to icon_link(:home, "white") + "网站首页", root_path
         - if user_signed_in?
           %li= link_to icon_link(:user, "white") + current_user.name, admin_dashboard_path
+          %li= link_to icon_link(:envelope, "white") +  "未读消息(#{current_user.unread_message_count})", admin_messages_path
           %li= link_to icon_link(:wrench, "white") + "修改密码", change_path
           %li= link_to "退出系统", destroy_user_session_path, :method => :delete
 

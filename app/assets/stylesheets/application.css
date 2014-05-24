@@ -53,3 +53,7 @@
 #header .nav li a{
   color: white;
 }
+
+.message_title_red a{
+  color: red;
+}

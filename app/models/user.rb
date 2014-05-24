@@ -23,9 +23,15 @@ class User < ActiveRecord::Base
   has_one :huozhan
   has_many :shippings
   has_many :cargos
+  has_many :message_users
+  has_many :messages, :through => :message_users
 
   def boss?
     roles.include? "boss"
+  end
+
+  def can_create_message?
+    self.boss? 
   end
 
   def agent?
@@ -44,5 +50,18 @@ class User < ActiveRecord::Base
     self.roles.map do |role|
       ROLES[role.to_sym]
     end.join(", ")
+  end
+
+  def message_read?(message)
+    self.message_users.where(:message_id => message.id).first.try(:read?)
+  end
+
+  def message_read!(message)
+    message_user = self.message_users.where(:message_id => message.id).first
+    message_user.update_column :read, true
+  end
+
+  def unread_message_count
+    self.message_users.unread.count 
   end
 end

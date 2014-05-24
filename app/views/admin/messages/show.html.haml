@@ -1,0 +1,10 @@
+%h2.cenyter
+  = @message.title
+%span 
+  = @message.created_by
+  = @message.created_at.to_s(:human_zh_year)
+%hr
+
+#content
+  = raw @message.content
+

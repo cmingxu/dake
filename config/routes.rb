@@ -29,6 +29,7 @@ Dake::Application.routes.draw do
     resources :pages
     resources :locations
     resources :routes
+    resources :messages
     resources :huozhans
     resources :shippings
     resources :ship_ins do

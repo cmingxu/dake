@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131107071738) do
+ActiveRecord::Schema.define(:version => 20140524104418) do
 
   create_table "balances", :force => true do |t|
-    t.decimal  "amount"
+    t.decimal  "amount",        :precision => 10, :scale => 0
     t.integer  "user_id"
     t.string   "paizhao"
     t.string   "location_id"
     t.string   "reason"
     t.string   "detail_reason"
     t.text     "desc"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.integer  "route_id"
     t.string   "cate"
   end
@@ -95,13 +95,13 @@ ActiveRecord::Schema.define(:version => 20131107071738) do
   create_table "item_records", :force => true do |t|
     t.integer  "item_id"
     t.integer  "user_id"
-    t.integer  "num",        :limit => 255
+    t.integer  "num"
     t.string   "usage_type"
     t.integer  "price"
     t.string   "vehicle_id"
     t.text     "reason"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "items", :force => true do |t|
@@ -121,6 +121,28 @@ ActiveRecord::Schema.define(:version => 20131107071738) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "user_id"
+  end
+
+  create_table "message_users", :force => true do |t|
+    t.integer  "message_id"
+    t.integer  "user_id"
+    t.boolean  "read"
+    t.datetime "read_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "messages", :force => true do |t|
+    t.text     "content"
+    t.text     "title"
+    t.integer  "created_by"
+    t.string   "attach1"
+    t.string   "attach2"
+    t.string   "attach3"
+    t.string   "attach4"
+    t.string   "attach5"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "pages", :force => true do |t|
