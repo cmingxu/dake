@@ -7,15 +7,35 @@
   = control_group_helper "客车牌照", "支出用于车辆，例如： 京A000123", f.object.errors[:paizhao].first do
     = f.select :paizhao, options_from_collection_for_select(@routes, "paizhao", "paizhao", @balance.paizhao)
 
-  = control_group_helper "支出原因", "支出的原因，例如： 维修", f.object.errors[:reason].first do
-    = f.select :reason, options_from_collection_for_select(Reason.out.all, "reason", "reason", @balance.reason)
+  = control_group_helper "支出日期", "支出发生时间，选择非手填", f.object.errors[:balance_date].first do
+    = f.text_field :balance_date, :class => "input-large date"
 
-  #detail_reason
-    - if @balance.detail_reason
-      = render :partial => "admin/reasons/detail_reason", :locals => { :default_detail_reason => @balance.detail_reason, :reason => @balance.reason  }
 
-  = control_group_helper "金额", "必须是数字，例如： 100, 888", f.object.errors[:amount].first do
-    = f.text_field :amount, :class => "input-xxlarge"
+  %table.table.table-stripped.table-bordered
+    %thead
+      %tr
+        %th 支出原因
+        %th 详细原因
+        %th 金额
+        %th
+
+    %tbody
+      = f.fields_for :balance_details do |bd|
+        %tr
+          %td
+            = control_group_helper "", "", bd.object.errors[:reason].first do
+              = bd.select :reason, options_from_collection_for_select(Reason.out.all, "reason", "reason", bd.object.reason)
+
+          %td#detail_reason
+            = render :partial => "admin/reasons/detail_reason", :locals => { :default_detail_reason => bd.object.detail_reason, :reason => bd.object.reason  }
+
+          %td
+            = control_group_helper "", "", bd.object.errors[:amount].first do
+              = bd.text_field :amount, :class => "input-mini"
+              元 
+
+          %td
+            X
 
   = control_group_helper "补充说明", "支出的补充说明，例如： 维修费用打折后1000", f.object.errors[:desc].first do
     = f.text_field :desc, :class => "input-xxlarge"

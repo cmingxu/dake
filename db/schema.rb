@@ -11,20 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140524104418) do
+ActiveRecord::Schema.define(:version => 20140528140204) do
 
-  create_table "balances", :force => true do |t|
-    t.decimal  "amount",        :precision => 10, :scale => 0
-    t.integer  "user_id"
-    t.string   "paizhao"
-    t.string   "location_id"
+  create_table "balance_details", :force => true do |t|
+    t.integer  "amount"
+    t.integer  "balance_id"
     t.string   "reason"
     t.string   "detail_reason"
     t.text     "desc"
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "balances", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "paizhao"
+    t.string   "location_id"
+    t.text     "desc"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "route_id"
     t.string   "cate"
+    t.date     "balance_date"
   end
 
   create_table "bugs", :force => true do |t|

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Message < ActiveRecord::Base
   attr_accessible :attach1, :attach2, :attach3, :attach4, :attach5, :content, :created_by, :title
 

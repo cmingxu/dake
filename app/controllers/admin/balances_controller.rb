@@ -45,7 +45,9 @@ class Admin::BalancesController < Admin::BaseController
   # GET /balances/new.json
   def new
     @balance = scope.new
+    @balance.balance_date = Time.now.to_s(:js_date_default)
     @routes = current_user.locations.collect(&:routes).flatten
+    @balance.balance_details.build
 
     respond_to do |format|
       format.html # new.html.erb

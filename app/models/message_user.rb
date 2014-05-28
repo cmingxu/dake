@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class MessageUser < ActiveRecord::Base
   attr_accessible :message_id, :read, :read_at, :user_id
   belongs_to :user
