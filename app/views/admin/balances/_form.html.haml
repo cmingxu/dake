@@ -21,18 +21,19 @@
 
     %tbody
       = f.fields_for :balance_details do |bd|
-        %tr
+        %tr.bd
           %td
             = control_group_helper "", "", bd.object.errors[:reason].first do
-              = bd.select :reason, options_from_collection_for_select(Reason.out.all, "reason", "reason", bd.object.reason)
+              = bd.select :reason, options_from_collection_for_select(Reason.out.all, "reason", "reason", bd.object.reason), {}, :class => "balance_reason"
 
-          %td#detail_reason
-            = render :partial => "admin/reasons/detail_reason", :locals => { :default_detail_reason => bd.object.detail_reason, :reason => bd.object.reason  }
+          %td.detail_reason
+            - if bd.object.detail_reason
+              = render :partial => "admin/reasons/detail_reason", :locals => { :default_detail_reason => bd.object.detail_reason, :reason => bd.object.reason  }
 
           %td
             = control_group_helper "", "", bd.object.errors[:amount].first do
               = bd.text_field :amount, :class => "input-mini"
-              元 
+              元
 
           %td
             X

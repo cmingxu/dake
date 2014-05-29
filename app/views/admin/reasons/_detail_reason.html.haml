@@ -1,3 +1,4 @@
 - reason = Reason.find_by_reason reason
 - if not reason.details.blank?
   = select_tag "balance[detail_reason]", options_for_select(reason.details.split(","))
+

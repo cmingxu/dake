@@ -6,10 +6,14 @@
 
 
 
-$(document).on 'change', $("#balance_reason"), () ->
-  $("#detail_reason").load "/admin/reasons/" + $("#balance_reason").val() + "/detail_reason"
-  
 
 
 $(document).on 'ready', () ->
+  $('.balance_reason').on 'change', () ->
+    reason_selector_name = $(this).attr('name')
+    $(this).closest('tr').find(".detail_reason").load "/admin/reasons/" + $(this).val() + "/detail_reason", () ->
+      $(this).find('select').attr('name', reason_selector_name.replace('reason', 'detail_reason'))
+
+
+
   $("#balance_reason").trigger 'change'
