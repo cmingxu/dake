@@ -1,4 +1,6 @@
 - reason = Reason.find_by_reason reason
-- if not reason.details.blank?
-  = select_tag "balance[detail_reason]", options_for_select(reason.details.split(","))
+- if reason && reason.details.present?
+  = select_tag "balance[detail_reason]", options_for_select(reason.details.split(",")), :class => "input-small"
+- else
+  = select_tag "balance[detail_reason]", options_for_select([]), :class => "input-small"
 

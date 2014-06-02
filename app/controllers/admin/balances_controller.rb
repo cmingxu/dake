@@ -47,7 +47,6 @@ class Admin::BalancesController < Admin::BaseController
     @balance = scope.new
     @balance.balance_date = Time.now.to_s(:js_date_default)
     @routes = current_user.locations.collect(&:routes).flatten
-    @balance.balance_details.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -86,7 +85,7 @@ class Admin::BalancesController < Admin::BaseController
 
     respond_to do |format|
       if @balance.update_attributes(params[:balance])
-        format.html { redirect_to admin_balances_path, notice: 'scope was successfully updated.' }
+        format.html { redirect_to edit_admin_balance_path(@balance), notice: 'scope was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

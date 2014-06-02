@@ -11,7 +11,7 @@
     = f.text_field :balance_date, :class => "input-large date"
 
 
-  %table.table.table-stripped.table-bordered
+  %table.table.table-stripped.table-condensed
     %thead
       %tr
         %th 支出原因
@@ -21,22 +21,41 @@
 
     %tbody
       = f.fields_for :balance_details do |bd|
+        - next unless bd.object.persisted?
         %tr.bd
-          %td
+          %td.span3
+            = bd.select :reason, options_from_collection_for_select(Reason.out.all, "reason", "reason", bd.object.reason), {}, :class => "balance_reason input-small"
+
+          %td.detail_reason.span3
+            - reason = Reason.find_by_reason bd.object.reason
+            - if reason && reason.details.present?
+              = bd.select :detail_reason, options_for_select(reason.details.split(",")), {}, :class => "input-small"
+            - else
+              = bd.select :detail_reason, options_for_select([]), {}, :class => "input-small"
+
+          %td.span2
+            = bd.text_field :amount, :class=> "normal_text"
+            元
+
+          %td.span2
+            = link_to "X", admin_balance_balance_detail_path(@balance, bd.object), :method => :delete, :class => "btn btn-danger", :confirm => "确定要删除这条明细么？"
+
+      = f.fields_for :balance_details, @balance.balance_details.build do |bd|
+        %tr.bd
+          %td.span3
             = control_group_helper "", "", bd.object.errors[:reason].first do
-              = bd.select :reason, options_from_collection_for_select(Reason.out.all, "reason", "reason", bd.object.reason), {}, :class => "balance_reason"
+              = bd.select :reason, options_from_collection_for_select(Reason.out.all, "reason", "reason", bd.object.reason), {}, :class => "balance_reason input-small"
 
-          %td.detail_reason
-            - if bd.object.detail_reason
-              = render :partial => "admin/reasons/detail_reason", :locals => { :default_detail_reason => bd.object.detail_reason, :reason => bd.object.reason  }
+          %td.detail_reason.span3
+            = bd.select :detail_reason, options_for_select([]), {}, :class => "input-small"
 
-          %td
+          %td.span2
             = control_group_helper "", "", bd.object.errors[:amount].first do
-              = bd.text_field :amount, :class => "input-mini"
+              = bd.text_field :amount, :class=> "normal_text"
               元
 
-          %td
-            X
+          %td.span2
+  %hr
 
   = control_group_helper "补充说明", "支出的补充说明，例如： 维修费用打折后1000", f.object.errors[:desc].first do
     = f.text_field :desc, :class => "input-xxlarge"

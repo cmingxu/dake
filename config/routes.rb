@@ -70,6 +70,7 @@ Dake::Application.routes.draw do
     end
     resources :out_reasons
     resources :balances do
+      resources :balance_details
       collection do
         get :vehicle_balances
       end

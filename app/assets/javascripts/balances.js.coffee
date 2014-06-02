@@ -17,3 +17,5 @@ $(document).on 'ready', () ->
 
 
   $("#balance_reason").trigger 'change'
+
+
