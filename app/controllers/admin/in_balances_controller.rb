@@ -47,6 +47,7 @@ class Admin::InBalancesController < Admin::BaseController
   def new
     @balance = Balance.new
     @routes = current_user.locations.collect(&:routes).flatten.uniq
+    @balance.balance_details.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -58,6 +59,7 @@ class Admin::InBalancesController < Admin::BaseController
   def edit
     @routes = current_user.locations.collect(&:routes).flatten
     @balance = Balance.find(params[:id])
+    @balance.balance_details.build
   end
 
   # POST /balances

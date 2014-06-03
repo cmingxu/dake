@@ -10,8 +10,7 @@
 %table.table.table-stripped
   %thead
     %th 车牌
-    %th 来源
-    %th 金额
+    %th 总金额
     %th 经手人
     %th 地点
     %th 时间
@@ -20,7 +19,6 @@
   - @balances.each do |balance|
     %tr
       %td= balance.paizhao
-      %td= balance.reason
       %td= balance.amount
       %td= balance.user.name
       %td= balance.location.name

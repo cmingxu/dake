@@ -15,6 +15,7 @@ class Balance < ActiveRecord::Base
   scope :with_issued_between, lambda {|start, end_time|
     where(["balance_date > ? AND balance_date < ?", start, end_time]) } 
 
+
   belongs_to :location
   belongs_to :user
   belongs_to :route
@@ -24,5 +25,10 @@ class Balance < ActiveRecord::Base
 
   before_save do
     self.route = Vehicle.find_by_paizhao(self.paizhao).route
+  end
+
+
+  def amount
+    self.balance_details.collect(&:amount).sum  
   end
 end

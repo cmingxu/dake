@@ -1,27 +1,43 @@
-%p#notice= notice
+= form_for [:admin, @balance], :class => "form form-horizontal" do |f|
+  = hidden_field_tag "balance[cate]", "out"
+  = hidden_field_tag "balance[user_id]", current_user.id
+  - if current_user.locations.exists?
+    = control_group_helper "支出地点", "支出地点", f.object.errors[:location_id].first do
+      = f.select :location_id, options_from_collection_for_select(Location.all, "id", "name", @balance.location_id)
+  = control_group_helper "客车牌照", "支出用于车辆，例如： 京A000123", f.object.errors[:paizhao].first do
+    = f.select :paizhao, options_from_collection_for_select(Route.all, "paizhao", "paizhao", @balance.paizhao)
 
-%p
-  %b Amount:
-  = @balance.amount
-%p
-  %b User:
-  = @balance.user_id
-%p
-  %b Paizhao:
-  = @balance.paizhao
-%p
-  %b Location:
-  = @balance.location_id
-%p
-  %b Reason:
-  = @balance.reason
-%p
-  %b Detail reason:
-  = @balance.detail_reason
-%p
-  %b Desc:
-  = @balance.desc
+  = control_group_helper "支出日期", "支出发生时间，选择非手填", f.object.errors[:balance_date].first do
+    = f.text_field :balance_date
 
-= link_to 'Edit', edit_balance_path(@balance)
-\|
-= link_to 'Back', balances_path
+
+  %table.table.table-stripped.table-condensed
+    %thead
+      %tr
+        %th 支出原因
+        %th 详细原因
+        %th 金额
+        %th
+
+    %tbody
+      = f.fields_for :balance_details do |bd|
+        %tr.bd{"data-bd_id" => bd.object.id || 0, "data-balance_id" => @balance.id || 0}
+          %td.span3
+            = bd.select :reason, options_from_collection_for_select(Reason.out.all, "reason", "reason", bd.object.reason), {}, :class => "balance_reason input-small"
+
+          %td.detail_reason.span3
+            - reason = Reason.find_by_reason bd.object.reason
+            - if reason && reason.details.present?
+              = bd.select :detail_reason, options_for_select(reason.details.split(",")), {}, :class => "input-small"
+            - else
+              = bd.select :detail_reason, options_for_select([]), {}, :class => "input-small"
+
+          %td.span2
+            = bd.text_field :amount, :class=> "normal_text"
+            元
+
+
+
+  = control_group_helper "补充说明", "支出的补充说明，例如： 维修费用打折后1000", f.object.errors[:desc].first do
+    = f.text_field :desc, :class => "input-xxlarge"
+
