@@ -46,6 +46,7 @@ class Admin::BalancesController < Admin::BaseController
   def new
     @balance = scope.new
     @balance.balance_date = Time.now.to_s(:js_date_default)
+    @balance.balance_details.build
     @routes = current_user.locations.collect(&:routes).flatten
 
     respond_to do |format|
@@ -58,6 +59,7 @@ class Admin::BalancesController < Admin::BaseController
   def edit
     @routes = current_user.locations.collect(&:routes).flatten
     @balance = scope.find(params[:id])
+    @balance.balance_details.build
   end
 
   # POST /balances
@@ -71,7 +73,7 @@ class Admin::BalancesController < Admin::BaseController
         format.html { redirect_to admin_balances_path, notice: 'scope was successfully created.' }
         format.json { render json: @balance, status: :created, location: @balance }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", :notice => @balance.errors.full_message.join }
         format.json { render json: @balance.errors, status: :unprocessable_entity }
       end
     end

@@ -21,8 +21,7 @@
 
     %tbody
       = f.fields_for :balance_details do |bd|
-        - next unless bd.object.persisted?
-        %tr.bd
+        %tr.bd{"data-bd_id" => bd.object.id || 0, "data-balance_id" => @balance.id || 0}
           %td.span3
             = bd.select :reason, options_from_collection_for_select(Reason.out.all, "reason", "reason", bd.object.reason), {}, :class => "balance_reason input-small"
 
@@ -38,24 +37,10 @@
             元
 
           %td.span2
-            = link_to "X", admin_balance_balance_detail_path(@balance, bd.object), :method => :delete, :class => "btn btn-danger", :confirm => "确定要删除这条明细么？"
+            = link_to "X", "#", :class => "btn btn-danger remove_balance_detail_link"
 
-      = f.fields_for :balance_details, @balance.balance_details.build do |bd|
-        %tr.bd
-          %td.span3
-            = control_group_helper "", "", bd.object.errors[:reason].first do
-              = bd.select :reason, options_from_collection_for_select(Reason.out.all, "reason", "reason", bd.object.reason), {}, :class => "balance_reason input-small"
-
-          %td.detail_reason.span3
-            = bd.select :detail_reason, options_for_select([]), {}, :class => "input-small"
-
-          %td.span2
-            = control_group_helper "", "", bd.object.errors[:amount].first do
-              = bd.text_field :amount, :class=> "normal_text"
-              元
-
-          %td.span2
   %hr
+  = link_to "增加支出项", "#", :class => "btn btn-danger pull-right", :id => "add_balance_detail"
 
   = control_group_helper "补充说明", "支出的补充说明，例如： 维修费用打折后1000", f.object.errors[:desc].first do
     = f.text_field :desc, :class => "input-xxlarge"
