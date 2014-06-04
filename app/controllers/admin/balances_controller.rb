@@ -73,7 +73,9 @@ class Admin::BalancesController < Admin::BaseController
         format.html { redirect_to admin_balances_path, notice: 'scope was successfully created.' }
         format.json { render json: @balance, status: :created, location: @balance }
       else
-        format.html { render action: "new", :notice => @balance.errors.full_message.join }
+        ap @balance.errors
+        ap @balance.errors.full_messages.first
+        format.html { render action: "new", :notice => @balance.errors.full_messages.join }
         format.json { render json: @balance.errors, status: :unprocessable_entity }
       end
     end

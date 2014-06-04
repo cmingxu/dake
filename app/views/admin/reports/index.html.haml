@@ -1,4 +1,6 @@
+= render :partial => "admin/widgets/report_date_selector"
 #container
+
 
 %table.table.table-bordered.report
   %thead
@@ -10,10 +12,10 @@
     %td 成本合计
     %td 本月利润
 
-    - @balances.group_by{|b| b.paizhao }.each_pair do |paizhao, data|
+    - @balance_details.group_by{|b| b.paizhao }.each_pair do |paizhao, data|
       %tr
         %td= paizhao
-        - income = @in_balances.select{|b| b.paizhao == paizhao }.sum(&:amount)
+        - income = @in_balance_details.select{|b| b.paizhao == paizhao }.sum(&:amount)
         %td= income
         - Reason.out.each do |r|
           %td= data.select{|b| b.reason == r.reason}.sum(&:amount)
@@ -26,7 +28,7 @@
 
 
 :javascript
-  var categories = #{@balances.collect(&:paizhao).uniq.to_json}; 
+  var categories = #{@balance_details.collect(&:paizhao).uniq.to_json}; 
   var series = #{@series.to_json};
   $(function () {
         $('#container').highcharts({

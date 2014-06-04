@@ -1,0 +1,7 @@
+= form_tag admin_reports_path, :class => "form form-horizontal well", :method => :get  do
+  从
+  = text_field_tag "search[start_at]", (params["search"].fetch("start_at", Time.now.beginning_of_month.strftime("%Y-%m-%d"))), :class => "date"
+  至
+  = text_field_tag "search[end_at]", (params["search"].fetch("end_at", Time.now.end_of_month.strftime("%Y-%m-%d"))), :class => "date"
+  =  submit_tag "搜索", :class => "btn btn-primary"
+
