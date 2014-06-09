@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140604130508) do
+ActiveRecord::Schema.define(:version => 20140609140851) do
 
   create_table "balance_details", :force => true do |t|
     t.integer  "amount"
@@ -165,6 +165,25 @@ ActiveRecord::Schema.define(:version => 20140604130508) do
     t.datetime "updated_at", :null => false
     t.string   "name"
     t.string   "title"
+  end
+
+  create_table "passenger_record_details", :force => true do |t|
+    t.integer  "passenger_record_id"
+    t.integer  "passenger_count"
+    t.integer  "total_price"
+    t.integer  "location_id"
+    t.string   "location_name"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "passenger_records", :force => true do |t|
+    t.date     "record_date"
+    t.integer  "route_id"
+    t.string   "created_by"
+    t.integer  "total_price"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "reasons", :force => true do |t|

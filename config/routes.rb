@@ -2,12 +2,15 @@
 Dake::Application.routes.draw do
 
 
+
+
   get "vehicle_reminds/index"
 
   resources :bugs
 
 
   namespace :admin do
+    resources :passenger_records
     resources :item_records do
       collection do
         get :vehicle_item_records

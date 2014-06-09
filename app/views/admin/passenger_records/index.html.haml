@@ -1,0 +1,22 @@
+%legend
+  客运记录(
+  = @passenger_records.count
+  )
+%table.table.table-stripped
+  %tr
+    %th 线路
+    %th 日期
+    %th 总人数
+    %th 总收入
+    %th
+
+  - @passenger_records.each do |passenger_record|
+    %tr
+      %td= passenger_record.route.friendly_name
+      %td= passenger_record.record_date
+      %td= passenger_record.record_date
+      %td= passenger_record.record_date
+      %td
+        = link_to icon_link(:search), edit_admin_passenger_record_path(passenger_record)
+
+

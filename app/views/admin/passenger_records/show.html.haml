@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Record date:
+  = @passenger_record.record_date
+%p
+  %b Route:
+  = @passenger_record.route_id
+
+= link_to 'Edit', edit_passenger_record_path(@passenger_record)
+\|
+= link_to 'Back', passenger_records_path
