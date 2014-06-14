@@ -2,6 +2,10 @@
   客运记录(
   = @passenger_records.count
   )
+
+  - if current_user.caiwu_admin?
+    %span.pull-right
+      = link_to icon_link(:plus) + "  新客流信息", new_admin_passenger_record_path
 %table.table.table-stripped
   %tr
     %th 线路

@@ -14,7 +14,7 @@
   = link_to " 收入 ", new_admin_in_balance_path, :class => "btn btn-large btn-primary"
 
 - if current_user.caiwu_admin?
-  = link_to " 上车人数 ", new_admin_passenger_record_path, :class => "btn btn-large btn-primary"
+  = link_to " 上车人数 ", admin_passenger_records_path, :class => "btn btn-large btn-primary"
 
 %hr
 - if current_user.huozhan_admin?

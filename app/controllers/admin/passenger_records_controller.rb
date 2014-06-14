@@ -2,7 +2,7 @@ class Admin::PassengerRecordsController < Admin::BaseController
   # GET /passenger_records
   # GET /passenger_records.json
   def index
-    @passenger_records = PassengerRecord.all
+    @passenger_records = scope.page(params[:page]).order("created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,5 +79,13 @@ class Admin::PassengerRecordsController < Admin::BaseController
       format.html { redirect_to passenger_records_url }
       format.json { head :no_content }
     end
+  end
+
+  def scope
+     if current_user.caiwu_admin?
+       current_user.passenger_records
+     else
+       PassengerRecord
+     end
   end
 end

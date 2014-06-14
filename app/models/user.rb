@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
 
   has_many :locations
   has_many :balances
+  has_many :passenger_records
   has_one :huozhan
   has_many :shippings
   has_many :cargos

@@ -25,4 +25,8 @@ class Route < ActiveRecord::Base
   def friendly_name
     "#{self.start_location.name}-#{self.end_location.name}" 
   end
+
+  def reverse_route
+    Route.find_by_start_location_id_and_end_location_id(self.end_location_id, self.start_location_id)
+  end
 end

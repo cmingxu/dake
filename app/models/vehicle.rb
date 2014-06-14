@@ -14,6 +14,7 @@ class Vehicle < ActiveRecord::Base
   has_many :reminds, :through => :vehicle_reminds
   has_many :balances, :foreign_key => "paizhao"
   has_many :item_records
+  has_many :passenger_records
 
   def remind_results
     @reminds = Remind.all
