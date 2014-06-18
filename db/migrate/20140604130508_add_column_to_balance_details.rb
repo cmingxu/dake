@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddColumnToBalanceDetails < ActiveRecord::Migration
   def change
     add_column :balance_details, :paizhao, :string

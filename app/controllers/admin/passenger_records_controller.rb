@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Admin::PassengerRecordsController < Admin::BaseController
   # GET /passenger_records
   # GET /passenger_records.json
@@ -23,8 +24,16 @@ class Admin::PassengerRecordsController < Admin::BaseController
 
   # GET /passenger_records/new
   # GET /passenger_records/new.json
+
+  def choose_vehicle
+    @vehicles = current_user.locations.collect(&:routes).flatten.collect(&:vehicle)
+  end
+
+
   def new
-    @passenger_record = PassengerRecord.new
+    @vehicle = Vehicle.find params[:vehicle]
+    @passenger_record = PassengerRecord.today_passenger_record_for_vehicle(@vehicle).first || \
+                        PassengerRecord.create_passenger_record_for_vehicle(@vehicle)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -82,10 +91,10 @@ class Admin::PassengerRecordsController < Admin::BaseController
   end
 
   def scope
-     if current_user.caiwu_admin?
-       current_user.passenger_records
-     else
-       PassengerRecord
-     end
+    if current_user.caiwu_admin?
+      current_user.passenger_records
+    else
+      PassengerRecord
+    end
   end
 end

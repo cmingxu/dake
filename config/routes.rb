@@ -10,7 +10,11 @@ Dake::Application.routes.draw do
 
 
   namespace :admin do
-    resources :passenger_records
+    resources :passenger_records do
+      collection do
+        get :choose_vehicle
+      end
+    end
     resources :item_records do
       collection do
         get :vehicle_item_records

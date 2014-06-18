@@ -15,7 +15,7 @@ class Location < ActiveRecord::Base
   has_many :balances
 
   def routes
-    departure_routes + destination_routes 
+    departure_routes + destination_routes
   end
 
 

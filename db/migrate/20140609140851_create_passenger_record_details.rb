@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreatePassengerRecordDetails < ActiveRecord::Migration
   def change
     create_table :passenger_record_details do |t|

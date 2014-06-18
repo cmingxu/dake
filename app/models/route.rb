@@ -29,4 +29,9 @@ class Route < ActiveRecord::Base
   def reverse_route
     Route.find_by_start_location_id_and_end_location_id(self.end_location_id, self.start_location_id)
   end
+
+  def paths_passed
+    self.paths.split(/\s+/).collect {|p| p.chomp('，').chomp(',')}
+  end
+
 end

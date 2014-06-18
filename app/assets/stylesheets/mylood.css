@@ -30,6 +30,7 @@ a:focus, a:hover {color: #c30;}
 #header_right{
 	float: right;
 	margin: 20px 0 0 0;
+  height: 32px;
 }
 
 #content{
