@@ -1,3 +1,19 @@
 = form_for [:admin, @passenger_record], :url => admin_passenger_records_path do |f|
+
+  %table.table.table-bordered
+    %tr
+      %th 1
+      %th 2
+      %th 3
+      %th 4
+
+    - @passenger_record.passenger_record_details.go.each_with_index do |grd, index|
+      %tr
+        %td= grd.location_name
+        %td= text_field_tag "count", "", :class => "input-mini"
+        %td= @passenger_record.passenger_record_details.back[index].location_name
+        %td= text_field_tag "count", "", :class => "input-mini"
+
+
   .actions
     = f.submit '保存', :class => "btn btn-primary"

@@ -14,14 +14,14 @@ class PassengerRecord < ActiveRecord::Base
       passenger_record.vehicle = vehicle
     end
 
-    pr.passenger_record_details.build :location_name => vehicle.route.start_location.name + "站外"
+    pr.passenger_record_details.build :location_name => vehicle.route.start_location.name + "站外", :direction => "go"
     vehicle.route.paths_passed.each do |pp|
-      pr.passenger_record_details.build :location_name => pp
+      pr.passenger_record_details.build :location_name => pp, :direction => "go"
     end
 
-    pr.passenger_record_details.build :location_name => vehicle.route.reverse_route.start_location.name + "站外"
+    pr.passenger_record_details.build :location_name => vehicle.route.reverse_route.start_location.name + "站外", :direction => "back"
     vehicle.route.paths_passed.reverse.each do |pp|
-      pr.passenger_record_details.build :location_name => pp
+      pr.passenger_record_details.build :location_name => pp, :direction => "back"
     end
 
     pr.save!
