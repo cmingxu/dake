@@ -2,17 +2,28 @@
 
   %table.table.table-bordered
     %tr
-      %th 1
-      %th 2
-      %th 3
-      %th 4
+      %td.location_name{:colspan => 4}
+        %h4
+          = @passenger_record.vehicle.paizhao
+
+    %tr
+      %td.location_name{:colspan => 2}
+        = @passenger_record.vehicle.route.friendly_name
+
+      %td.location_name{:colspan => 2}
+        = @passenger_record.vehicle.route.reverse_route.friendly_name
 
     - @passenger_record.passenger_record_details.go.each_with_index do |grd, index|
       %tr
         %td.location_name= grd.location_name
-        %td.passenger_record_input= text_field_tag "count[][#{grd.id}]", "#{grd.passenger_count || 0}", :class => ""
+        %td.passenger_record_input= text_field_tag "passenger_count[][#{grd.id}]", "#{grd.passenger_count || 0}", :class => ""
         %td.location_name= (grdr = @passenger_record.passenger_record_details.back[index]).location_name
-        %td.passenger_record_input= text_field_tag "count[][#{grdr.id}]", "#{grdr.passenger_count || 0}", :class => ""
+        %td.passenger_record_input= text_field_tag "passenger_count[][#{grdr.id}]", "#{grdr.passenger_count || 0}", :class => ""
+
+    %tr
+      %td.location_name{:colspan => 2}
+
+      %td.location_name{:colspan => 2}
 
 
   .actions
