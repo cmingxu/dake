@@ -1,4 +1,4 @@
-= form_for [:admin, @passenger_record], :url => admin_passenger_records_path do |f|
+= form_for [:admin, @passenger_record], :url => admin_passenger_record_path(@passenger_record) do |f|
 
   %table.table.table-bordered
     %tr
@@ -9,10 +9,10 @@
 
     - @passenger_record.passenger_record_details.go.each_with_index do |grd, index|
       %tr
-        %td= grd.location_name
-        %td= text_field_tag "count", "", :class => "input-mini"
-        %td= @passenger_record.passenger_record_details.back[index].location_name
-        %td= text_field_tag "count", "", :class => "input-mini"
+        %td.location_name= grd.location_name
+        %td.passenger_record_input= text_field_tag "count[][#{grd.id}]", "#{grd.passenger_count || 0}", :class => ""
+        %td.location_name= (grdr = @passenger_record.passenger_record_details.back[index]).location_name
+        %td.passenger_record_input= text_field_tag "count[][#{grdr.id}]", "#{grdr.passenger_count || 0}", :class => ""
 
 
   .actions

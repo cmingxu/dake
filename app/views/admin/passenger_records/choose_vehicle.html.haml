@@ -1,4 +1,4 @@
-= form_tag :url => new_admin_passenger_record_path, :method => :get do
+= form_tag new_admin_passenger_record_path, :method => :get do
   = control_group_helper "选择车辆", "例如: 蒙D1234" do
     = select_tag :vehicle, options_from_collection_for_select(@vehicles, :id, :paizhao), :class => "input-xlarge", :include_blank => true, :onselect => "paizhao_selected()"
 

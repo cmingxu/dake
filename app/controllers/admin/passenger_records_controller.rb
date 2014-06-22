@@ -35,6 +35,9 @@ class Admin::PassengerRecordsController < Admin::BaseController
     @passenger_record = PassengerRecord.today_passenger_record_for_vehicle(@vehicle).first || \
                         PassengerRecord.create_passenger_record_for_vehicle(@vehicle)
 
+    @passenger_record.user = current_user
+    @passenger_record.save
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @passenger_record }
@@ -69,7 +72,7 @@ class Admin::PassengerRecordsController < Admin::BaseController
 
     respond_to do |format|
       if @passenger_record.update_attributes(params[:passenger_record])
-        format.html { redirect_to @passenger_record, notice: 'Passenger record was successfully updated.' }
+        format.html { redirect_to admin_passenger_records_path notice: 'Passenger record was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -8,6 +8,7 @@
       = link_to icon_link(:plus) + "  新客流信息", choose_vehicle_admin_passenger_records_path
 %table.table.table-stripped
   %tr
+    %th 牌照
     %th 线路
     %th 日期
     %th 总人数
@@ -16,10 +17,12 @@
 
   - @passenger_records.each do |passenger_record|
     %tr
-      %td= passenger_record.route.friendly_name
+      %td= passenger_record.vehicle.paizhao
+      %td
+        = raw "#{passenger_record.vehicle.route.friendly_name} <br> #{passenger_record.vehicle.route.reverse_route.friendly_name}"
       %td= passenger_record.record_date
-      %td= passenger_record.record_date
-      %td= passenger_record.record_date
+      %td= passenger_record.total_count
+      %td= passenger_record.total_price
       %td
         = link_to icon_link(:search), edit_admin_passenger_record_path(passenger_record)
 

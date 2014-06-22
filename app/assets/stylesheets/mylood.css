@@ -231,7 +231,8 @@ h3{
 
 #content{ overflow:hidden; background:url(../images/content_bg.png) top no-repeat;}
 #content .article{_clear:right;float:left; width:702px; margin-left:30px; padding-top:30px; margin-bottom:-10000px; padding-bottom:10000px; text-align:left; }
-#content h3,.liaison_service h4{ display:block;height:30px; line-height:30px; background-image:url(./images/h3_title.gif); background-position:-9999px 0px; background-repeat:no-repeat;}
+#content h3,.liaison_service h4{ display:block;height:30px; line-height:30px; 
+ background-position:-9999px 0px; background-repeat:no-repeat;}
 #content h3 .handle{ float:right;}
 .handle .a_collect,.handle .a_print{ display:block; width:42px; height:16px; margin-left:10px; float:left; background:url(../images/sprite.png) no-repeat; overflow:hidden; text-indent:-999em; }
 .handle .a_collect{ background-position:-40px -107px;}

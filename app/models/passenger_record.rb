@@ -3,7 +3,7 @@ class PassengerRecord < ActiveRecord::Base
   attr_accessible :record_date, :total_price, :created_by
   belongs_to :vehicle
 
-  has_many :passenger_record_details
+  has_many :passenger_record_details, :dependent => :destroy
   belongs_to :user # user who created these passenger_records
 
   scope :today_passenger_record_for_vehicle, lambda {|vehicle| where(["vehicle_id=? AND record_date=?", vehicle.id, Date.today]) }
@@ -26,6 +26,10 @@ class PassengerRecord < ActiveRecord::Base
 
     pr.save!
     pr
+  end
+
+  def update_total_count
+    self.update_attribute :total_count, self.passenger_record_details.inject(0) {|s, r| s += (r.passenger_count || 0); s}
   end
 end
 

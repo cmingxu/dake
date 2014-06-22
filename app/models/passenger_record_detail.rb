@@ -5,4 +5,8 @@ class PassengerRecordDetail < ActiveRecord::Base
   belongs_to :passenger_record
   scope :go, lambda { where("direction='go'") }
   scope :back, lambda { where("direction='back'") }
+
+  after_save do
+    self.passenger_record.update_total_count
+  end
 end

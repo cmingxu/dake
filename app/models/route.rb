@@ -31,7 +31,7 @@ class Route < ActiveRecord::Base
   end
 
   def paths_passed
-    self.paths.split(/\s+/).collect {|p| p.chomp('，').chomp(',')}
+    self.paths.gsub(/\s+|，|， /, " ").split(" ")
   end
 
 end
