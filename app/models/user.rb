@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
     roles.include? "agent"
   end
 
+  def auditor?
+    roles.include? "auditor"
+  end
+
   def huozhan_admin?
     self.huozhan.present?
   end
