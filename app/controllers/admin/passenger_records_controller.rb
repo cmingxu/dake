@@ -71,6 +71,12 @@ class Admin::PassengerRecordsController < Admin::BaseController
   # PUT /passenger_records/1.json
   def update
     @passenger_record = PassengerRecord.find(params[:id])
+    params[:details].each do |id, pa|
+      prd = @passenger_record.passenger_record_details.find id
+      prd.passenger_count = pa[:passenger_count] if is_number?(pa[:passenger_count])
+      prd.total_price = pa[:total_price] if is_number?(pa[:total_price])
+      prd.save
+    end
 
     respond_to do |format|
       if @passenger_record.update_attributes(params[:passenger_record])
@@ -107,5 +113,15 @@ class Admin::PassengerRecordsController < Admin::BaseController
     else
       PassengerRecord
     end
+  end
+
+  def is_number? number
+    begin
+      n = Integer(number)
+      true
+    rescue
+      false
+    end
+    return n >= 0
   end
 end

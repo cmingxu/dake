@@ -26,11 +26,11 @@
     - @passenger_record.passenger_record_details.go.each_with_index do |grd, index|
       %tr
         %td.location_name= grd.location_name
-        %td.passenger_record_input= text_field_tag "passenger_count[][#{grd.id}]", "#{grd.passenger_count || 2}", :class => ""
-        %td.passenger_record_input= text_field_tag "passenger_count[][#{grd.id}]", "#{grd.passenger_count || 0}", :class => ""
+        %td.passenger_record_input= text_field_tag "details[][#{grd.id}][passenger_count]", "#{grd.passenger_count || 2}", :class => ""
+        %td.passenger_record_input= text_field_tag "details[][#{grd.id}][total_price]", "#{grd.total_price || 0}", :class => ""
         %td.location_name= (grdr = @passenger_record.passenger_record_details.back[index]).location_name
-        %td.passenger_record_input= text_field_tag "passenger_count[][#{grdr.id}]", "#{grdr.passenger_count || 2}", :class => ""
-        %td.passenger_record_input= text_field_tag "passenger_count[][#{grdr.id}]", "#{grdr.passenger_count || 0}", :class => ""
+        %td.passenger_record_input= text_field_tag "details[][#{grdr.id}][passenger_count]", "#{grdr.passenger_count || 2}", :class => ""
+        %td.passenger_record_input= text_field_tag "details[][#{grdr.id}][total_price]", "#{grdr.total_price || 0}", :class => ""
 
     %tr
       %td 总计
