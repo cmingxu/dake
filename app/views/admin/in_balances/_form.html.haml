@@ -41,6 +41,10 @@
 
   %hr
   = link_to "增加项", "#", :class => "btn btn-danger pull-right", :id => "add_balance_detail"
+  - if current_user.auditor? && @balance.persisted?
+    = link_to icon_link(:search), audit_admin_balance_path(@balance), :method => :put
+
+
 
 
   = control_group_helper "补充说明", "补充说明", f.object.errors[:desc].first do

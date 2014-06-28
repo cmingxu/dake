@@ -48,3 +48,5 @@
   .actions
     = f.submit '保存', :class => "btn btn-primary"
     = link_to "返回", admin_balances_path, :class => "btn"
+    - if current_user.auditor? && @balance.persisted?
+      = link_to icon_link(:search), audit_admin_balance_path(@balance), :method => :put

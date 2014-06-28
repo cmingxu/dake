@@ -13,6 +13,10 @@ class Admin::InBalancesController < Admin::BaseController
     balance_scope = balance_scope.with_issued_between(Date.parse(params[:search].fetch('start_at')), Date.parse(params[:search].fetch('end_at')) )  if params[:search].fetch("start_at", "").present? and params[:search].fetch('end_at',"").present?
     @balances = balance_scope.in.page(params[:page]).order("created_at DESC")
 
+    if current_user.boss?
+      balance_scope = balance_scope.audited 
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @balances }

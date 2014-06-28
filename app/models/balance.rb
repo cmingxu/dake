@@ -4,6 +4,8 @@ class Balance < ActiveRecord::Base
 
   scope :in, where(:cate => "in")
   scope :out, where(:cate => "out")
+  scope :audited, -> { where(status: 'audited') }
+  scope :new_created, -> { where(status: 'new_created') }
 
   scope :with_location, lambda {|l| where(:location_id => l.id) }
   scope :with_user, lambda {|u| where(:user_id => u.id) }
@@ -27,6 +29,18 @@ class Balance < ActiveRecord::Base
     self.route = Vehicle.find_by_paizhao(self.paizhao).route
   end
 
+  after_create do
+    self.update_column :status, :new_created
+  end
+
+  def audited!
+    self.status = 'audited'
+    self.balance_details.each do |bd|
+      bd.status = 'audited'
+    end
+
+    save!
+  end
 
   def amount
     self.balance_details.collect(&:amount).sum  

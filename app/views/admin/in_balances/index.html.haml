@@ -25,6 +25,8 @@
       %td= balance.created_at.to_s(:human_zh)
       %td
         = link_to icon_link(:search), edit_admin_in_balance_path(balance)
+        - if current_user.auditor?
+          = link_to icon_link(:search), audit_admin_balance_path(balance), :method => :put
 
 
 = paginate @balances
