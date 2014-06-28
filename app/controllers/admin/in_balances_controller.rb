@@ -83,6 +83,15 @@ class Admin::InBalancesController < Admin::BaseController
     end
   end
 
+    def audit
+    @balance = Balance.find(params[:in_balance_id])
+    @balance.audit!
+    respond_to do |format|
+      format.html { redirect_to admin_in_balances_path }
+      format.json { head :no_content }
+    end
+  end
+
   # PUT /balances/1
   # PUT /balances/1.json
   def update

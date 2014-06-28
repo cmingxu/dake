@@ -84,6 +84,7 @@ Dake::Application.routes.draw do
       end
     end
     resources :in_balances do
+      put :audit
       collection do
         get :vehicle_in_balances
       end

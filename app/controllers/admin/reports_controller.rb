@@ -3,7 +3,7 @@ class Admin::ReportsController < Admin::BaseController
   def index
     params[:search] ||= { :start_at => Time.now.beginning_of_month.strftime("%Y-%m-%d"),
                           :end_at   => Time.now.end_of_month.strftime("%Y-%m-%d") }
-    @balance_details = BalanceDetail.out.with_issued_between(Date.parse(params[:search][:start_at]), Date.parse(params[:search][:end_at])).all || []
+    @balance_details = BalanceDetail.out.audited.with_issued_between(Date.parse(params[:search][:start_at]), Date.parse(params[:search][:end_at])).all || []
     @grouped_balance_details = @balance_details.group_by {|b| b.paizhao }
     @series = []
     Reason.out.all.each do |r|
