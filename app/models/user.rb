@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class User < ActiveRecord::Base
-  ROLES = { :boss => "经理", :agent => "一般工作人员" }
+  ROLES = { :boss => "经理", :agent => "一般工作人员", :auditor => "信息审核员" }
   devise :database_authenticatable
 
   scope :agents, lambda { scoped.select { |u| u.roles.include? "agent" } } 

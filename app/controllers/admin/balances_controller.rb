@@ -116,7 +116,7 @@ class Admin::BalancesController < Admin::BaseController
   end
 
   def audit
-    @balance = scope.find(params[:id])
+    @balance = scope.find(params[:balance_id])
     @balance.audit!
     respond_to do |format|
       format.html { redirect_to admin_balances_path }

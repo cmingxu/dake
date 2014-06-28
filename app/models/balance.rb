@@ -33,13 +33,17 @@ class Balance < ActiveRecord::Base
     self.update_column :status, :new_created
   end
 
-  def audited!
+  def audited?
+    self.status == 'audited' 
+  end
+
+  def audit!
     self.status = 'audited'
     self.balance_details.each do |bd|
       bd.status = 'audited'
     end
 
-    save!
+    save
   end
 
   def amount
