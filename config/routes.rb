@@ -14,6 +14,9 @@ Dake::Application.routes.draw do
       collection do
         get :choose_vehicle
       end
+      member do
+        get :print
+      end
     end
     resources :item_records do
       collection do
@@ -88,6 +91,7 @@ Dake::Application.routes.draw do
       collection do
         get :vehicle_in_balances
       end
+
     end
 
     get "dashboard" => "base#dashboard"

@@ -31,6 +31,7 @@ class Admin::PassengerRecordsController < Admin::BaseController
 
 
   def new
+    @print = false
     @vehicle = Vehicle.find params[:vehicle]
     @passenger_record = PassengerRecord.today_passenger_record_for_vehicle(@vehicle).first || \
                         PassengerRecord.create_passenger_record_for_vehicle(@vehicle)
@@ -46,6 +47,7 @@ class Admin::PassengerRecordsController < Admin::BaseController
 
   # GET /passenger_records/1/edit
   def edit
+    @print = false
     @passenger_record = PassengerRecord.find(params[:id])
   end
 
@@ -91,6 +93,12 @@ class Admin::PassengerRecordsController < Admin::BaseController
       format.html { redirect_to passenger_records_url }
       format.json { head :no_content }
     end
+  end
+
+  def print
+    @print = true 
+    @passenger_record = scope.find params[:id]
+    render :edit, :layout => "print"
   end
 
   def scope
