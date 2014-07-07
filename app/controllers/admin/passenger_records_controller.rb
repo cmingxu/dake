@@ -80,7 +80,7 @@ class Admin::PassengerRecordsController < Admin::BaseController
 
     respond_to do |format|
       if @passenger_record.update_attributes(params[:passenger_record])
-        format.html { redirect_to admin_passenger_records_path notice: 'Passenger record was successfully updated.' }
+        format.html { redirect_to admin_passenger_records_path, notice: '数据更新成功.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -30,6 +30,7 @@ class PassengerRecord < ActiveRecord::Base
 
   def update_total_count
     self.update_attribute :total_count, self.passenger_record_details.inject(0) {|s, r| s += (r.passenger_count || 0); s}
+    self.update_attribute :total_price, self.passenger_record_details.inject(0) {|s, r| s += (r.total_price || 0); s}
   end
 end
 

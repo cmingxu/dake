@@ -26,19 +26,19 @@
     - @passenger_record.passenger_record_details.go.each_with_index do |grd, index|
       %tr
         %td.location_name= grd.location_name
-        %td.passenger_record_input= text_field_tag "details[][#{grd.id}][passenger_count]", "#{grd.passenger_count || 2}", :class => ""
-        %td.passenger_record_input= text_field_tag "details[][#{grd.id}][total_price]", "#{grd.total_price || 0}", :class => ""
+        %td.passenger_record_input= text_field_tag "details[#{grd.id}][passenger_count]", "#{grd.passenger_count || 2}", :class => "pa_count"
+        %td.passenger_record_input= text_field_tag "details[#{grd.id}][total_price]", "#{grd.total_price || 0}", :class => "pa_money", :style => "text-align: right"
         %td.location_name= (grdr = @passenger_record.passenger_record_details.back[index]).location_name
-        %td.passenger_record_input= text_field_tag "details[][#{grdr.id}][passenger_count]", "#{grdr.passenger_count || 2}", :class => ""
-        %td.passenger_record_input= text_field_tag "details[][#{grdr.id}][total_price]", "#{grdr.total_price || 0}", :class => ""
+        %td.passenger_record_input= text_field_tag "details[#{grdr.id}][passenger_count]", "#{grdr.passenger_count || 2}", :class => "pb_count"
+        %td.passenger_record_input= text_field_tag "details[#{grdr.id}][total_price]", "#{grdr.total_price || 0}", :class => "pb_money", :style => "text-align: right"
 
     %tr
       %td 总计
-      %td
-      %td
+      %td#pa_total_count
+      %td#pa_total_money
       %td 总计 
-      %td 
-      %td
+      %td#pb_total_count
+      %td#pb_total_money
     %tr.sign_tr
       %td 签字
       %td{:colspan  => 2}
@@ -50,3 +50,33 @@
     .actions
       = f.submit '保存', :class => "btn btn-primary"
       = link_to icon_link(:print), print_admin_passenger_record_path(@passenger_record), :class => "btn", :target => "_blank"
+
+
+
+
+
+:javascript
+  function sum_node_vals(nodes){
+    var sum = 0;
+    for(var i = 0; i < nodes.length; i++){
+      n = parseInt($(nodes[i]).val());
+      if(isNaN(n)){
+        alert("请填写正确数值！"); 
+        return;
+      }
+      sum += n;
+    }
+
+    return sum;
+  }
+  $(document).ready(function(){
+    $(".pa_count").blur(function(){ $("#pa_total_count").text(sum_node_vals($(".pa_count")))});
+    $(".pa_money").blur(function(){ $("#pa_total_money").text(sum_node_vals($(".pa_money")))});
+    $(".pb_count").blur(function(){ $("#pb_total_count").text(sum_node_vals($(".pb_count")))});
+    $(".pb_money").blur(function(){ $("#pb_total_money").text(sum_node_vals($(".pb_money")))});
+
+     $(".pa_count").trigger('blur');
+     $(".pa_money").trigger('blur');
+     $(".pb_count").trigger('blur');
+     $(".pb_money").trigger('blur');
+  });
