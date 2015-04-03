@@ -1,6 +1,6 @@
 default: &default
   site_name: "赤峰金刚辉腾物流有限公司"
-  easy_login_enable: false
+  easy_login_enable: true
 
 
 development: 
@@ -8,7 +8,7 @@ development:
 
 production: 
   <<: *default
-  easy_login_enable: true
+  easy_login_enable: false
 
 test: 
   <<: *default
