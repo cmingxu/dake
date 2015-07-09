@@ -1,77 +1,85 @@
 # -*- encoding : utf-8 -*-
-require "rvm/capistrano"
-require "bundler/capistrano"
+require 'mina/bundler'
+require 'mina/rails'
+require 'mina/git'
+#require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
+require 'mina/rvm'    # for rvm support. (http://rvm.io)
 
-set :application, "dake"
-set :repository,  "git@github.com:cmingxu/dake.git"
+# Basic settings:
+#   domain       - The hostname to SSH to.
+#   deploy_to    - Path to deploy into.
+#   repository   - Git repo to clone from. (needed by mina/git)
+#   branch       - Branch name to deploy. (needed by mina/git)
 
-set :scm, :git
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+set :domain, 'jghtwl.com'
+set :user, 'deploy'
+set :deploy_to, '/home/deploy/dake'
+set :repository, 'git@github.com:cmingxu/dake.git'
+set :branch, 'master'
 
-role :app, "112.124.57.67"                          # This may be the same as your `Web` server
-role :web, "112.124.57.67"                          # Your HTTP server, Apache/etc
-role :db,  "112.124.57.67", :primary => true # This is where Rails migrations will run
-role :db,  "112.124.57.67"
+# For system-wide RVM install.
+set :rvm_path, '/home/deploy/.rvm/scripts/rvm'
 
-set :user, "deploy"
-set :password, "Xuchunming123"
+# Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
+# They will be linked in the 'deploy:link_shared_paths' step.
+set :shared_paths, ['config/database.yml', 'log', 'tmp']
 
-set :use_sudo, false
+# Optional settings:
+#   set :user, 'foobar'    # Username in the server to SSH to.
+#   set :port, '30000'     # SSH port number.
+#   set :forward_agent, true     # SSH forward_agent.
 
-set :deploy_to, "/home/deploy/code/#{application}"
+# This task is the environment that is loaded for most commands, such as
+# `mina deploy` or `mina rake`.
+task :environment do
+  # If you're using rbenv, use this to load the rbenv environment.
+  # Be sure to commit your .ruby-version or .rbenv-version to your repository.
+  # invoke :'rbenv:load'
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
+  # For those using RVM, use this to load an RVM version@gemset.
+  invoke :'rvm:use[ruby-2.1.5@default]'
+end
 
-# If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+# Put any custom mkdir's in here for when `mina setup` is ran.
+# For Rails apps, we'll make some of the shared paths that are shared between
+# all releases.
+task :setup => :environment do
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/log"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/log"]
+
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/config"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config"]
+
+  queue! %[touch "#{deploy_to}/#{shared_path}/config/database.yml"]
+  queue  %[echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/database.yml'."]
+end
+
+desc "Deploys the current version to the server."
+task :deploy => :environment do
+  deploy do
+    # Put things that will set up an empty directory into a fully set-up
+    # instance of your project.
+    invoke :'git:clone'
+    invoke :'deploy:link_shared_paths'
+    invoke :'bundle:install'
+    invoke :'rails:db_migrate'
+    invoke :'rails:assets_precompile'
+    invoke :'deploy:cleanup'
+
+    to :launch do
+      #queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
+      #queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
+
+      queue "kill -9 `cat #{deploy_to}/#{current_path}/tmp/pids/server.pid`"
+      queue "rails s -d -P #{deploy_to}/#{current_path}/tmp/server.pid"
+    end
+  end
+end
+
+# For help in making your deploy script, see the Mina documentation:
 #
-default_run_options[:pty] = true
-set :rvm_ruby_string,  "ruby-1.9.3-p392"
-#set :rvm_type, :user
-set :rvm_bin_path, "/home/deploy/.rvm/bin"
-
-#after 'deploy:setup', 'rvm:install_rvm'
-#after 'deploy:setup', 'rvm:install_ruby'
-
-
-namespace :deploy do
-  desc "cause Passenger to initiate a restart"
-  task :restart do
-    run "touch #{current_path}/tmp/restart.txt"
-  end
-
-
-  task :start do
-    sudo "/opt/nginx/sbin/nginx"
-  end
-
-  task :stop do
-    sudo "/opt/nginx/sbin/nginx -s stop"
-  end
-
-  task :update_bundle do
-    run "cd #{release_path} && bundle install"
-  end
-
-end
-
-namespace :db do
-  task :db_config, :except => { :no_release => true }, :role => :app do
-    run "cp -f #{release_path}/config/database.template #{release_path}/config/database.yml"
-  end
-end
-
-after "deploy:update_code", "db:db_config", "deploy:update_bundle", "deploy:migrate"
-
-
-before 'deploy:setup', 'rvm:install_rvm'
-before 'deploy:setup', 'rvm:install_ruby'
-load "deploy/assets"
+#  - http://nadarei.co/mina
+#  - http://nadarei.co/mina/tasks
+#  - http://nadarei.co/mina/settings
+#  - http://nadarei.co/mina/helpers
 

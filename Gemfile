@@ -22,16 +22,15 @@ gem 'rails_kindeditor'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'capistrano'
 gem 'devise'
 gem 'carrierwave'
 gem 'cancan'
 gem 'whenever'
-gem 'rvm-capistrano'
 gem 'settingslogic'
 gem 'kaminari'
 gem 'awesome_print', :require => "ap"
 gem 'sqlite3', '1.3.7'
+gem 'mina'
 
 group :development, :test do
   gem 'rspec-rails'
